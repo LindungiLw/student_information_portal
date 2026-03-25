@@ -41,4 +41,12 @@
 body {
   background-color: var(--color-bg-main);
   color: var(--color-text-main);
+<<<<<<< HEAD
+=======
+
+  /* Tambahan untuk memastikan teks tidak terlalu gelap dan nyaman dibaca di atas background yang terang */
+  /* Bisa juga menambahkan sedikit padding untuk keseluruhan halaman agar tidak terlalu mepet ke tepi layar */
+
+
+>>>>>>> 3429e22f5493607b6847b9f06532292f389431c8
 }
