@@ -9,14 +9,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (emailInput.endsWith("@jiu.ac")) {
         if (emailInput === "admin@jiu.ac") {
-          alert("Selamat datang, Admin Portal JIU Student!");
+          alert("Welcome, JIU Student Portal Admin!");
           window.location.href = "admin/dashboard.html";
         } else {
-          alert("Login berhasil! Selamat datang di Student Portal.");
+          alert("Login successful! Welcome to the Student Portal.");
           window.location.href = "pages/home.html";
         }
       } else {
-        alert("Akses ditolak! Silakan gunakan email kampus (@jiu.ac).");
+        alert("Access denied! Please use your campus email (@jiu.ac).");
       }
     });
   }
