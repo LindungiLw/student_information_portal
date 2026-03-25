@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   /* Yellow Theme */
   --color-yellow-100: #ffe996;
@@ -42,3 +43,8 @@ body {
   background-color: var(--color-bg-main);
   color: var(--color-text-main);
 }
+=======
+:root{
+    --color--primary: #4CAF50;
+}
+>>>>>>> c080e96c214d3a5bb8056de3c892e33408533671
