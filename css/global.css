@@ -1,0 +1,44 @@
+:root {
+  /* Yellow Theme */
+  --color-yellow-100: #ffe996;
+  --color-yellow-200: #fddd62;
+  --color-yellow-300: #ffd32b;
+  --color-yellow-400: #e9be2b;
+
+  /* Blue / Navy Theme (Primary Colors) */
+  --color-blue-100: #8488b0;
+  --color-blue-200: #61659a;
+  --color-blue-300: #3b4283; /* Ini sepertinya warna dominan untuk sidebar/elemen aktif */
+  --color-blue-400: #23374; /* Catatan: Sepertinya ini typo di gambar (kurang 1 digit). Mungkin maksudnya #233374 atau #023374. Kita pakai #233374 untuk amannya, ini warna navy gelap. */
+  --color-blue-400-fixed: #233374;
+
+  /* Purple Theme */
+  --color-purple-100: #b899c5;
+  --color-purple-200: #ad88bc;
+  --color-purple-300: #9e75b1;
+  --color-purple-400: #9263a7;
+
+  /* Green Theme */
+  --color-green-100: #a7d28d;
+  --color-green-200: #97cb79;
+  --color-green-300: #87c266;
+  --color-green-400: #77ba50;
+
+  /* Tambahan warna dasar untuk struktur halaman */
+  --color-white: #ffffff;
+  --color-bg-main: #f4f5f7; /* Warna abu-abu terang untuk background konten (dari gambar awal) */
+  --color-text-main: #333333; /* Warna hitam lembut untuk teks biasa */
+  --color-text-muted: #888888; /* Warna abu-abu untuk teks sekunder/tanggal */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
+}
