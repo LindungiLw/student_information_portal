@@ -8,8 +8,8 @@
   /* Blue / Navy Theme (Primary Colors) */
   --color-blue-100: #8488b0;
   --color-blue-200: #61659a;
-  --color-blue-300: #3b4283; /* Ini sepertinya warna dominan untuk sidebar/elemen aktif */
-  --color-blue-400: #23374; /* Catatan: Sepertinya ini typo di gambar (kurang 1 digit). Mungkin maksudnya #233374 atau #023374. Kita pakai #233374 untuk amannya, ini warna navy gelap. */
+  --color-blue-300: #3b4283; /* Ini untuk sidebar/elemen aktif */
+  --color-blue-400: #233374;
   --color-blue-400-fixed: #233374;
 
   /* Purple Theme */
@@ -26,7 +26,7 @@
 
   /* Tambahan warna dasar untuk struktur halaman */
   --color-white: #ffffff;
-  --color-bg-main: #f4f5f7; /* Warna abu-abu terang untuk background konten (dari gambar awal) */
+  --color-bg-main: #f4f5f7; /* Warna abu-abu terang untuk background konten  */
   --color-text-main: #333333; /* Warna hitam lembut untuk teks biasa */
   --color-text-muted: #888888; /* Warna abu-abu untuk teks sekunder/tanggal */
 }
@@ -41,12 +41,4 @@
 body {
   background-color: var(--color-bg-main);
   color: var(--color-text-main);
-<<<<<<< HEAD
-=======
-
-  /* Tambahan untuk memastikan teks tidak terlalu gelap dan nyaman dibaca di atas background yang terang */
-  /* Bisa juga menambahkan sedikit padding untuk keseluruhan halaman agar tidak terlalu mepet ke tepi layar */
-
-
->>>>>>> 3429e22f5493607b6847b9f06532292f389431c8
 }
