@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign In - JIU Student Portal</title>
+
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="split-container">
+      <div class="left-section">
+        <div class="left-content">
+          <p class="university-name">Jakarta International University</p>
+          <h1 class="headline">The journey to excellence begins here.</h1>
+          <p class="description">
+            Access your academic record, course registration, and campus
+            resources through the Scholar Core unified portal.
+          </p>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="right-content">
+          <div class="portal-header">
+            <img
+              src="assets/images/jiu-logo-alt.png"
+              alt="Scholar Core Icon"
+              class="logo-icon"
+            />
+            <span>Student Information Portal</span>
+          </div>
+
+          <div class="form-title">
+            <h2>Sign In to Scholar Core</h2>
+            <p>Enter your institutional credentials to sign in.</p>
+          </div>
+
+          <form id="loginForm">
+            <div class="input-group">
+              <label for="email">INSTITUTIONAL EMAIL ADDRESS</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="j.doe@jiu.ac"
+                required
+              />
+            </div>
+
+            <div class="input-group">
+              <label for="password">PASSWORD</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="........"
+                required
+              />
+            </div>
+
+            <div class="form-options">
+              <label class="remember-me">
+                <input type="checkbox" /> Remember me
+              </label>
+              <a href="#" class="forgot-password">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn-primary">
+              Sign In <span class="arrow">→</span>
+            </button>
+          </form>
+
+          <div class="form-footer">
+            <p>Don't have an account? <a href="register.html">Register</a></p>
+          </div>
+
+          <div class="page-footer">
+            <a href="#">HELP</a>
+            <a href="#">PRIVACY</a>
+            <a href="#">ACCESSIBILITY</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+  </body>
+</html>
