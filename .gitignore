@@ -1,0 +1,8 @@
+# Jangan upload file konfigurasi rahasia
+config.js
+credentials.json
+.env
+
+# Jangan upload folder sampah sistem
+.DS_Store
+node_modules/
