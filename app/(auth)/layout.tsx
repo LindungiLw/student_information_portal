@@ -13,7 +13,7 @@ export default function AuthLayout({
         <Image
           src="/image.png"
           alt="Campus Background"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center mix-blend-overlay opacity-60"
           priority
         />

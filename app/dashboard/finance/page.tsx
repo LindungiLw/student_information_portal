@@ -46,7 +46,7 @@ export default function FinancePage() {
         <Image
           src="/image.png"
           alt="Campus Banner"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center"
           priority
         />

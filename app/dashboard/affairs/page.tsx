@@ -11,7 +11,7 @@ export default function StudentAffairsPage() {
         <Image
           src="/image.png"
           alt="Campus Banner"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center"
           priority
         />
@@ -45,7 +45,7 @@ export default function StudentAffairsPage() {
           {/* President Card */}
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-5 items-start">
             <div className="w-24 h-24 rounded-2xl bg-gray-200 overflow-hidden relative flex-shrink-0">
-              <Image src="/image.png" alt="President" fill className="object-cover" />
+              <Image src="/image.png" alt="President" fill sizes="100vw" className="object-cover" />
             </div>
             <div className="flex flex-col flex-1">
               <span className="px-2 py-0.5 bg-[#F4EDFC] text-theme-purple-400 text-[9px] font-bold uppercase tracking-widest rounded mb-2 self-start">President</span>
@@ -58,7 +58,7 @@ export default function StudentAffairsPage() {
           {/* Vice President Card */}
           <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex flex-col sm:flex-row gap-5 items-start">
             <div className="w-24 h-24 rounded-2xl bg-gray-200 overflow-hidden relative flex-shrink-0">
-              <Image src="/image.png" alt="Vice President" fill className="object-cover" />
+              <Image src="/image.png" alt="Vice President" fill sizes="100vw" className="object-cover" />
             </div>
             <div className="flex flex-col flex-1">
               <span className="px-2 py-0.5 bg-[#F4EDFC] text-theme-purple-400 text-[9px] font-bold uppercase tracking-widest rounded mb-2 self-start">Vice President</span>
@@ -81,7 +81,7 @@ export default function StudentAffairsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
           <div className="relative h-[160px] rounded-2xl overflow-hidden shadow-sm group cursor-pointer">
-            <Image src="/image.png" alt="Sports" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+            <Image src="/image.png" alt="Sports" fill sizes="100vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-4 flex flex-col text-white">
               <h4 className="font-bold text-sm">Sports</h4>
@@ -90,7 +90,7 @@ export default function StudentAffairsPage() {
           </div>
           
           <div className="relative h-[160px] rounded-2xl overflow-hidden shadow-sm group cursor-pointer">
-            <Image src="/image.png" alt="Arts" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+            <Image src="/image.png" alt="Arts" fill sizes="100vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-4 flex flex-col text-white">
               <h4 className="font-bold text-sm">Arts</h4>
@@ -99,7 +99,7 @@ export default function StudentAffairsPage() {
           </div>
           
           <div className="relative h-[160px] rounded-2xl overflow-hidden shadow-sm group cursor-pointer">
-            <Image src="/image.png" alt="Technology" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+            <Image src="/image.png" alt="Technology" fill sizes="100vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-4 flex flex-col text-white">
               <h4 className="font-bold text-sm">Technology</h4>
@@ -108,7 +108,7 @@ export default function StudentAffairsPage() {
           </div>
           
           <div className="relative h-[160px] rounded-2xl overflow-hidden shadow-sm group cursor-pointer">
-            <Image src="/image.png" alt="Community" fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+            <Image src="/image.png" alt="Community" fill sizes="100vw" className="object-cover transition-transform duration-500 group-hover:scale-110" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
             <div className="absolute bottom-0 left-0 p-4 flex flex-col text-white">
               <h4 className="font-bold text-sm">Community</h4>

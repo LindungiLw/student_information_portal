@@ -56,7 +56,7 @@ export default function DepartmentPage() {
         <Image
           src="/image.png"
           alt="Campus Banner"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center"
           priority
         />
@@ -88,7 +88,7 @@ export default function DepartmentPage() {
             
             {/* Image Placeholder */}
             <div className="relative w-full h-[180px]">
-              <Image src="/image.png" alt={dept.title} fill className="object-cover" />
+              <Image src="/image.png" alt={dept.title} fill sizes="100vw" className="object-cover" />
             </div>
             
             {/* Content */}

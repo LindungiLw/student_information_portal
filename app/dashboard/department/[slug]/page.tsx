@@ -43,7 +43,7 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
         <Image
           src="/image.png"
           alt="Campus Banner"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center"
           priority
         />
@@ -85,7 +85,7 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="md:col-span-2 bg-white border border-gray-100 rounded-3xl p-6 shadow-sm flex flex-col sm:flex-row gap-6 items-start">
             <div className="relative w-24 h-24 rounded-2xl overflow-hidden bg-gray-200 flex-shrink-0">
-              <Image src="/image.png" alt="Head of Department" fill className="object-cover" />
+              <Image src="/image.png" alt="Head of Department" fill sizes="100vw" className="object-cover" />
             </div>
             <div className="flex flex-col flex-1">
               <h3 className="font-bold text-gray-900 text-lg">Name of the Department Head</h3>
@@ -289,7 +289,7 @@ export default async function DepartmentDetailPage({ params }: { params: Promise
           ].map((faculty, idx) => (
             <div key={idx} className="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gray-200 overflow-hidden relative flex-shrink-0">
-                <Image src="/image.png" alt={faculty.name} fill className="object-cover" />
+                <Image src="/image.png" alt={faculty.name} fill sizes="100vw" className="object-cover" />
               </div>
               <div className="flex flex-col overflow-hidden">
                 <h4 className="text-xs font-bold text-gray-900 truncate">{faculty.name}</h4>

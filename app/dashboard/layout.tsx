@@ -92,7 +92,7 @@ export default function DashboardLayout({
                 <Globe size={18} />
                 External Activities
               </Link>
-              <Link href="#" className={getLinkClass("/dashboard/services")}>
+              <Link href="/dashboard/services" className={getLinkClass("/dashboard/services")}>
                 <Headphones size={18} />
                 Student Services
               </Link>
@@ -100,17 +100,17 @@ export default function DashboardLayout({
           </nav>
 
           {/* Bottom Area */}
-          <div className="p-5 mt-auto">
-            <Link href="#" className={getLinkClass("/dashboard/settings")}>
+          <div className="p-5 mt-auto flex flex-col gap-2">
+            <Link href="/dashboard/settings" className={getLinkClass("/dashboard/settings")}>
               <Settings size={18} />
               Settings
             </Link>
-            <div className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group">
+            <div className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-white/10 transition-colors cursor-pointer group mt-2">
               <div className="w-9 h-9 rounded-full bg-[#8E5AEC] flex items-center justify-center font-bold text-xs shadow-md">
-                JS
+                FP
               </div>
               <div className="flex flex-col">
-                <span className="text-[13px] font-semibold group-hover:text-white transition-colors">John Student</span>
+                <span className="text-[13px] font-semibold group-hover:text-white transition-colors">Firman Purba</span>
                 <span className="text-[10px] text-white/60">ID: 2023001</span>
               </div>
             </div>

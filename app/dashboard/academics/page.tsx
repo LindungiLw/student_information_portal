@@ -104,7 +104,7 @@ export default function AcademicsPage() {
         <Image
           src="/image.png"
           alt="Campus Banner"
-          fill
+          fill sizes="100vw"
           className="object-cover object-center"
           priority
         />
@@ -297,7 +297,7 @@ export default function AcademicsPage() {
               </button>
             </div>
             <div className="relative h-[180px] w-full rounded-2xl overflow-hidden shadow-inner bg-gray-100 border border-gray-200">
-              <Image src="/image.png" alt="Transcript Document" fill className="object-cover opacity-80" />
+              <Image src="/image.png" alt="Transcript Document" fill sizes="100vw" className="object-cover opacity-80" />
             </div>
           </div>
           {/* Administrative Transitions */}
@@ -424,7 +424,7 @@ export default function AcademicsPage() {
             <div className="flex flex-col md:flex-row gap-8 items-center md:items-stretch">
 
               <div className="relative w-full md:w-1/3 aspect-square rounded-2xl overflow-hidden shadow-inner flex-shrink-0">
-                <Image src="/image.png" alt="Re-instatement Room" fill className="object-cover" />
+                <Image src="/image.png" alt="Re-instatement Room" fill sizes="100vw" className="object-cover" />
               </div>
 
               <div className="flex flex-col justify-center flex-1">
@@ -529,7 +529,7 @@ export default function AcademicsPage() {
             </div>
 
             <div className="w-full md:w-[280px] h-[300px] relative rounded-2xl overflow-hidden shadow-inner flex-shrink-0">
-              <Image src="/image.png" alt="Path to Commencement" fill className="object-cover" />
+              <Image src="/image.png" alt="Path to Commencement" fill sizes="100vw" className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#27105F] to-[#27105F]/20 mix-blend-multiply"></div>
               <div className="absolute inset-0 p-6 flex flex-col justify-end text-white">
                 <span className="w-fit px-2.5 py-1 bg-white/20 backdrop-blur-sm rounded-md text-[9px] font-bold uppercase tracking-wider mb-2">
@@ -668,7 +668,7 @@ export default function AcademicsPage() {
           {/* Middle Section: Criterion III */}
           <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-sm flex flex-col md:flex-row gap-8 items-center">
             <div className="relative w-full md:w-[240px] aspect-square rounded-2xl overflow-hidden shadow-inner flex-shrink-0">
-              <Image src="/image.png" alt="Completion Timeframe" fill className="object-cover" />
+              <Image src="/image.png" alt="Completion Timeframe" fill sizes="100vw" className="object-cover" />
             </div>
             
             <div className="flex flex-col flex-1">
