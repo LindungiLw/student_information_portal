@@ -1,0 +1,296 @@
+/* ── SCROLL LOCK MAGIC FOR STUDENT SERVICES ── */
+body {
+    overflow: hidden;
+    font-family: 'Manrope', sans-serif;
+}
+
+.main.ss-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.ss-page .breadcrumb-bar {
+    flex-shrink: 0;
+}
+
+.ss-page .full-width-container {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding-bottom: 60px;
+    padding-right: 10px;
+}
+
+.ss-page .full-width-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ss-page .full-width-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ss-page .full-width-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.ss-page .full-width-container::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* ── TABS NAVIGATION ── */
+.ss-tabs {
+    display: flex;
+    gap: 32px;
+    border-bottom: 2px solid #f3f4f6;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+}
+
+.ss-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0 0 16px 0;
+    font-family: inherit;
+    /* Memaksa tombol menggunakan font Manrope */
+    font-size: 15px;
+    font-weight: 800;
+    color: #9ca3af;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    color: #4b5563;
+}
+
+.tab-btn.active {
+    color: #4a148c;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #4a148c;
+    border-radius: 2px 2px 0 0;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── CONTENT CARDS & LAYOUTS ── */
+.ss-header-banner {
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    background: #f3f0ff;
+    border-left: 6px solid #4a148c;
+}
+
+.ss-header-banner h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.ss-header-banner p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.ss-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.ss-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.ss-card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ss-card-title i {
+    color: #5c5fa3;
+}
+
+.ss-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ss-list li {
+    font-size: 13.5px;
+    color: #4b5563;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+}
+
+.ss-list li::before {
+    content: '•';
+    color: #5c5fa3;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* ── FORMS LIST ── */
+.form-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.form-item:hover {
+    border-color: #5c5fa3;
+    box-shadow: 0 4px 12px rgba(92, 95, 163, 0.1);
+    transform: translateY(-2px);
+}
+
+.form-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.form-icon {
+    font-size: 24px;
+}
+
+.form-icon.doc {
+    color: #2563eb;
+}
+
+.form-icon.sheet {
+    color: #059669;
+}
+
+.form-icon.pdf {
+    color: #dc2626;
+}
+
+.form-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.form-type {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.form-action {
+    font-size: 13px;
+    font-weight: 800;
+    color: #5c5fa3;
+}
+
+/* ── FEEDBACK QR CARD ── */
+.feedback-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border: 2px solid #3b82f6;
+    border-radius: 16px;
+    padding: 40px;
+    text-align: center;
+}
+
+.feedback-card h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 32px;
+    line-height: 1.3;
+}
+
+.qr-placeholder {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 32px auto;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg') center/cover no-repeat;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+}
+
+.feedback-card p {
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .ss-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .form-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .form-action {
+        align-self: flex-end;
+    }
+}

@@ -1,0 +1,913 @@
+/* ── Settings Header ── */
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.settings-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+.settings-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.settings-actions {
+    display: flex;
+    gap: 16px;
+}
+
+/* ── Professional Buttons ── */
+.btn {
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-primary {
+    background: #5c5fa3;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(92, 95, 163, 0.2);
+}
+
+.btn-primary:hover {
+    background: #4a4e8a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(92, 95, 163, 0.3);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: var(--text-main);
+}
+
+.btn-outline:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+}
+
+/* ── Settings Container (Nested Layout) ── */
+.settings-container {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    min-height: 650px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+}
+
+/* ── Secondary Sidebar ── */
+.settings-sidebar {
+    width: 280px;
+    background: #fafafa;
+    border-right: 1px solid #f3f4f6;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.settings-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    text-decoration: none;
+    color: #6b7280;
+    font-size: 14.5px;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.settings-link i {
+    width: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.settings-link:hover {
+    background: #f3f4f6;
+    color: var(--text-main);
+}
+
+.settings-link.active {
+    background: #f3f0ff;
+    color: #5c5fa3;
+    font-weight: 700;
+}
+
+/* ── Settings Content Area ── */
+.settings-content {
+    flex: 1;
+    padding: 40px 48px;
+    background: #ffffff;
+}
+
+.content-header {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.content-header h2 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+}
+
+.content-header p {
+    font-size: 14.5px;
+    color: var(--text-muted);
+}
+
+.section-title-small {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+/* ── Profile Upload Row ── */
+.form-section {
+    margin-bottom: 48px;
+}
+
+.profile-upload-row {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 24px;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    background: #fafafa;
+}
+
+.profile-avatar-large {
+    width: 88px;
+    height: 88px;
+    background: #e5e7eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: #9ca3af;
+    position: relative;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.upload-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #5c5fa3;
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border: 3px solid #ffffff;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.upload-badge:hover {
+    transform: scale(1.1);
+    background: #4a4e8a;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    font-weight: 800;
+    font-size: 17px;
+    margin-bottom: 6px;
+    color: var(--text-main);
+}
+
+.profile-role {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.profile-loc {
+    font-size: 13px;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* ── Modern Form Grid ── */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 32px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    font-size: 13.5px;
+    font-weight: 700;
+    color: #4b5563;
+}
+
+.form-group input,
+.form-group select {
+    padding: 14px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-main);
+    background-color: #ffffff;
+    transition: all 0.25s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.form-group input::placeholder {
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+/* Hover & Focus States */
+.form-group input:hover:not([readonly]),
+.form-group select:hover {
+    border-color: #d1d5db;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #5c5fa3;
+    box-shadow: 0 0 0 4px rgba(92, 95, 163, 0.15);
+    background-color: #ffffff;
+}
+
+/* Styling Khusus Input yang Dikunci (Email & NIM) */
+.form-group input[readonly] {
+    background-color: #f3f4f6;
+    color: #6b7280;
+    border-color: #e5e7eb;
+    cursor: not-allowed;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+}
+
+.form-group input[readonly]:focus {
+    box-shadow: none;
+    border-color: #e5e7eb;
+}
+
+/* ── Responsive Settings ── */
+@media (max-width: 992px) {
+    .settings-container {
+        flex-direction: column;
+    }
+
+    .settings-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #f3f4f6;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 20px;
+    }
+
+    .settings-link {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .settings-content {
+        padding: 30px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .profile-upload-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .profile-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile-actions .btn {
+        flex: 1;
+    }
+
+    .settings-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .settings-actions {
+        width: 100%;
+    }
+
+    .settings-actions .btn {
+        flex: 1;
+    }
+}
+
+/* ── KUNCI LAYOUT (SCROLL MAGIC) ── */
+body {
+    overflow: hidden;
+}
+
+.main.settings-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 40px 30px 0;
+    overflow: hidden;
+}
+
+/* ── TOP BAR FIX ── */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.search-box {
+    position: relative;
+    width: 350px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 12px 16px 12px 40px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: var(--text-main);
+    font-size: 14px;
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.top-bar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-avatar-small {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #6b6fa0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.icon-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #6b7280;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: #e74c3c;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── SETTINGS HEADER FIX ── */
+.settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    flex-shrink: 0;
+}
+
+/* ── SETTINGS CONTAINER (SCROLL HANDLER) ── */
+.settings-container {
+    display: flex;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.03);
+    border: 1px solid #f3f4f6;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Sidebar Settings Tetap */
+.settings-sidebar {
+    width: 280px;
+    background: #fafafa;
+    border-right: 1px solid #f3f4f6;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    /* Bisa di-scroll jika menu terlalu banyak */
+}
+
+/* ── AREA FORMULIR YANG BISA DI-SCROLL ── */
+.settings-content {
+    flex: 1;
+    padding: 40px 48px;
+    background: #ffffff;
+    overflow-y: auto;
+    padding-bottom: 40px;
+}
+
+@media (max-width: 992px) {
+    .settings-container {
+        flex-direction: column;
+    }
+
+    .settings-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #f3f4f6;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 16px 20px;
+    }
+
+    .settings-link {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Kembalikan sifat asli website saat di layar HP */
+    body {
+        overflow: auto;
+    }
+
+    .main.settings-page {
+        height: auto;
+        padding: 80px 20px 30px;
+        overflow: visible;
+    }
+
+    .settings-container {
+        overflow: visible;
+    }
+
+    .settings-content {
+        overflow-y: visible;
+        padding: 30px 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .profile-upload-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+    }
+
+    .profile-actions {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile-actions .btn {
+        flex: 1;
+    }
+
+    .settings-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .settings-actions {
+        width: 100%;
+    }
+
+    .settings-actions .btn {
+        flex: 1;
+    }
+}
+
+/* Custom Webkit Scrollbar agar elegan */
+.settings-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.settings-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.settings-content::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.settings-content::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* ── LOGOUT BUTTON & MODAL STYLES ── */
+
+/* Warna merah khusus untuk tombol Log Out di sidebar */
+/* ── LOGOUT TRIGGER IN SIDEBAR (FIXED) ── */
+.logout-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    width: 100%;
+    /* Memaksa kotak selebar sidebar */
+    box-sizing: border-box;
+    border-radius: 8px;
+    color: #ef4444 !important;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-bottom: 24px;
+}
+
+.logout-trigger i {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+    color: #ef4444 !important;
+    transition: all 0.2s ease;
+}
+
+.logout-trigger:hover {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    color: #dc2626 !important;
+}
+
+.logout-trigger:hover i {
+    color: #dc2626 !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(17, 24, 39, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background: white;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 400px;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.active .modal-card {
+    transform: translateY(0);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: #111827;
+}
+
+.modal-body p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+#logoutInput {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: 'Manrope', sans-serif;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+#logoutInput:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+/* Modal Buttons */
+.btn-cancel {
+    background: #f3f4f6;
+    color: #4b5563;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn-cancel:hover {
+    background: #e5e7eb;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+.btn-danger:disabled {
+    background: #fca5a5;
+    cursor: not-allowed;
+}
+
+.logout-trigger {
+    color: #ef4444 !important;
+    margin-top: auto;
+}
+
+.logout-trigger i {
+    color: #ef4444 !important;
+}
+
+.logout-trigger:hover {
+    background: rgba(239, 68, 68, 0.1) !important;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-card {
+    background: white;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: scale(0.95) translateY(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1) translateY(0);
+}
+
+.modal-icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.modal-icon {
+    width: 56px;
+    height: 56px;
+    background: #fef2f2;
+    color: #dc2626;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 0 0 8px #fff5f5;
+}
+
+.modal-title {
+    margin: 0 0 8px 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.modal-desc {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+}
+
+.modal-desc strong {
+    color: #111827;
+}
+
+/* Input Field Modern */
+.modal-input-group {
+    margin-bottom: 24px;
+}
+
+#logoutInput {
+    width: 100%;
+    padding: 14px 16px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 15px;
+    font-family: inherit;
+    font-weight: 600;
+    text-align: center;
+    color: #111827;
+    box-sizing: border-box;
+    transition: all 0.2s;
+}
+
+#logoutInput:focus {
+    outline: none;
+    border-color: #dc2626;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+}
+
+/* Tombol Berdampingan */
+.modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-cancel,
+.btn-danger {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+}
+
+.btn-cancel {
+    background: #f3f4f6;
+    color: #374151;
+}
+
+.btn-cancel:hover {
+    background: #e5e7eb;
+    color: #111827;
+}
+
+.btn-danger {
+    background: #dc2626;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #b91c1c;
+}
+
+.btn-danger:disabled {
+    background: #fca5a5;
+    color: #fef2f2;
+    cursor: not-allowed;
+}

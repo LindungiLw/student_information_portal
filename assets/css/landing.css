@@ -1,0 +1,123 @@
+/* Hero Section Styling */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    /* Background setup with dark overlay */
+    background: linear-gradient(var(--overlay-dark), var(--overlay-dark)), 
+                url('../images/image.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-white);
+    text-align: center;
+}
+
+/* Top Navigation / Logo */
+.top-nav {
+    position: absolute;
+    top: 50px;
+    left: 60px;
+}
+
+.main-logo {
+    height: 55px;
+    object-fit: contain;
+}
+
+/* Hero Content */
+.hero-container {
+    max-width: 900px;
+    z-index: 2;
+}
+
+.headline {
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    line-height: 1.1;
+}
+
+.highlight {
+    color: var(--accent-yellow);
+}
+
+.sub-headline {
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* CTA Buttons with Glassmorphism */
+.cta-wrapper {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Footer Area */
+.hero-footer {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    z-index: 2;
+}
+
+.footer-values {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.divider {
+    width: 80%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 0 auto 15px;
+}
+
+.copyright {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+/* Responsive Landing Page */
+@media screen and (max-width: 768px) {
+    .top-nav {
+        top: 20px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .hero-container {
+        padding: 0 20px;
+    }
+}

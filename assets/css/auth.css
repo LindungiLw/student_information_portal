@@ -1,0 +1,394 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #1a237e;
+    --primary-hover: #121858;
+    --secondary-color: #ffb300;
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #cbd5e1;
+    --input-bg: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    /* Membuat font jauh lebih tajam dan rapi di semua layar */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mengunci Font pada elemen form */
+input,
+button,
+a,
+p,
+span,
+label {
+    font-family: 'Manrope', sans-serif;
+}
+
+.auth-layout {
+    display: flex;
+    height: 100vh;
+    /* Mengunci tinggi layout seukuran layar */
+    width: 100vw;
+    overflow: hidden;
+    /* Mencegah seluruh halaman ikut ter-scroll */
+}
+
+/* --- BANNER KIRI --- */
+.auth-banner {
+    flex: 1.2;
+    background: linear-gradient(to right, rgba(26, 35, 126, 0.85), rgba(26, 35, 126, 0.95)),
+        url('../assets/images/campus-bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    color: white;
+    height: 100vh;
+    /* Memastikan banner selalu setinggi layar */
+    position: sticky;
+    top: 0;
+}
+
+.banner-content {
+    max-width: 520px;
+}
+
+.banner-subtitle {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 16px;
+    color: var(--secondary-color);
+}
+
+.banner-title {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.banner-desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* --- PANEL KANAN --- */
+.auth-panel {
+    flex: 1;
+    max-width: 540px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 60px 48px;
+    /* Padding lebih luas agar nafas desain lebih lega */
+    height: 100vh;
+    overflow-y: auto;
+    /* Hanya bagian ini yang boleh scroll */
+    scrollbar-width: thin;
+    /* Untuk browser Firefox agar scrollbar rapi */
+    scrollbar-color: var(--border-color) transparent;
+}
+
+.auth-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.auth-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.auth-panel::-webkit-scrollbar-thumb {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+.auth-panel::-webkit-scrollbar-thumb:hover {
+    background: var(--border-color);
+}
+
+.auth-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.auth-logo-img {
+    height: 38px;
+    width: auto;
+}
+
+.auth-logo-text {
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    letter-spacing: -0.3px;
+}
+
+.auth-form-wrapper {
+    width: 100%;
+    max-width: 400px;
+    margin: auto 0;
+    /* Auto margin untuk vertikal tengah yang sempurna */
+}
+
+.auth-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.auth-subtitle {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 32px;
+}
+
+/* --- INPUT & FORM --- */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-main);
+}
+
+.input-label a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.input-label a:hover {
+    text-decoration: underline;
+}
+
+/* Wrapper khusus agar icon selalu di tengah secara matematis */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: var(--input-bg);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+    transition: all 0.2s ease-in-out;
+}
+
+.input-field::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+.input-with-icon .input-field {
+    padding-left: 44px;
+}
+
+.input-icon-left {
+    position: absolute;
+    left: 16px;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    pointer-events: none;
+    /* Mencegah icon memblokir klik pada input */
+}
+
+.input-icon-right {
+    position: absolute;
+    right: 16px;
+    color: #94a3b8;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.input-icon-right:hover {
+    color: var(--text-main);
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(26, 35, 126, 0.08);
+}
+
+.input-field:focus~.input-icon-left {
+    color: var(--primary-color);
+}
+
+/* --- CHECKBOX --- */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.checkbox-group a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.checkbox-group a:hover {
+    text-decoration: underline;
+}
+
+/* --- BUTTONS --- */
+.btn-auth {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(26, 35, 126, 0.15);
+}
+
+.btn-auth:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(26, 35, 126, 0.25);
+}
+
+.btn-auth:active {
+    transform: translateY(0);
+}
+
+/* --- SWITCH & FOOTER --- */
+.auth-switch {
+    text-align: left;
+    margin-top: 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.auth-switch a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.auth-footer {
+    margin-top: auto;
+    /* Mendorong footer ke paling bawah layar */
+    display: flex;
+    gap: 24px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+}
+
+.auth-footer a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.auth-footer a:hover {
+    color: var(--primary-color);
+}
+
+/* --- RESPONSIVE QUERIES --- */
+@media (max-width: 1024px) {
+    .auth-banner {
+        padding: 40px;
+    }
+
+    .banner-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .auth-layout {
+        display: block;
+        /* Kembalikan ke normal di HP */
+        overflow-y: auto;
+        height: auto;
+    }
+
+    .auth-banner {
+        display: none;
+        /* Sembunyikan banner di HP agar fokus ke form */
+    }
+
+    .auth-panel {
+        max-width: 100%;
+        height: auto;
+        padding: 40px 24px;
+    }
+
+    .auth-form-wrapper {
+        margin: 40px auto;
+        max-width: 100%;
+    }
+
+    .auth-footer {
+        justify-content: center;
+        margin-top: 40px;
+    }
+}

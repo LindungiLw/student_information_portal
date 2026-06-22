@@ -1,0 +1,301 @@
+/* ── SCROLL LOCK MAGIC FOR EXTERNAL ACTIVITIES ── */
+body {
+    overflow: hidden;
+}
+
+.main.ea-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.ea-page .hero-wrapper,
+.ea-page .breadcrumb-bar {
+    flex-shrink: 0;
+}
+
+.ea-page .full-width-container {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding-bottom: 60px;
+    padding-right: 10px;
+}
+
+.ea-page .full-width-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ea-page .full-width-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ea-page .full-width-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.ea-page .full-width-container::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* ── TABS NAVIGATION ── */
+/* ── TABS NAVIGATION (UPDATED) ── */
+.ea-tabs {
+    display: flex;
+    gap: 32px;
+    border-bottom: 2px solid #f3f4f6;
+    margin-bottom: 32px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* Ini sihir pemusnah scrollbar vertikal yang bocor */
+    scrollbar-width: none;
+    /* Menyembunyikan scrollbar di Firefox */
+}
+
+/* Menyembunyikan wujud scrollbar di Chrome/Safari/Edge tapi tetap bisa digeser */
+.ea-tabs::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* ── DOWNLOAD PDF BUTTON STYLES (NEW) ── */
+.btn-download-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid currentColor;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-download-pdf:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+/* Warna tombol menyesuaikan tema masing-masing tab */
+#tab-internship .btn-download-pdf {
+    color: #4a148c;
+}
+
+#tab-scholarship .btn-download-pdf {
+    color: #059669;
+}
+
+#tab-seam .btn-download-pdf {
+    color: #2563eb;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 0 0 16px 0;
+    font-size: 15px;
+    font-weight: 800;
+    color: #9ca3af;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.tab-btn:hover {
+    color: #4b5563;
+}
+
+.tab-btn.active {
+    color: #4a148c;
+}
+
+.tab-btn.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #4a148c;
+    border-radius: 2px 2px 0 0;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── CONTENT LAYOUT ── */
+.ea-header-banner {
+    background: #f3f0ff;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    border-left: 6px solid #4a148c;
+}
+
+.ea-header-banner h2 {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.ea-header-banner p {
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.ea-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.ea-card {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.ea-card-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ea-card-title i {
+    color: #5c5fa3;
+}
+
+.ea-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ea-list li {
+    font-size: 13.5px;
+    color: #4b5563;
+    margin-bottom: 12px;
+    line-height: 1.6;
+    padding-left: 20px;
+    position: relative;
+}
+
+.ea-list li::before {
+    content: '•';
+    color: #5c5fa3;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* ── TABLES ── */
+.ea-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.ea-table th {
+    background: #f9fafb;
+    padding: 16px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #6b7280;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.ea-table td {
+    padding: 16px;
+    font-size: 13.5px;
+    color: #374151;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.ea-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ── TIMELINE ── */
+.ea-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.timeline-date {
+    font-size: 12px;
+    font-weight: 800;
+    color: #5c5fa3;
+    background: #f3f0ff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    min-width: 140px;
+    text-align: center;
+}
+
+.timeline-event {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+    padding-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .ea-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .timeline-date {
+        text-align: left;
+        width: fit-content;
+    }
+}

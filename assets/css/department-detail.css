@@ -1,0 +1,305 @@
+/* ── DEPARTMENT DETAIL SPECIFIC STYLES ── */
+
+/* ── HERO BANNER ── */
+.dept-hero-banner {
+    background: linear-gradient(135deg, #4a148c, #31115c);
+    border-radius: 16px;
+    padding: 48px;
+    color: white;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(74, 20, 140, 0.2);
+}
+
+.dept-hero-banner h1 {
+    font-size: 36px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.dept-hero-banner p {
+    font-size: 15px;
+    color: #e9d5ff;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* ── SECTION TITLES ── */
+.section-title-icon {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    color: #1f2937;
+    margin-bottom: 20px;
+    margin-top: 16px;
+}
+
+.section-title-icon i {
+    color: #5c5fa3;
+    background: #f3f0ff;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* ── LEADERSHIP SECTION ── */
+.leadership-container {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.leader-card,
+.contact-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border: 1px solid #f3f4f6;
+}
+
+.leader-profile {
+    display: flex;
+    gap: 24px;
+}
+
+.leader-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 16px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 4px solid #f3f0ff;
+}
+
+.contact-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+.contact-row:last-child {
+    margin-bottom: 0;
+}
+
+.contact-row i {
+    color: #5c5fa3;
+    margin-top: 2px;
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.contact-row .label {
+    font-size: 12px;
+    font-weight: 800;
+    color: #111827;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.contact-row .value {
+    font-size: 14px;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+/* ── VISION & MISSION ── */
+.vision-card {
+    background: #4a148c;
+    border-radius: 16px;
+    padding: 40px;
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 25px rgba(74, 20, 140, 0.2);
+}
+
+.vision-card h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #d8b4fe;
+    margin-bottom: 16px;
+    font-weight: 800;
+}
+
+.vision-card ul li {
+    margin-bottom: 12px;
+}
+
+/* ── DEGREE REQUIREMENTS ── */
+.req-card {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 40px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.req-top {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 32px;
+}
+
+.req-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.req-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.req-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.req-item-title {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #1f2937;
+}
+
+.req-item-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+/* ── ACADEMIC PROGRAMS ── */
+.programs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.program-card {
+    background: white;
+    padding: 32px;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    transition: all 0.3s ease;
+}
+
+.program-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border-color: #e5e7eb;
+}
+
+.program-icon {
+    width: 48px;
+    height: 48px;
+    background: #f3f0ff;
+    color: #5c5fa3;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+/* ── CURRICULUM TABLE ── */
+.curriculum-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    border: 1px solid #f3f4f6;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.curriculum-table th {
+    background: #f9fafb;
+    padding: 20px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #6b7280;
+    text-transform: uppercase;
+    text-align: left;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.curriculum-table td {
+    padding: 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #f3f4f6;
+    font-weight: 600;
+    color: #374151;
+}
+
+.curriculum-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* ── RESPONSIVE DESIGN (MOBILE & TABLET FIXES) ── */
+@media (max-width: 1024px) {
+
+    .leadership-container,
+    .vision-card,
+    .programs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .req-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dept-hero-banner {
+        padding: 32px 24px;
+    }
+
+    .leader-profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .req-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .req-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    /* Mengizinkan scroll horizontal pada tabel di HP */
+    .curriculum-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

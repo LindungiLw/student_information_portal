@@ -1,0 +1,222 @@
+/* ── SCROLL LOCK MAGIC FOR STUDENT UNION ── */
+body {
+    overflow: hidden;
+}
+
+.main.su-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.su-page .hero-wrapper,
+.su-page .breadcrumb-bar {
+    flex-shrink: 0;
+}
+
+.su-page .full-width-container {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding-bottom: 60px;
+    padding-right: 10px;
+}
+
+.su-page .full-width-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.su-page .full-width-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.su-page .full-width-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.su-page .full-width-container::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+/* ── STRUCTURE LAYOUT ── */
+.su-header {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.su-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.su-header p {
+    font-size: 14px;
+    color: #6b7280;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.su-level-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px 0 24px 0;
+    position: relative;
+}
+
+.su-level-title::before,
+.su-level-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.su-level-title span {
+    font-size: 12px;
+    font-weight: 800;
+    color: #4a148c;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: #f3f0ff;
+    padding: 6px 16px;
+    border-radius: 20px;
+}
+
+/* ── MEMBER CARDS ── */
+.su-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.su-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.su-member-card {
+    background: white;
+    border: 1px solid #f3f4f6;
+    border-radius: 16px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.su-member-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    border-color: #e0d4fc;
+}
+
+/* Garis aksen ungu di atas kartu */
+.su-member-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4a148c, #7e22ce);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.su-member-card:hover::before {
+    opacity: 1;
+}
+
+.su-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 16px auto;
+    border: 3px solid #f3f0ff;
+}
+
+.su-role {
+    font-size: 11px;
+    font-weight: 800;
+    color: #5c5fa3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.su-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 16px;
+}
+
+.su-desc {
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.su-contact {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.su-contact a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb;
+    color: #6b7280;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.su-contact a:hover {
+    background: #f3f0ff;
+    color: #4a148c;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
+    .main.su-page {
+        height: auto;
+        overflow: visible;
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .su-page .full-width-container {
+        overflow-y: visible;
+        padding-right: 0;
+    }
+
+    .su-grid-2,
+    .su-grid-3 {
+        grid-template-columns: 1fr;
+    }
+}

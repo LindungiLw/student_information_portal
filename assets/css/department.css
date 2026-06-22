@@ -1,0 +1,185 @@
+/* ── SCROLL LOCK MAGIC FOR DEPARTMENT ── */
+body {
+    overflow: hidden;
+}
+
+.main.department-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding-bottom: 0;
+}
+
+.department-page .hero-wrapper,
+.department-page .breadcrumb-bar,
+.department-page .dept-header {
+    flex-shrink: 0;
+}
+
+.department-page .full-width-container {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+    padding-bottom: 60px;
+    padding-right: 10px;
+}
+
+.department-page .full-width-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.department-page .full-width-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.department-page .full-width-container::-webkit-scrollbar-thumb {
+    background: #d1d5db;
+    border-radius: 10px;
+}
+
+.department-page .full-width-container::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}
+
+
+/* ── DEPARTMENT HEADER ── */
+.dept-header {
+    margin-bottom: 32px;
+}
+
+.dept-header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.dept-header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* ── DEPARTMENT GRID & CARDS ── */
+.dept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.dept-card {
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #f3f4f6;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dept-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.06);
+}
+
+.dept-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #e5e7eb;
+    /* Fallback color */
+}
+
+.dept-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.dept-category {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #4a148c;
+    /* JIU Dark Purple */
+    margin-bottom: 12px;
+}
+
+.dept-category i {
+    font-size: 14px;
+}
+
+.dept-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 12px;
+}
+
+.dept-desc {
+    font-size: 13.5px;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex: 1;
+    /* Mendorong tombol ke paling bawah secara otomatis */
+}
+
+.btn-dept {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    background: #f3f0ff;
+    color: #4a148c;
+    border: none;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn-dept:hover {
+    background: #e0d4fc;
+}
+
+/* ── RESPONSIVE DESIGN ── */
+@media (max-width: 1024px) {
+    .dept-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
+    .main.department-page {
+        height: auto;
+        overflow: visible;
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .department-page .full-width-container {
+        overflow-y: visible;
+        padding-right: 0;
+    }
+
+    .dept-grid {
+        grid-template-columns: 1fr;
+    }
+}

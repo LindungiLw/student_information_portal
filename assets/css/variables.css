@@ -1,0 +1,49 @@
+:root {
+  /* ── Brand Colors ── */
+  --sidebar-bg:    #6b6fa0;
+  --accent:        #5c5fa3;
+  --accent-light:  #7b7fc4;
+  --accent-hover:  #4e508c;
+  --white:         #ffffff;
+
+  /* ── Layout Colors ── */
+  --body-bg:       #f4f5fb;
+  --card-bg:       #ffffff;
+
+  /* ── Typography Colors ── */
+  --text-primary:   #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-muted:     #9ca3af;
+
+  /* ── Border ── */
+  --border: #e5e7eb;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+
+  /* ── Border Radius ── */
+  --radius:    12px;
+  --radius-sm:  8px;
+
+  /* ── Layout ── */
+  --sidebar-width: 230px;
+}
+
+/* ── Dark Mode Overrides ── */
+body.dark-mode {
+  --sidebar-bg:    #1e293b;
+  --accent:        #3b82f6;
+  --accent-light:  #60a5fa;
+  --accent-hover:  #2563eb;
+  --white:         #f8fafc;
+  --body-bg:       #0f172a;
+  --card-bg:       #1e293b;
+  --text-primary:  #f1f5f9;
+  --text-secondary:#94a3b8;
+  --text-muted:    #64748b;
+  --border:        #334155;
+  --border-color:  #334155;
+  --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.5);
+}
