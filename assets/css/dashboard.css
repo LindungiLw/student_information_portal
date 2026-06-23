@@ -1,12 +1,4 @@
-:root {
-    --sidebar-bg: #76779e;
-    --sidebar-active: #626388;
-    --bg-color: #ffffff;
-    --text-main: #2d3748;
-    --text-muted: #718096;
-    --purple-accent: #6b21a8;
-    --border-color: #edf2f7;
-}
+/* Variables are now centrally managed in variables.css */
 
 * {
     box-sizing: border-box;

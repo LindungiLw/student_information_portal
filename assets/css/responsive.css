@@ -61,8 +61,17 @@
 @media screen and (max-width: 1024px) {
 
   .su-grid-3,
-  .sa-clubs-grid {
+  .sa-clubs-grid,
+  .dept-grid,
+  .policy-grid,
+  .dashboard-grid,
+  .services-grid,
+  .finance-grid {
     grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr; /* Stack dashboard right panel to bottom on tablet */
   }
 }
 
@@ -168,5 +177,24 @@
   .btn-cancel,
   .btn-danger {
     width: 100%;
+  }
+
+  /* ── PDF Viewer Header ── */
+  .pdf-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 16px;
+  }
+  .pdf-actions {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .pdf-actions a, .pdf-actions button {
+    flex: 1;
+    justify-content: center;
+    font-size: 12px;
+    white-space: nowrap;
   }
 }

@@ -1,22 +1,27 @@
 :root {
   /* ── Brand Colors ── */
   --sidebar-bg:    #6b6fa0;
+  --sidebar-active: #626388;
   --accent:        #5c5fa3;
   --accent-light:  #7b7fc4;
   --accent-hover:  #4e508c;
+  --purple-accent: #6b21a8;
   --white:         #ffffff;
 
   /* ── Layout Colors ── */
+  --bg-color:      #ffffff;
   --body-bg:       #f4f5fb;
   --card-bg:       #ffffff;
 
   /* ── Typography Colors ── */
+  --text-main:      #2d3748;
   --text-primary:   #1a1a2e;
   --text-secondary: #6b7280;
-  --text-muted:     #9ca3af;
+  --text-muted:     #718096;
 
   /* ── Border ── */
   --border: #e5e7eb;
+  --border-color: #edf2f7;
 
   /* ── Shadows ── */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -32,18 +37,31 @@
 
 /* ── Dark Mode Overrides ── */
 body.dark-mode {
+  /* Brand colors stay somewhat the same or get slightly adjusted for contrast, never black */
   --sidebar-bg:    #1e293b;
-  --accent:        #3b82f6;
-  --accent-light:  #60a5fa;
-  --accent-hover:  #2563eb;
-  --white:         #f8fafc;
+  --sidebar-active:#334155;
+  --accent:        #5c5fa3;
+  --accent-light:  #7b7fc4;
+  --accent-hover:  #4a4e8a;
+  --purple-accent: #a855f7; /* Lighter purple for dark mode visibility */
+  --white:         #1e293b;
+
+  /* Backgrounds turn dark */
+  --bg-color:      #0f172a;
   --body-bg:       #0f172a;
   --card-bg:       #1e293b;
-  --text-primary:  #f1f5f9;
-  --text-secondary:#94a3b8;
-  --text-muted:    #64748b;
-  --border:        #334155;
-  --border-color:  #334155;
+
+  /* Texts turn light */
+  --text-main:      #f8fafc;
+  --text-primary:   #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted:     #94a3b8;
+
+  /* Borders turn dark */
+  --border:         #334155;
+  --border-color:   #334155;
+
+  /* Shadows get stronger for dark mode depth */
   --shadow-sm:     0 1px 3px rgba(0, 0, 0, 0.4);
   --shadow-md:     0 4px 16px rgba(0, 0, 0, 0.5);
 }

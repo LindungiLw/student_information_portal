@@ -28,36 +28,75 @@ if (!isset($_SESSION['user_id'])) {
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/sidebar.php'; ?>
 
   <!-- ── MAIN CONTENT ── -->
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/koneksi.php';
+
+// Ambil data event dari database
+$stmt = $pdo->query("SELECT * FROM academic_calendar ORDER BY start_date ASC");
+$events = $stmt->fetchAll();
+?>
   <main class="main">
     <div class="bottom-dashboard-section" style="padding-top: 20px;">
        <div class="section-header">
           <div class="section-title"><svg class="custom-icon"><use href="#icon-calendar"></use></svg> Academic Calendar TA 2025-2026</div>
        </div>
+       
        <div class="custom-pdf-container">
-           <!-- Custom Premium Header -->
            <div class="pdf-header">
                <div class="pdf-title">
                    <svg class="custom-icon" style="color: #e53e3e;"><use href="#icon-calendar"></use></svg> 
-                   Official Academic Calendar
+                   Official Academic Schedule
                </div>
                <div class="pdf-actions">
+                   <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                       <a href="/admin/calendar_manage.php" class="btn-download" style="background: var(--purple-accent); color: white;">
+                           <i class="fas fa-edit"></i> Manage
+                       </a>
+                   <?php endif; ?>
                    <a href="/assets/documents/Academic%20Calendar%20TA%202025-2026.pdf" download class="btn-download">
-                       <svg class="custom-icon" style="width: 16px; height: 16px;"><use href="#icon-download"></use></svg> Download
+                       <i class="fas fa-file-pdf"></i> Download Full PDF
                    </a>
-                   <button class="btn-fullscreen" onclick="document.getElementById('cal-pdf').requestFullscreen()">
-                       <svg class="custom-icon" style="width: 16px; height: 16px;"><use href="#icon-expand"></use></svg> Fullscreen
-                   </button>
                </div>
            </div>
            
-           <!-- Iframe (Tanpa native toolbar) -->
-           <div class="pdf-body" style="height: 800px;">
-               <iframe id="cal-pdf" src="/assets/documents/Academic%20Calendar%20TA%202025-2026.pdf#toolbar=0&navpanes=0&view=FitH" width="100%" height="100%" style="border: none;">
-                    <div style="padding: 2rem; text-align: center;">
-                        <svg class="custom-icon" style="width: 48px; height: 48px; color: #ccc; margin-bottom: 1rem;"><use href="#icon-calendar"></use></svg>
-                        <p>Your browser does not support PDF iframes.<br><a href="/assets/documents/Academic%20Calendar%20TA%202025-2026.pdf" target="_blank">Download Academic Calendar here</a></p>
-                    </div>
-               </iframe>
+           <div class="pdf-body" style="padding: 24px; background: var(--card-bg);">
+               <?php if(empty($events)): ?>
+                   <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+                       <i class="fas fa-calendar-times" style="font-size: 48px; margin-bottom: 16px; opacity: 0.5;"></i>
+                       <p>No academic events found. Admin needs to add events.</p>
+                   </div>
+               <?php else: ?>
+                   <table style="width: 100%; border-collapse: collapse;">
+                       <thead>
+                           <tr>
+                               <th style="text-align: left; padding: 16px; border-bottom: 2px solid var(--border-color); color: var(--text-muted);">Event</th>
+                               <th style="text-align: left; padding: 16px; border-bottom: 2px solid var(--border-color); color: var(--text-muted);">Date</th>
+                               <th style="text-align: left; padding: 16px; border-bottom: 2px solid var(--border-color); color: var(--text-muted);">Category</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                           <?php foreach($events as $e): ?>
+                           <tr>
+                               <td style="padding: 16px; border-bottom: 1px solid var(--border-color); color: var(--text-main); font-weight: 600;">
+                                   <?php echo htmlspecialchars($e['event_title']); ?>
+                               </td>
+                               <td style="padding: 16px; border-bottom: 1px solid var(--border-color); color: var(--text-main);">
+                                   <?php 
+                                        $start = date("M d, Y", strtotime($e['start_date']));
+                                        $end = date("M d, Y", strtotime($e['end_date']));
+                                        echo ($start === $end) ? $start : "$start - $end";
+                                   ?>
+                               </td>
+                               <td style="padding: 16px; border-bottom: 1px solid var(--border-color);">
+                                   <span style="background: rgba(107,33,168,0.1); color: var(--purple-accent); padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700;">
+                                       <?php echo htmlspecialchars($e['category']); ?>
+                                   </span>
+                               </td>
+                           </tr>
+                           <?php endforeach; ?>
+                       </tbody>
+                   </table>
+               <?php endif; ?>
            </div>
        </div>
     </div>

@@ -56,78 +56,153 @@ $current_dept = $departments[$dept_id];
            </div>
        </div>
 
-       <!-- The 5 Sections Grid -->
-       <div class="dept-info-container">
+       <!-- Tambahkan CSS Khusus untuk Halaman Ini -->
+       <style>
+           .modern-detail-grid {
+               display: grid;
+               grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+               gap: 24px;
+               margin-top: 30px;
+           }
+
+           .detail-card {
+               background: var(--card-bg);
+               border: 1px solid var(--border-color);
+               border-radius: 16px;
+               overflow: hidden;
+               text-decoration: none;
+               display: flex;
+               flex-direction: column;
+               transition: all 0.3s ease;
+               box-shadow: var(--shadow-sm);
+           }
+
+           .detail-card:hover {
+               transform: translateY(-5px);
+               box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+               border-color: rgba(107, 33, 168, 0.2);
+           }
+
+           .detail-img-wrap {
+               width: 100%;
+               height: 180px;
+               overflow: hidden;
+               background-color: var(--border-color); /* Fallback color */
+           }
+
+           .detail-img-wrap img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               transition: transform 0.5s ease;
+           }
+
+           .detail-card:hover .detail-img-wrap img {
+               transform: scale(1.05);
+           }
+
+           .detail-content {
+               padding: 24px;
+               display: flex;
+               flex-direction: column;
+               flex: 1;
+           }
+
+           .detail-title {
+               font-size: 18px;
+               font-weight: 800;
+               color: var(--text-main);
+               margin-bottom: 10px;
+               transition: color 0.3s ease;
+           }
+
+           .detail-card:hover .detail-title {
+               color: var(--purple-accent);
+           }
+
+           .detail-desc {
+               font-size: 14px;
+               color: var(--text-muted);
+               line-height: 1.6;
+               margin: 0;
+           }
            
-           <!-- Top Row: 3 Cards -->
-           <div class="dept-info-grid top-row">
-               
-               <!-- 1. Vision & Mission -->
-               <a href="#" class="info-card">
-                   <div class="img-wrapper">
-                       <!-- Placeholder image for Vision -->
-                       <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Vision & Mission">
-                   </div>
-                   <div class="text-wrapper">
-                       <h3 class="purple-link">Vision & Mission</h3>
-                       <p>Vision, Mission, and Goal of <?php echo strtoupper($dept_id); ?> department</p>
-                   </div>
-               </a>
+           .detail-icon-badge {
+               width: 40px;
+               height: 40px;
+               background: rgba(107, 33, 168, 0.08);
+               color: var(--purple-accent);
+               border-radius: 10px;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               font-size: 18px;
+               margin-bottom: 16px;
+           }
+       </style>
 
-               <!-- 2. Curriculum -->
-               <a href="#" class="info-card">
-                   <div class="img-wrapper">
-                       <!-- Placeholder image for Curriculum -->
-                       <img src="https://images.unsplash.com/photo-1512758684632-a2530dbbe707?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Curriculum">
-                   </div>
-                   <div class="text-wrapper">
-                       <h3 class="purple-link">Curriculum</h3>
-                       <p>Curriculum by batch<br>(2022 batch to 2025 batch)</p>
-                   </div>
-               </a>
+       <!-- Grid Section -->
+       <div class="modern-detail-grid">
+           
+           <!-- 1. Vision & Mission -->
+           <a href="#" class="detail-card">
+               <div class="detail-img-wrap">
+                   <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80" alt="Vision & Mission">
+               </div>
+               <div class="detail-content">
+                   <div class="detail-icon-badge"><i class="fas fa-bullseye"></i></div>
+                   <h3 class="detail-title">Vision & Mission</h3>
+                   <p class="detail-desc">Discover the core values, long-term vision, and educational goals of the <?php echo strtoupper($dept_id); ?> department.</p>
+               </div>
+           </a>
 
-               <!-- 3. Degree Requirement -->
-               <a href="#" class="info-card">
-                   <div class="img-wrapper">
-                       <!-- Placeholder image for Degree Requirement -->
-                       <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Degree requirement">
-                   </div>
-                   <div class="text-wrapper">
-                       <h3 class="purple-link">Degree requirement</h3>
-                       <p>Checklist for graduation and academic completion</p>
-                   </div>
-               </a>
+           <!-- 2. Curriculum -->
+           <a href="#" class="detail-card">
+               <div class="detail-img-wrap">
+                   <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&q=80" alt="Curriculum">
+               </div>
+               <div class="detail-content">
+                   <div class="detail-icon-badge"><i class="fas fa-book"></i></div>
+                   <h3 class="detail-title">Curriculum</h3>
+                   <p class="detail-desc">Explore the complete course structure and syllabus organized by academic batch (2022 - 2025).</p>
+               </div>
+           </a>
 
-           </div>
+           <!-- 3. Degree Requirement -->
+           <a href="#" class="detail-card">
+               <div class="detail-img-wrap">
+                   <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Degree requirement">
+               </div>
+               <div class="detail-content">
+                   <div class="detail-icon-badge"><i class="fas fa-graduation-cap"></i></div>
+                   <h3 class="detail-title">Degree Requirement</h3>
+                   <p class="detail-desc">A comprehensive checklist of credits, thesis guidelines, and requirements for graduation.</p>
+               </div>
+           </a>
 
-           <!-- Bottom Row: 2 Cards (Centered) -->
-           <div class="dept-info-grid bottom-row">
-               
-               <!-- 4. Academic Advisors -->
-               <a href="#" class="info-card">
-                   <div class="img-wrapper">
-                       <!-- Placeholder image for Academic Advisors -->
-                       <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Academic Advisors">
-                   </div>
-                   <div class="text-wrapper">
-                       <h3 class="purple-link">Academic Advisors</h3>
-                       <p>Advisor Assignments</p>
-                   </div>
-               </a>
+           <!-- 4. Academic Advisors -->
+           <a href="#" class="detail-card">
+               <div class="detail-img-wrap">
+                   <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=600&q=80" alt="Academic Advisors">
+               </div>
+               <div class="detail-content">
+                   <div class="detail-icon-badge"><i class="fas fa-user-tie"></i></div>
+                   <h3 class="detail-title">Academic Advisors</h3>
+                   <p class="detail-desc">Find your assigned academic advisor and schedule mentoring or consultation sessions.</p>
+               </div>
+           </a>
 
-               <!-- 5. Additional Programs/ Resources -->
-               <a href="#" class="info-card">
-                   <div class="img-wrapper">
-                       <!-- Placeholder image for Resources -->
-                       <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Additional Programs/ Resources">
-                   </div>
-                   <div class="text-wrapper">
-                       <h3 class="purple-link">Additional Programs/ Resources</h3>
-                       <p>Access to the <?php echo strtoupper($dept_id); ?> resources folder</p>
-                   </div>
-               </a>
-
-           </div>
+           <!-- 5. Additional Programs/ Resources -->
+           <a href="#" class="detail-card">
+               <div class="detail-img-wrap">
+                   <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=600&q=80" alt="Additional Programs/ Resources">
+               </div>
+               <div class="detail-content">
+                   <div class="detail-icon-badge"><i class="fas fa-folder-open"></i></div>
+                   <h3 class="detail-title">Resources & Programs</h3>
+                   <p class="detail-desc">Access exclusive <?php echo strtoupper($dept_id); ?> digital libraries, software licenses, and extracurricular programs.</p>
+               </div>
+           </a>
 
        </div>
     </div>

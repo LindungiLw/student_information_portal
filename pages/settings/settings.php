@@ -238,6 +238,44 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
       input:checked + .slider:before {
         transform: translateX(20px);
       }
+
+      /* Responsive Settings Layout for Mobile */
+      @media screen and (max-width: 768px) {
+          .settings-row {
+              flex-direction: column;
+              align-items: flex-start;
+              gap: 12px;
+              padding: 16px 20px;
+          }
+          .sr-right {
+              width: 100%;
+              padding-left: 52px; /* Sejajarkan value dengan teks di bawah ikon */
+              justify-content: space-between;
+          }
+          /* Khusus untuk edit mode nama */
+          #nameEditRow {
+              flex-direction: column;
+          }
+          #nameEditRow .sr-left {
+              width: 100%;
+          }
+          #nameEditRow .sr-text {
+              width: 100%;
+          }
+          .edit-input {
+              width: 100%;
+              margin-top: 8px;
+          }
+          #nameEditRow .sr-right {
+              padding-left: 52px;
+              justify-content: flex-start;
+              gap: 10px;
+          }
+          .btn-save, .btn-cancel {
+              flex: 1;
+              text-align: center;
+          }
+      }
   </style>
 </head>
 <body>

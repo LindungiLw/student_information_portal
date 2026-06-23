@@ -40,5 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
 .code/
+
+# Security & Credentials (JANGAN DI-PUSH KE GITHUB)
+/database_schema.sql
+/config/koneksi.php
+/auth/sso_callback.php
+/auth/login_google.php

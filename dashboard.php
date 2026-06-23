@@ -150,5 +150,6 @@ if (!isset($_SESSION['user_id'])) {
        </div>
     </div>
   </main>
+  <script src="/assets/js/main.js"></script>
 </body>
 </html>
