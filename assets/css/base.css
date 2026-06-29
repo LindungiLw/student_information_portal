@@ -2,7 +2,6 @@
    base.css — Reset, Global Styles, Typography, Scrollbars
    JIU Student Portal
    ============================================================ */
-@import url('responsive.css');
 
 /* ── Reset ── */
 *, *::before, *::after {

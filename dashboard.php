@@ -1,4 +1,7 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 session_start();
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/koneksi.php';
 
@@ -84,11 +87,11 @@ try {
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=30">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=30">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=35">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=35">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=30">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=35">
 </head>
 <body class="dashboard-app-viewport">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>

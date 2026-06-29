@@ -1,4 +1,7 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
 session_start();
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
     die("Akses Ditolak! Anda bukan admin.");
@@ -183,15 +186,16 @@ $docs = $stmt_doc->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Manager | Admin Portal</title>
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
+  <link rel="preload" href="/assets/css/responsive.css?v=35" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=31">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=31">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=31">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=35">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=35">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=35">
   <style>
+      html, body { overflow-x: hidden; max-width: 100vw; width: 100%; }
       .btn-primary { background: var(--purple-accent); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
       .btn-primary:hover { background: var(--purple-accent-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(107, 111, 160, 0.2); }
       .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
@@ -663,6 +667,7 @@ $docs = $stmt_doc->fetchAll();
   </script>
   <?php endif; ?>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="/assets/js/main.js"></script>
 </body>
 </html>

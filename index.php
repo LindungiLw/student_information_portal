@@ -1,9 +1,19 @@
 <?php
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Pragma: no-cache");
+header("Vary: User-Agent");
 session_start();
 
-// Jika sudah login, langsung arahkan ke dashboard
+// Jika sudah login, langsung arahkan ke dashboard sesuai role & perangkat
 if (isset($_SESSION['user_id'])) {
-    header('Location: /dashboard.php');
+    $useragent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    $isMobile = preg_match('/(android|webos|iphone|ipad|ipod|blackberry|windows phone)/i', $useragent);
+    
+    if ($_SESSION['role'] === 'admin' && !$isMobile) {
+        header('Location: /admin/dashboard.php');
+    } else {
+        header('Location: /dashboard.php');
+    }
     exit;
 }
 ?>

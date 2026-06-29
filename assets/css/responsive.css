@@ -87,6 +87,9 @@
 
   body {
     flex-direction: column;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
   }
 
   .mobile-header {
@@ -110,16 +113,16 @@
     max-height: calc(100vh - 80px) !important;
     border-radius: 16px !important;
     z-index: 9999 !important;
-    transform: none !important;
+    transform: translateX(0) !important;
     opacity: 0 !important;
     pointer-events: none !important;
     visibility: hidden !important;
-    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.32s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.32s !important;
     box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25) !important;
   }
 
   .sidebar.active {
-    left: 12px !important; /* Muncul mulus ke posisi 12px dari kiri */
+    transform: translateX(332px) !important; /* Muncul mulus ke posisi 12px dari kiri (-320 + 332 = 12) */
     opacity: 1 !important;
     pointer-events: auto !important;
     visibility: visible !important;
@@ -157,11 +160,6 @@
     flex: none !important;
   }
 
-  .main {
-    margin-left: 0 !important;
-    width: 100%;
-    padding: 72px 16px 16px 16px !important; /* Padding top untuk mengompensasi fixed mobile-header */
-  }
 
   .mobile-menu-btn {
     display: flex;
@@ -331,17 +329,21 @@
      MASTER ADMIN & STUDENT PORTAL MOBILE POLISH (Tata letak tengah rapi, presisi & anti-potong)
      ========================================================================= */
   body.admin-app-viewport .main,
+  body.dashboard-app-viewport .main,
   .main {
     margin-left: 0 !important;
-    margin-top: 57px !important; /* Pas dengan tinggi mobile-header (56px) + 1px border */
+    margin-top: 0 !important;
+    padding-top: 72px !important; /* Kompensasi untuk fixed mobile-header (56px) + ruang */
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    padding-bottom: 60px !important;
     width: 100% !important;
     max-width: 100vw !important;
-    padding: 14px 14px 60px 14px !important; 
     overflow-x: hidden !important;
     box-sizing: border-box !important;
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important; 
+    align-items: center !important;
   }
 
   /* Mengunci Page Header agar Tidak Sticky & Tidak Overlap dengan Konten di Bawahnya */
