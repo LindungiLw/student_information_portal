@@ -267,7 +267,7 @@ $docs = $stmt_doc->fetchAll();
       .admin-badge.generic { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
   </style>
 </head>
-<body class="admin-app-viewport">
+<body class="admin-app-viewport dashboard-app-viewport">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/admin_sidebar.php'; ?>
 

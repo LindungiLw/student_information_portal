@@ -78,3 +78,4 @@ if (isset($_SESSION['user_id'])) {
 
 </html>
 
+// indonesia yang seharusnya kita bisa upgrade dan memiliki budaya yang seharusnya di miliki oleh beberapa orang ahs atai su atj atau bisa i

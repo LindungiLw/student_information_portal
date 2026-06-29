@@ -171,7 +171,7 @@ $total_docs = count($docs);
       .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
   </style>
 </head>
-<body class="admin-app-viewport">
+<body class="admin-app-viewport dashboard-app-viewport">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/admin_sidebar.php'; ?>
 
