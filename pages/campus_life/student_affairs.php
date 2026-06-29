@@ -34,6 +34,7 @@ $student_union_pdf = (isset($docs['student_union']) && file_exists($_SERVER['DOC
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=4">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=30">
 </head>
 <body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
