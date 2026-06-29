@@ -126,7 +126,18 @@ try {
            <div class="booklet-pure-card" onclick="expandPdf()" title="Click to open Booklet Popup">
                <!-- Clip wrapper pushing native browser PDF scrollbars off-screen -->
                <div class="pdf-clip-wrapper">
+                   <?php 
+                   $useragent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+                   $isMobileLayout = preg_match('/(android|webos|iphone|ipad|ipod|blackberry|windows phone)/i', $useragent);
+                   if ($isMobileLayout): 
+                   ?>
+                   <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: #64748b;">
+                       <i class="fas fa-file-pdf" style="font-size: 48px; margin-bottom: 12px; color: #ef4444;"></i>
+                       <span style="font-size: 14px; font-weight: 600;">Tap to view Booklet</span>
+                   </div>
+                   <?php else: ?>
                    <iframe id="dash-pdf-viewer" src="<?php echo htmlspecialchars($dash_booklet_path); ?>#toolbar=0&navpanes=0&scrollbar=0&view=Fit" scrolling="no" tabindex="-1" title="<?php echo htmlspecialchars($dash_booklet_title); ?>"></iframe>
+                   <?php endif; ?>
                </div>
 
                <!-- Gorgeous Modern Interactive Hover Shield with Animated Hand -->
