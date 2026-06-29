@@ -9,18 +9,6 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
 
 require_once $_SERVER['DOCUMENT_ROOT'] . '/config/koneksi.php';
 
-// Temporary helper to clear docs table
-if (isset($_GET['clear_docs'])) {
-    $pdo->query('TRUNCATE TABLE dashboard_documents');
-    $message = "Dashboard documents table cleared successfully!";
-    $message_type = "success";
-}
-// Temporary helper to clear announcements table
-if (isset($_GET['clear_ann'])) {
-    $pdo->query('TRUNCATE TABLE announcements');
-    $message = "Announcements table cleared successfully!";
-    $message_type = "success";
-}
 
 // Ensure tables exist
 $pdo->exec("CREATE TABLE IF NOT EXISTS announcements (

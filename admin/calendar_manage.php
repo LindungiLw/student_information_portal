@@ -9,12 +9,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/config/koneksi.php';
 $message = '';
 $message_type = '';
 
-// Temporary helper to clear calendar_documents table
-if (isset($_GET['clear_docs'])) {
-    $pdo->query('TRUNCATE TABLE calendar_documents');
-    $message = "Calendar documents table cleared successfully!";
-    $message_type = "success";
-}
 
 // Ensure event_color column exists in academic_calendar table
 try {
