@@ -39,47 +39,12 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/sidebar.css">
-  <link rel="stylesheet" href="/assets/css/dashboard.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
   <style>
-      .page-intro {
-          margin-bottom: 30px;
-      }
-      .page-intro h1 {
-          font-size: 36px;
-          font-weight: 800;
-          color: var(--text-primary);
-          margin: 0 0 10px 0;
-          letter-spacing: -1px;
-      }
-      .page-intro p {
-          font-size: 16px;
-          color: var(--text-secondary);
-          margin: 0;
-      }
-
-      /* Alert Messages */
-      .alert {
-          padding: 12px 20px;
-          border-radius: 12px;
-          margin-bottom: 24px;
-          font-weight: 600;
-          font-size: 14px;
-      }
-      .alert-success {
-          background: rgba(16, 185, 129, 0.1);
-          color: #10b981;
-          border: 1px solid rgba(16, 185, 129, 0.2);
-      }
-      .alert-error {
-          background: rgba(239, 68, 68, 0.1);
-          color: #ef4444;
-          border: 1px solid rgba(239, 68, 68, 0.2);
-      }
-
       /* Apple-style Settings Layout */
       .settings-container {
           max-width: 850px;
@@ -283,11 +248,11 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/sidebar.php'; ?>
   
   <main class="main">
-    <div class="bottom-dashboard-section" style="padding-top: 20px;">
-       <div class="page-intro">
-           <h1>Settings</h1>
-           <p>Manage your account settings and interface preferences.</p>
-       </div>
+    <div class="page-header">
+       <h1><i class="fas fa-gear"></i> Settings</h1>
+       <p>Manage your account settings and interface preferences.</p>
+    </div>
+    <div class="bottom-dashboard-section" style="padding-top: 0;">
 
        <?php if($success_msg): ?>
            <div class="alert alert-success"><i class="fas fa-check-circle"></i> <?php echo $success_msg; ?></div>
@@ -434,3 +399,9 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
   </script>
 </body>
 </html>
+
+
+
+
+
+

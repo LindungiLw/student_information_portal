@@ -4,6 +4,16 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: /index.php');
     exit;
 }
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/koneksi.php';
+
+$exchange_docs = [];
+try {
+    $stmt = $pdo->query("SELECT * FROM exchange_documents ORDER BY id ASC");
+    $exchange_docs = $stmt->fetchAll();
+} catch (PDOException $e) {
+    // If the table doesn't exist, $exchange_docs remains an empty array
+}
+
 $current_page = 'external_activities.php'; // Keep sidebar active on External Activities
 ?>
 <!DOCTYPE html>
@@ -15,10 +25,11 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css">
-  <link rel="stylesheet" href="/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
   <style>
       .exchange-hero {
           display: flex;
@@ -142,17 +153,17 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
        <!-- Document Selection Buttons -->
        <h3 style="margin-bottom: 20px; font-size: 20px; color: var(--text-main);">Available Universities & Fact Sheets</h3>
        <div class="doc-buttons">
-           <button class="doc-btn active" onclick="loadPdf('/assets/documents/exchange/1b. SEAM Announcement 2026-Fall.pdf', this)">
-               <i class="fas fa-university"></i> Handong Global Univ. (HGU)
-           </button>
-           <button class="doc-btn" onclick="loadPdf('/assets/documents/exchange/INTI Student Mobility Programme Brochure 2026.pdf', this)">
-               <i class="fas fa-university"></i> INTI International Univ.
-           </button>
-           <button class="doc-btn" onclick="loadPdf('/assets/documents/exchange/[DLSU] Fact Sheet vMay2025.pdf', this)">
-               <i class="fas fa-university"></i> De La Salle Univ. (DLSU)
-           </button>
+           <?php foreach ($exchange_docs as $index => $doc): ?>
+               <button class="doc-btn <?php echo $index === 0 ? 'active' : ''; ?>" onclick="loadPdf('<?php echo htmlspecialchars($doc['file_path']); ?>', this)">
+                   <i class="fas fa-university"></i> <?php echo htmlspecialchars($doc['title']); ?>
+               </button>
+           <?php endforeach; ?>
+           <?php if (count($exchange_docs) === 0): ?>
+               <p style="color: var(--text-muted);">No documents available.</p>
+           <?php endif; ?>
        </div>
 
+       <?php if (count($exchange_docs) > 0): ?>
        <!-- Interactive PDF Viewer -->
        <div class="custom-pdf-container" id="exchange-pdf-container">
            <div class="pdf-header">
@@ -172,11 +183,18 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
            <div class="pdf-body">
                <iframe 
                    id="exchange-pdf"
-                   src="/assets/documents/exchange/1b. SEAM Announcement 2026-Fall.pdf#toolbar=0&navpanes=0&view=FitH" 
+                   src="<?php echo htmlspecialchars($exchange_docs[0]['file_path']); ?>#toolbar=0&navpanes=0&view=FitH" 
                    type="application/pdf">
                </iframe>
            </div>
        </div>
+       <?php else: ?>
+       <div class="empty-state-container" style="background: white; padding: 40px; border-radius: 12px; text-align: center; border: 1px solid var(--border-color);">
+           <div class="empty-state-icon" style="font-size: 48px; color: #cbd5e1; margin-bottom: 16px;"><i class="fas fa-file-pdf"></i></div>
+           <div class="empty-state-title" style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">No Documents Available</div>
+           <div class="empty-state-desc" style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px;">The student exchange documents have not been uploaded by the administration yet.</div>
+       </div>
+       <?php endif; ?>
 
     </div>
   </main>
@@ -203,7 +221,10 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
 
     // Set initial download link
     document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('pdf-download-btn').href = '/assets/documents/exchange/1b. SEAM Announcement 2026-Fall.pdf';
+        const firstDocPath = "<?php echo count($exchange_docs) > 0 ? htmlspecialchars($exchange_docs[0]['file_path']) : ''; ?>";
+        if (firstDocPath) {
+            document.getElementById('pdf-download-btn').href = firstDocPath;
+        }
     });
 
     function toggleFullscreen(containerId) {
@@ -226,3 +247,9 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
   <script src="/assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+

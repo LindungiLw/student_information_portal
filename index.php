@@ -15,11 +15,12 @@ if (isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JIU Student Information Portal</title>
     
-    <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
+    <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png?v=1">
 
     <!-- Link to your modular CSS files -->
-    <link rel="stylesheet" href="/assets/css/global.css">
-    <link rel="stylesheet" href="/assets/css/landing.css">
+    <link rel="stylesheet" href="/assets/css/global.css?v=30">
+    <link rel="stylesheet" href="/assets/css/landing.css?v=30">
+    <link rel="stylesheet" href="/assets/css/responsive.css?v=30">
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +34,8 @@ if (isset($_SESSION['user_id'])) {
     <main class="hero-section">
         <!-- Top Navigation Area -->
         <nav class="top-nav">
-            <img src="/assets/images/image copy.png" alt="Jakarta International University Logo" class="main-logo">
+            <img src="/assets/images/jiu-logo-rounded.png" alt="Jakarta International University Logo" class="main-logo">
+            <span class="nav-brand-text">Jakarta International University</span>
         </nav>
 
         <!-- Main Hero Content -->
@@ -65,3 +67,7 @@ if (isset($_SESSION['user_id'])) {
 </body>
 
 </html>
+
+
+
+

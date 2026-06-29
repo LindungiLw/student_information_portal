@@ -14,22 +14,49 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css">
-  <link rel="stylesheet" href="/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
 </head>
 <body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/sidebar.php'; ?>
   <main class="main">
-    <div class="bottom-dashboard-section" style="padding-top: 20px;">
-       <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 8px; border-bottom: none; margin-bottom: 0;">
-          <div class="section-title" style="font-size: 28px;">
-             <i class="fas fa-university" style="color: var(--purple-accent); margin-right: 12px;"></i> Academic Departments
-          </div>
-          <p style="color: var(--text-muted); font-size: 15px; margin: 0;">Explore the 6 major study programs offered at Jakarta International University.</p>
-       </div>
+    <div class="page-header">
+       <h1><i class="fas fa-university"></i> Academic Departments</h1>
+       <p>Explore the 6 major study programs offered at Jakarta International University.</p>
+    </div>
+
+    <?php
+    // Auto-download department images for faster local loading
+    $img_dir = $_SERVER['DOCUMENT_ROOT'] . '/assets/images/departments';
+    if (!is_dir($img_dir)) {
+        mkdir($img_dir, 0777, true);
+    }
+    
+    $dept_images = [
+        'english.jpg' => 'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80',
+        'japanese.jpg' => 'https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=600&q=80',
+        'accounting.jpg' => 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80',
+        'vcd.jpg' => 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80',
+        'it.jpg' => 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80',
+        'is.jpg' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80'
+    ];
+    
+    foreach ($dept_images as $filename => $url) {
+        $filepath = $img_dir . '/' . $filename;
+        if (!file_exists($filepath)) {
+            $content = @file_get_contents($url);
+            if ($content !== false) {
+                file_put_contents($filepath, $content);
+            }
+        }
+    }
+    ?>
+
+    <div class="bottom-dashboard-section" style="padding-top: 0;">
 
        <style>
            .modern-dept-grid {
@@ -133,7 +160,7 @@ if (!isset($_SESSION['user_id'])) {
        <div class="modern-dept-grid">
            <!-- Card 1: English Lit -->
            <div class="modern-dept-card">
-               <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=600&q=80" alt="English Literature" class="modern-dept-img">
+               <img src="/assets/images/departments/english.jpg" alt="English Literature" class="modern-dept-img">
                <div class="modern-dept-content">
                    <div class="modern-dept-tag"><i class="fas fa-book-open"></i> HUMANITIES</div>
                    <h3 class="modern-dept-title">English Literature</h3>
@@ -144,7 +171,7 @@ if (!isset($_SESSION['user_id'])) {
 
            <!-- Card 2: Japanese Lit -->
            <div class="modern-dept-card">
-               <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=600&q=80" alt="Japanese Literature" class="modern-dept-img">
+               <img src="/assets/images/departments/japanese.jpg" alt="Japanese Literature" class="modern-dept-img">
                <div class="modern-dept-content">
                    <div class="modern-dept-tag"><i class="fas fa-language"></i> LINGUISTICS</div>
                    <h3 class="modern-dept-title">Japanese Literature</h3>
@@ -155,7 +182,7 @@ if (!isset($_SESSION['user_id'])) {
 
            <!-- Card 3: Accounting -->
            <div class="modern-dept-card">
-               <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=600&q=80" alt="Accounting" class="modern-dept-img">
+               <img src="/assets/images/departments/accounting.jpg" alt="Accounting" class="modern-dept-img">
                <div class="modern-dept-content">
                    <div class="modern-dept-tag"><i class="fas fa-calculator"></i> BUSINESS</div>
                    <h3 class="modern-dept-title">Accounting</h3>
@@ -166,7 +193,7 @@ if (!isset($_SESSION['user_id'])) {
 
            <!-- Card 4: VCD -->
            <div class="modern-dept-card">
-               <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80" alt="Visual Communication Design" class="modern-dept-img">
+               <img src="/assets/images/departments/vcd.jpg" alt="Visual Communication Design" class="modern-dept-img">
                <div class="modern-dept-content">
                    <div class="modern-dept-tag"><i class="fas fa-palette"></i> CREATIVE ARTS</div>
                    <h3 class="modern-dept-title">Visual Communication Design</h3>
@@ -177,7 +204,7 @@ if (!isset($_SESSION['user_id'])) {
 
            <!-- Card 5: Information Technology -->
            <div class="modern-dept-card">
-               <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Information Technology" class="modern-dept-img">
+               <img src="/assets/images/departments/it.jpg" alt="Information Technology" class="modern-dept-img">
                <div class="modern-dept-content">
                    <div class="modern-dept-tag"><i class="fas fa-microchip"></i> ENGINEERING</div>
                    <h3 class="modern-dept-title">Information Technology</h3>
@@ -188,7 +215,7 @@ if (!isset($_SESSION['user_id'])) {
 
            <!-- Card 6: Information System -->
            <div class="modern-dept-card">
-               <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Information Systems" class="modern-dept-img">
+               <img src="/assets/images/departments/is.jpg" alt="Information Systems" class="modern-dept-img">
                <div class="modern-dept-content">
                    <div class="modern-dept-tag"><i class="fas fa-chart-network"></i> TECHNOLOGY & BUSINESS</div>
                    <h3 class="modern-dept-title">Information Systems</h3>

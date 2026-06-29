@@ -15,25 +15,23 @@ $current_page = basename($_SERVER['PHP_SELF']);
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css">
-  <link rel="stylesheet" href="/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=28">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=4">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
 </head>
 <body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/sidebar.php'; ?>
   
   <main class="main">
-    <div class="bottom-dashboard-section" style="padding-top: 20px;">
-       <div class="section-header" style="flex-direction: column; align-items: flex-start; gap: 8px;">
-          <div class="section-title" style="font-size: 28px;">
-             <i class="fas fa-hands-helping" style="color: var(--purple-accent); margin-right: 12px;"></i> Student Services
-          </div>
-          <p style="color: var(--text-muted); font-size: 15px; margin: 0;">Comprehensive support services to ensure your success, well-being, and comfortable campus life.</p>
-       </div>
+    <div class="page-header">
+       <h1><i class="fas fa-hands-helping"></i> Student Services</h1>
+       <p>Comprehensive support services to ensure your success, well-being, and comfortable campus life.</p>
+    </div>
+    <div class="bottom-dashboard-section" style="padding-top: 0;">
 
-       <!-- Grid Cards (Kotak dengan gambar Bulat) -->
        <div class="services-grid">
            
            <a href="/pages/services/dormitory.php" class="service-tile">
@@ -68,7 +66,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
                <div class="service-shape">
                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Feedback and Report">
                </div>
-               <h3>Feedback and Report</h3>
+               <h3>Feedback</h3>
            </a>
 
        </div>

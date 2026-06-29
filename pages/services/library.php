@@ -4,7 +4,22 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: /index.php');
     exit;
 }
-$current_page = 'student_services.php'; // Keep sidebar active on Student Services
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/koneksi.php';
+
+$library_docs = [];
+try {
+    $stmt = $pdo->query("SELECT * FROM library_documents ORDER BY id ASC");
+    $all_docs = $stmt->fetchAll();
+    foreach ($all_docs as $doc) {
+        if (!empty($doc['file_path']) && file_exists($_SERVER['DOCUMENT_ROOT'] . $doc['file_path'])) {
+            $library_docs[] = $doc;
+        }
+    }
+} catch (PDOException $e) {
+    // If table doesn't exist
+}
+
+$current_page = 'student_services.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,80 +30,71 @@ $current_page = 'student_services.php'; // Keep sidebar active on Student Servic
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css">
-  <link rel="stylesheet" href="/assets/css/sidebar.css">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
   <style>
+      .doc-buttons { display: flex; gap: 12px; margin-bottom: 30px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
+      .doc-btn { padding: 14px 24px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; color: #475569; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
+      .doc-buttons::-webkit-scrollbar { height: 6px; }
+      .doc-buttons::-webkit-scrollbar-track { background: transparent; }
+      .doc-buttons::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 6px; }
+      .doc-btn:hover { background: #f1f5f9; transform: translateY(-2px); }
+      .doc-btn.active { background: rgba(14, 165, 233, 0.1); border-color: rgba(14, 165, 233, 0.3); color: #0ea5e9; }
+      
       .key-info-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
           gap: 24px;
-          margin-top: 20px;
       }
       .info-box {
           background: #fff;
-          border-radius: 24px;
-          padding: 30px;
+          border-radius: 20px;
+          padding: 24px;
           border: 1px solid var(--border-color);
           box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-          transition: transform 0.3s;
-      }
-      .info-box:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(0,0,0,0.05);
       }
       .info-icon {
           width: 48px;
           height: 48px;
+          border-radius: 12px;
           background: rgba(14, 165, 233, 0.1);
           color: #0ea5e9;
-          border-radius: 14px;
           display: flex;
           align-items: center;
           justify-content: center;
           font-size: 20px;
-          margin-bottom: 20px;
+          margin-bottom: 16px;
       }
       .info-box h4 {
-          font-size: 20px;
+          font-size: 18px;
           font-weight: 800;
           color: #1e293b;
-          margin: 0 0 16px 0;
-          letter-spacing: -0.3px;
+          margin-bottom: 12px;
       }
       .info-box h5 {
           font-size: 14px;
           font-weight: 700;
           color: #475569;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          margin: 0 0 8px 0;
+          margin: 15px 0 8px 0;
       }
       .info-box p {
           font-size: 14px;
           color: #64748b;
-          line-height: 1.6;
-          margin: 0 0 16px 0;
-      }
-      .info-box p.note {
-          font-size: 12px;
-          font-style: italic;
-          color: #94a3b8;
-          margin: 0;
+          margin-bottom: 0;
+          line-height: 1.7;
       }
       .info-box ul {
-          padding-left: 20px;
           margin: 0;
-          color: #64748b;
+          padding-left: 20px;
           font-size: 14px;
+          color: #64748b;
           line-height: 1.7;
       }
       .info-box ul li {
           margin-bottom: 8px;
-      }
-      .info-box ul li strong {
-          color: #334155;
       }
       .points-grid {
           display: grid;
@@ -134,36 +140,59 @@ $current_page = 'student_services.php'; // Keep sidebar active on Student Servic
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/sidebar.php'; ?>
   
   <main class="main">
-    <div class="bottom-dashboard-section" style="padding-top: 20px;">
+    <div class="page-header">
+       <h1><i class="fas fa-book-open"></i> University Library</h1>
+       <p>Access resources, borrow books, and learn about the library point system.</p>
+    </div>
+    
+    <div class="bottom-dashboard-section" style="padding-top: 0;">
        <div style="margin-bottom: 30px;">
-           <a href="/pages/services/student_services.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Student Services</a>
+           <a href="/pages/services/student_services.php" class="back-btn" style="display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--text-muted); text-decoration: none; padding: 10px 16px; background: #f8fafc; border-radius: 10px; transition: 0.2s;"><i class="fas fa-arrow-left"></i> Back to Student Services</a>
        </div>
 
-       <!-- Section 1: Library User Guide (PDF) -->
-       <h3 style="margin-bottom: 20px; font-size: 26px; color: #1e293b; font-weight: 800; letter-spacing: -0.5px;">Library User Guide</h3>
+       <!-- Section 1: Library Documents -->
+       <h3 style="margin-bottom: 20px; font-size: 20px; color: var(--text-main);">Library Documents</h3>
        
-       <div class="custom-pdf-container" id="library-pdf-container">
-           <div class="pdf-header">
-               <div class="pdf-title">
-                   <i class="fas fa-file-pdf"></i> <span>JIU Library Guide Book</span>
-               </div>
-               <div class="pdf-actions">
-                   <a href="/assets/documents/library/JIU LIBRARY GUIDE BOOK.pdf" download class="pdf-btn pdf-btn-outline">
-                       <i class="fas fa-download"></i> Download PDF
-                   </a>
-                   <button class="pdf-btn pdf-btn-primary" onclick="toggleFullscreen('library-pdf-container')">
-                       <i class="fas fa-expand"></i> Fullscreen
+       <?php if (empty($library_docs)): ?>
+           <div class="empty-state-container" style="background: white; padding: 60px 40px; border-radius: 16px; text-align: center; border: 1px solid var(--border-color); box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+               <div class="empty-state-icon" style="font-size: 56px; color: #cbd5e1; margin-bottom: 20px;"><i class="fas fa-book-open"></i></div>
+               <div class="empty-state-title" style="font-size: 22px; font-weight: 800; color: #334155; margin-bottom: 12px;">No Documents Available</div>
+               <div class="empty-state-desc" style="font-size: 15px; color: #64748b; max-width: 400px; margin: 0 auto;">The library administration has not uploaded any guidelines or documents yet. Please check back later.</div>
+           </div>
+       <?php else: ?>
+           <div class="doc-buttons">
+               <?php foreach ($library_docs as $index => $doc): ?>
+                   <button class="doc-btn library-btn <?php echo $index === 0 ? 'active' : ''; ?>" onclick="loadPdf('<?php echo htmlspecialchars($doc['file_path']); ?>', '<?php echo addslashes(htmlspecialchars($doc['title'])); ?>', this)">
+                       <i class="fas fa-file-pdf"></i> <?php echo htmlspecialchars($doc['title']); ?>
                    </button>
+               <?php endforeach; ?>
+           </div>
+
+           <!-- Interactive PDF Viewer -->
+           <div class="custom-pdf-container" id="library-pdf-container">
+               <div class="pdf-header">
+                   <div class="pdf-title">
+                       <i class="fas fa-file-pdf"></i> <span id="library-title-text"><?php echo htmlspecialchars($library_docs[0]['title']); ?></span>
+                   </div>
+                   <div class="pdf-actions">
+                       <a href="<?php echo htmlspecialchars($library_docs[0]['file_path']); ?>" id="library-download-btn" download class="pdf-btn pdf-btn-outline">
+                           <i class="fas fa-download"></i> Download PDF
+                       </a>
+                       <button class="pdf-btn pdf-btn-primary" onclick="toggleFullscreen('library-pdf-container')">
+                           <i class="fas fa-expand"></i> Fullscreen
+                       </button>
+                   </div>
+               </div>
+               
+               <div class="pdf-body">
+                   <iframe 
+                       id="library-pdf"
+                       src="<?php echo htmlspecialchars($library_docs[0]['file_path']); ?>#toolbar=0&navpanes=0&view=FitH" 
+                       type="application/pdf">
+                   </iframe>
                </div>
            </div>
-           
-           <div class="pdf-body">
-               <iframe 
-                   src="/assets/documents/library/JIU LIBRARY GUIDE BOOK.pdf#toolbar=0&navpanes=0&view=FitH" 
-                   type="application/pdf">
-               </iframe>
-           </div>
-       </div>
+       <?php endif; ?>
 
        <!-- Section 2: Key Information -->
        <h3 style="margin: 50px 0 20px 0; font-size: 26px; color: #1e293b; font-weight: 800; letter-spacing: -0.5px;">Key Information</h3>
@@ -233,6 +262,20 @@ $current_page = 'student_services.php'; // Keep sidebar active on Student Servic
   </main>
   
   <script>
+    function loadPdf(pdfUrl, title, btnElement) {
+        const buttons = document.querySelectorAll('.library-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+
+        const iframe = document.getElementById('library-pdf');
+        iframe.src = `${pdfUrl}#toolbar=0&navpanes=0&view=FitH`;
+
+        const downloadBtn = document.getElementById('library-download-btn');
+        downloadBtn.href = pdfUrl;
+        
+        document.getElementById('library-title-text').innerText = title;
+    }
+
     function toggleFullscreen(containerId) {
         const container = document.getElementById(containerId);
         if (!document.fullscreenElement) {
@@ -253,3 +296,9 @@ $current_page = 'student_services.php'; // Keep sidebar active on Student Servic
   <script src="/assets/js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+

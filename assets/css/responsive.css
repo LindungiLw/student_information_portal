@@ -5,7 +5,7 @@
 /* ── TOMBOL MENU MOBILE (Sembunyi di Desktop) ── */
 .mobile-menu-btn {
   display: none;
-  background: #2b3066;
+  background: var(--purple-accent);
   color: white;
   border: none;
   border-radius: 8px;
@@ -21,21 +21,24 @@
   display: none;
   background: white;
   padding: 12px 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   align-items: center;
   justify-content: space-between;
   position: sticky;
   top: 0;
   z-index: 900;
 }
+
 .mobile-logo-group {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .mobile-logo {
   height: 32px;
 }
+
 .mobile-brand-name {
   font-size: 18px;
   color: #2d3748;
@@ -45,11 +48,12 @@
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.4);
-  z-index: 9998;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9998 !important;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
 .sidebar-overlay.active {
   display: block;
   opacity: 1;
@@ -69,9 +73,10 @@
   .finance-grid {
     grid-template-columns: repeat(2, 1fr) !important;
   }
-  
+
   .content-grid {
-    grid-template-columns: 1fr; /* Stack dashboard right panel to bottom on tablet */
+    grid-template-columns: 1fr;
+    /* Stack dashboard right panel to bottom on tablet */
   }
 }
 
@@ -85,28 +90,77 @@
   }
 
   .mobile-header {
-    display: flex;
+    display: flex !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 990 !important;
   }
 
+  /* ── ULTRA SLEEK MOBILE SIDEBAR MECHANICS (Benar-benar tersembunyi tanpa mengintip) ── */
   .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    z-index: 9999;
-    transform: translateX(-100%);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
+    position: fixed !important;
+    left: -320px !important; /* Sepenuhnya di luar layar saat tertutup */
+    top: 65px !important; /* Start slightly lower due to fixed header */
+    bottom: auto !important;
+    width: 260px !important;
+    height: auto !important;
+    max-height: calc(100vh - 80px) !important;
+    border-radius: 16px !important;
+    z-index: 9999 !important;
+    transform: none !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: all 0.32s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.25) !important;
   }
 
   .sidebar.active {
-    transform: translateX(0);
+    left: 12px !important; /* Muncul mulus ke posisi 12px dari kiri */
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+
+  /* Tulisan menu sidebar dikecilkan di mobile */
+  .sidebar .nav-item,
+  .sidebar .sidebar-settings {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    margin: 0 8px 4px 8px !important;
+  }
+
+  .sidebar .nav-item i,
+  .sidebar .sidebar-settings i {
+    font-size: 14px !important;
+  }
+
+  .sidebar .nav-section-label {
+    font-size: 9px !important;
+    padding: 8px 12px 2px !important;
+  }
+
+  .sidebar .user-name {
+    font-size: 11px !important;
+  }
+
+  .sidebar .sidebar-brand,
+  .sidebar .sidebar-search-container {
+    display: none !important;
+  }
+
+  .sidebar .sidebar-nav-wrapper {
+    padding-top: 12px !important;
+    flex: none !important;
   }
 
   .main {
     margin-left: 0 !important;
     width: 100%;
-    padding: 16px;
+    padding: 72px 16px 16px 16px !important; /* Padding top untuk mengompensasi fixed mobile-header */
   }
 
   .mobile-menu-btn {
@@ -126,6 +180,24 @@
     font-size: 24px;
   }
 
+  .page-header {
+    padding: 12px 16px;
+    margin-top: 10px;
+    top: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+
+  .page-header h1 {
+    font-size: 18px;
+    margin-bottom: 4px;
+    gap: 8px;
+  }
+
+  .page-header p {
+    font-size: 12px;
+  }
+
   .su-grid-2,
   .su-grid-3,
   .ea-grid-2,
@@ -134,7 +206,6 @@
   .sa-clubs-grid,
   .dashboard-grid,
   .content-grid,
-  .policy-grid,
   .dept-grid,
   .quick-links-grid,
   .dept-info-grid,
@@ -142,10 +213,74 @@
   .bottom-row,
   .stats-row,
   .forms-horizontal-grid,
-  .services-grid,
-  .finance-grid {
+  .services-grid {
     grid-template-columns: 1fr !important;
     flex-direction: column !important;
+  }
+
+  .policy-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+  
+  .policy-card {
+    padding: 12px !important;
+  }
+
+  .finance-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .finance-card {
+    padding: 12px !important;
+  }
+
+  .finance-icon {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 16px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .finance-card h3 {
+    font-size: 12px !important;
+    margin-bottom: 4px !important;
+    line-height: 1.2 !important;
+  }
+
+  .finance-price {
+    margin-bottom: 8px !important;
+  }
+
+  .finance-price .amount {
+    font-size: 14px !important;
+  }
+
+  .finance-price .currency {
+    font-size: 10px !important;
+  }
+
+  .finance-list {
+    gap: 4px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .finance-list li {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .finance-list li i {
+    font-size: 10px !important;
+    margin-top: 1px !important;
+  }
+
+  .finance-card-link {
+    font-size: 11px !important;
+    margin-top: auto !important;
   }
 
   .ea-table,
@@ -186,15 +321,323 @@
     gap: 15px;
     padding: 16px;
   }
+
   .pdf-actions {
     width: 100%;
-    flex-wrap: wrap;
-    gap: 10px;
+    justify-content: flex-start;
   }
-  .pdf-actions a, .pdf-actions button {
-    flex: 1;
-    justify-content: center;
-    font-size: 12px;
-    white-space: nowrap;
+
+  /* =========================================================================
+     MASTER ADMIN & STUDENT PORTAL MOBILE POLISH (Tata letak tengah rapi, presisi & anti-potong)
+     ========================================================================= */
+  body.admin-app-viewport .main,
+  .main {
+    margin-left: 0 !important;
+    margin-top: 57px !important; /* Pas dengan tinggi mobile-header (56px) + 1px border */
+    width: 100% !important;
+    max-width: 100vw !important;
+    padding: 14px 14px 60px 14px !important; 
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important; 
+  }
+
+  /* Mengunci Page Header agar Tidak Sticky & Tidak Overlap dengan Konten di Bawahnya */
+  .page-header {
+    position: relative !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin: 0 auto 20px auto !important;
+    padding: 18px 20px !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05) !important;
+  }
+
+  .header,
+  .bottom-dashboard-section,
+  .admin-card,
+  .su-card,
+  .card,
+  .table-responsive {
+    width: 100% !important;
+    max-width: 600px !important; /* Proporsi emas di tengah untuk smartphone & tablet */
+    box-sizing: border-box !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Bottom Dashboard Section sebagai Flow Vertikal Rapi */
+  .bottom-dashboard-section {
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  .page-header h1,
+  .section-title {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    word-wrap: break-word !important;
+  }
+
+  .admin-card,
+  .card,
+  .su-card {
+    padding: 20px 16px !important;
+    border-radius: 16px !important;
+    margin-bottom: 0 !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05) !important;
+    background: #ffffff !important;
+  }
+
+  /* Judul Form di Dalam Menu Admin */
+  .admin-card h3,
+  .card h3 {
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    margin-top: 0 !important;
+    margin-bottom: 16px !important;
+    color: #1e293b !important;
+  }
+
+  .form-group {
+    margin-bottom: 16px !important;
+    width: 100% !important;
+  }
+
+  .form-group label {
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 14px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+    border-radius: 10px !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    box-sizing: border-box !important;
+  }
+
+  .btn-primary,
+  .btn-danger,
+  .btn {
+    width: 100% !important;
+    padding: 13px 16px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    border-radius: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Tombol Header & Add agar stack vertikal rapi dan tidak bertumpuk */
+  .bottom-dashboard-section > div[style*="justify-content: space-between"] {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 14px !important;
+    width: 100% !important;
+  }
+
+  /* Tabel Admin agar bisa di-scroll horizontal tanpa memotong halaman */
+  .admin-table,
+  .doc-table,
+  .bottom-dashboard-section table,
+  table {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    white-space: nowrap !important;
+    border-radius: 10px !important;
+    margin-top: 10px !important;
+  }
+
+  .admin-table th,
+  .admin-table td,
+  .doc-table th,
+  .doc-table td {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+  }
+
+  .form-grid,
+  .form-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    width: 100% !important;
+  }
+
+  /* ── CALENDAR & BOOKLET ULTRA PREMIUM MOBILE POLISH ── */
+  .calendar-layout {
+    flex-direction: column !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-top: 16px !important;
+  }
+
+  .calendar-filters {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    background: var(--card-bg, #ffffff) !important;
+    padding: 18px 16px !important;
+    border-radius: 16px !important;
+    border: 1px solid var(--border-color, #e2e8f0) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03) !important;
+    box-sizing: border-box !important;
+  }
+
+  .calendar-filters h3 {
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    margin-bottom: 14px !important;
+    text-align: center !important;
+  }
+
+  .filter-list {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+
+  .filter-item {
+    margin-bottom: 0 !important;
+    font-size: 12.5px !important;
+    background: #f8fafc !important;
+    padding: 8px 10px !important;
+    border-radius: 10px !important;
+    border: 1px solid #cbd5e1 !important;
+    box-sizing: border-box !important;
+  }
+
+  .calendar-filters .booklet-pure-card {
+    margin: 20px auto 0 auto !important;
+  }
+
+  .calendar-main {
+    width: 100% !important;
+    padding: 16px 10px !important;
+    border-radius: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  .calendar-header-top {
+    flex-direction: column !important;
+    gap: 14px !important;
+    margin-bottom: 18px !important;
+  }
+
+  .calendar-header-top > div {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .calendar-grid {
+    gap: 4px !important;
+    width: 100% !important;
+  }
+
+  .calendar-cell {
+    min-height: 52px !important;
+    padding: 4px !important;
+    border-radius: 8px !important;
+  }
+
+  .date-number {
+    font-size: 12px !important;
+    margin-bottom: 3px !important;
+  }
+
+  /* Booklet Popup Lightbox Mobile Optimization */
+  #booklet-popup-modal {
+    padding: 12px !important;
+  }
+
+  #booklet-popup-modal > button {
+    top: 14px !important;
+    right: 14px !important;
+    width: 42px !important;
+    height: 42px !important;
+    font-size: 17px !important;
+    background: rgba(15, 23, 42, 0.75) !important;
+  }
+
+  .pure-pdf-popup-box {
+    width: 100% !important;
+    height: 84vh !important;
+    border-radius: 16px !important;
+  }
+
+  /* Global Mobile PDF Iframe scroll fix */
+  .custom-pdf-container iframe {
+    /* Removed pointer-events: none to allow interaction */
+  }
+
+  /* Student Affairs & External Activities & Services Responsiveness */
+  .affairs-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 14px !important;
+    gap: 12px !important;
+  }
+  .affairs-img-wrapper {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2/1;
+  }
+  .affairs-content {
+    padding: 0 4px !important;
+  }
+  .exchange-hero {
+    flex-direction: column !important;
+    padding: 20px !important;
+    gap: 20px !important;
+  }
+  .exchange-hero-img {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16/9;
+  }
+  
+  .services-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px !important;
+  }
+  .service-tile h3 {
+    font-size: 14px !important;
+  }
+
+  /* ── Fix Announcement Blue Line on Mobile ── */
+  .ann-item {
+    border-top: none !important;
+    border-left: 3px solid #3b82f6 !important;
+    padding-top: 0 !important;
+    padding-left: 12px !important;
+  }
+  
+  .widget-card-ann {
+    border-top: 1px solid var(--border-color) !important;
+    border-left: none !important;
   }
 }

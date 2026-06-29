@@ -21,11 +21,22 @@
     position: absolute;
     top: 50px;
     left: 60px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .main-logo {
     height: 55px;
     object-fit: contain;
+}
+
+.nav-brand-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--text-white);
+    text-transform: uppercase;
 }
 
 /* Hero Content */
@@ -110,14 +121,56 @@
 /* Responsive Landing Page */
 @media screen and (max-width: 768px) {
     .top-nav {
-        top: 20px;
+        top: 24px;
         left: 0;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .main-logo {
+        height: 48px;
+    }
+    
+    .nav-brand-text {
+        font-size: 0.9rem;
+        text-align: center;
+        letter-spacing: 0.5px;
     }
     
     .hero-container {
-        padding: 0 20px;
+        padding: 0 24px;
+        margin-top: 60px; /* Offset for stacked top-nav */
+    }
+    
+    .headline {
+        font-size: 2.1rem;
+        line-height: 1.25;
+        margin-bottom: 16px;
+    }
+    
+    .sub-headline {
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+        padding: 0 10px;
+    }
+    
+    .cta-wrapper {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-glass {
+        width: 100%;
+        padding: 16px 20px !important;
+        font-size: 15px !important;
+        border-radius: 14px;
+    }
+    
+    .hero-footer {
+        bottom: 24px;
     }
 }

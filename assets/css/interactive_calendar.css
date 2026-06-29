@@ -1,0 +1,425 @@
+/* ── INTERACTIVE CALENDAR STYLES ── */
+.calendar-layout {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+}
+
+/* Sidebar Filters */
+.calendar-filters {
+    width: 200px;
+    flex-shrink: 0;
+    background: transparent;
+}
+
+.calendar-filters h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-main);
+}
+
+.filter-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.filter-checkbox {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+/* Base Category Colors */
+.cat-exams { background: #d8b4e2; color: #5a2a70; } /* Purple */
+.cat-holidays { background: #fbd38d; color: #8c5a15; } /* Orange */
+.cat-academics { background: #90cdf4; color: #1a4a75; } /* Blue */
+.cat-events { background: #feb2b2; color: #822727; } /* Red */
+
+.filter-item input {
+    display: none;
+}
+.filter-item input:checked + .filter-checkbox {
+    opacity: 1;
+}
+.filter-item input:not(:checked) + .filter-checkbox {
+    background: transparent;
+    border: 2px solid var(--border-color);
+    color: transparent;
+}
+
+/* Main Calendar Area */
+.calendar-main {
+    flex: 1;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.calendar-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.month-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.nav-btn {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+.nav-btn:hover {
+    background: #f8fafc;
+    color: var(--purple-accent);
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
+}
+
+.month-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-main);
+    min-width: 150px;
+    text-align: center;
+}
+
+.today-btn {
+    background: rgba(107, 33, 168, 0.1);
+    color: var(--purple-accent);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Grid System */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.day-name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-muted);
+    padding-bottom: 8px;
+}
+
+.calendar-cell {
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px; /* Lebih kotak agar rapi */
+    min-height: 80px; /* Diperkecil dari 100px */
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s;
+    position: relative;
+}
+
+.calendar-cell:hover {
+    border-color: #cbd5e1;
+}
+
+.calendar-cell.other-month {
+    background: #f8fafc;
+    opacity: 0.6;
+}
+
+.date-number {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 6px;
+}
+
+/* Event Pills */
+.events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.event-pill {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: opacity 0.2s;
+    width: 100%;
+}
+
+.event-pill:hover {
+    opacity: 0.8;
+}
+
+/* Event Details Popup */
+.event-popup {
+    position: absolute;
+    width: 280px;
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    border: 1px solid var(--border-color);
+    z-index: 100;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.event-popup.active {
+    display: block;
+    opacity: 1;
+}
+
+.popup-header {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-popup {
+    cursor: pointer;
+    color: var(--text-muted);
+}
+.close-popup:hover { color: #ef4444; }
+
+.popup-title {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 8px;
+}
+
+.popup-cat {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.popup-section {
+    margin-bottom: 16px;
+}
+
+.popup-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.popup-section-content {
+    font-size: 14px;
+    color: var(--text-main);
+}
+
+/* ── BUTTON STYLES ── */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-primary {
+    background: var(--purple-accent);
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(107, 33, 168, 0.2);
+}
+
+.btn-primary:hover {
+    background: #581c87;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(107, 33, 168, 0.3);
+}
+
+.btn-outline {
+    background: white;
+    border: 1px solid #d1d5db;
+    color: var(--text-main) !important;
+}
+
+.btn-outline:hover {
+    background: #f9fafb;
+    border-color: #9ca3af;
+    transform: translateY(-2px);
+}
+
+/* ── MOBILE RESPONSIVENESS ── */
+@media (max-width: 768px) {
+    body, html {
+        overflow-x: hidden;
+    }
+
+    /* Stack sidebar filters and calendar main vertically */
+    .calendar-layout {
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .calendar-main {
+        padding: 12px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    /* Filters take full width on mobile */
+    .calendar-filters {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+    }
+    
+    .filter-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .filter-item {
+        margin-bottom: 0;
+    }
+
+    /* Fix header section on mobile (Title & Buttons) */
+    .section-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 16px !important;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .section-header > div:last-child {
+        display: flex;
+        flex-direction: column !important;
+        width: 100%;
+        gap: 10px !important;
+    }
+    
+    .section-header > div:last-child .btn {
+        width: 100%;
+    }
+    
+    /* Fix month navigation on mobile */
+    .calendar-header-top {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .calendar-header-top > div {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    /* Ensure calendar fits entirely on mobile without horizontal scroll */
+    .calendar-grid {
+        gap: 2px;
+        min-width: 0 !important; /* Remove horizontal scroll limit */
+    }
+    
+    .day-name {
+        font-size: 10px;
+        padding-bottom: 4px;
+    }
+    
+    .calendar-cell {
+        min-height: 40px;
+        padding: 4px;
+        border-radius: 6px;
+        align-items: center;
+    }
+    
+    .date-number {
+        font-size: 12px !important;
+        margin-bottom: 4px !important;
+        width: 20px !important;
+        height: 20px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Convert event pills to dots on mobile */
+    .events-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2px;
+        margin-top: auto;
+    }
+    
+    .event-pill {
+        width: 6px;
+        height: 6px;
+        padding: 0;
+        border-radius: 50%;
+        color: transparent !important;
+        overflow: hidden;
+        min-width: 0;
+    }
+}

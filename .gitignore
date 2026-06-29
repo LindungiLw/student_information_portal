@@ -47,3 +47,6 @@ next-env.d.ts
 /config/koneksi.php
 /auth/sso_callback.php
 /auth/login_google.php
+
+admin
+
