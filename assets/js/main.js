@@ -58,15 +58,44 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mobileMenuBtn && sidebar && sidebarOverlay) {
         // Buka/Tutup sidebar jika tombol hamburger ditekan
         mobileMenuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
+            const isActive = sidebar.classList.toggle('active');
             sidebarOverlay.classList.toggle('active');
+            document.body.classList.toggle('no-scroll', isActive);
         });
 
-        // Tutup sidebar jika overlay hitam ditekan
-        sidebarOverlay.addEventListener('click', () => {
+        const closeSidebar = () => {
             sidebar.classList.remove('active');
             sidebarOverlay.classList.remove('active');
-        });
+            document.body.classList.remove('no-scroll');
+        };
+
+        // Tutup sidebar jika overlay hitam ditekan
+        sidebarOverlay.addEventListener('click', closeSidebar);
+
+        // --- Swipe to Close (Mobile UX) ---
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const handleSwipe = () => {
+            // Jika geser ke kiri lebih dari 50px, tutup sidebar
+            if (touchStartX - touchEndX > 50) {
+                closeSidebar();
+            }
+        };
+
+        const attachSwipeEvents = (element) => {
+            element.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            element.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+        };
+
+        attachSwipeEvents(sidebarOverlay);
+        attachSwipeEvents(sidebar);
     }
 
     // --- Hero Progressive Smooth Shrink on Scroll ---

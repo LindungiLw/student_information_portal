@@ -57,6 +57,14 @@
 .sidebar-overlay.active {
   display: block;
   opacity: 1;
+  overscroll-behavior: contain !important;
+  touch-action: none !important;
+}
+
+body.no-scroll {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
 }
 
 /* =========================================
@@ -106,11 +114,11 @@
   .sidebar {
     position: fixed !important;
     left: -320px !important; /* Sepenuhnya di luar layar saat tertutup */
-    top: 65px !important; /* Start slightly lower due to fixed header */
-    bottom: auto !important;
+    top: 56px !important; /* Start higher, flush with fixed header */
+    bottom: 12px !important; /* Firmly attach to the bottom of the screen to prevent extending below viewport */
     width: 260px !important;
     height: auto !important;
-    max-height: calc(100vh - 80px) !important;
+    max-height: none !important;
     border-radius: 16px !important;
     z-index: 9999 !important;
     transform: translateX(0) !important;
@@ -131,19 +139,35 @@
   /* Tulisan menu sidebar dikecilkan di mobile */
   .sidebar .nav-item,
   .sidebar .sidebar-settings {
-    font-size: 12px !important;
-    padding: 8px 12px !important;
-    margin: 0 8px 4px 8px !important;
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+    margin: 0 8px 2px 8px !important;
+    border-left: 4px solid transparent;
+  }
+
+  /* Efek ripple/press di mobile */
+  .sidebar .nav-item:active,
+  .sidebar .sidebar-settings:active {
+    transform: scale(0.96) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    transition: transform 0.1s, background 0.1s !important;
+  }
+
+  /* Perjelas penanda menu aktif di mobile */
+  .sidebar .nav-item.active {
+    border-left: 4px solid #2563eb !important;
+    background: #ffffff !important;
+    color: #1e3a8a !important;
   }
 
   .sidebar .nav-item i,
   .sidebar .sidebar-settings i {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 
   .sidebar .nav-section-label {
     font-size: 9px !important;
-    padding: 8px 12px 2px !important;
+    padding: 6px 12px 2px !important;
   }
 
   .sidebar .user-name {
@@ -156,8 +180,14 @@
   }
 
   .sidebar .sidebar-nav-wrapper {
-    padding-top: 12px !important;
-    flex: none !important;
+    padding-top: 6px !important;
+    flex: 1 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .sidebar .sidebar-nav {
+    overscroll-behavior: contain !important;
   }
 
 
