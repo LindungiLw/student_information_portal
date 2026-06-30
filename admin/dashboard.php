@@ -180,7 +180,7 @@ $docs = $stmt_doc->fetchAll();
   <link rel="stylesheet" href="/assets/css/base.css?v=50">
   <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
   <style>
       html, body { overflow-x: hidden; max-width: 100vw; width: 100%; }
       .btn-primary { background: var(--purple-accent); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
@@ -655,6 +655,6 @@ $docs = $stmt_doc->fetchAll();
   <?php endif; ?>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
 </body>
 </html>

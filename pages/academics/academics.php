@@ -43,7 +43,7 @@ $current_page = 'academics.php';
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=55">
   <style>
       .doc-buttons { 
           display: flex; 
@@ -367,7 +367,7 @@ $current_page = 'academics.php';
     </div>
   </main>
   
-  <script src="/assets/js/main.js?v=35"></script>
+  <script src="/assets/js/main.js?v=54"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';

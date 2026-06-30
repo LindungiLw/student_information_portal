@@ -9,15 +9,18 @@ function is_active($page, $current_page) {
 
 // Ambil data sesi (sudah diatur di file utama, tapi kita pastikan fallback jika kosong)
 $user_name = isset($_SESSION['name']) ? $_SESSION['name'] : 'Guest User';
-$user_id = isset($_SESSION['nim']) ? 'ID: ' . $_SESSION['nim'] : 'ID: Unknown';
+$user_email = isset($_SESSION['email']) ? $_SESSION['email'] : 'Unknown Email';
 
-// Buat inisial avatar (2 huruf pertama dari nama)
-$words = explode(" ", $user_name);
-$initials = "";
-foreach ($words as $w) {
-  $initials .= mb_substr($w, 0, 1);
+$user_picture = isset($_SESSION['picture']) ? $_SESSION['picture'] : '';
+
+// Buat inisial avatar (1 huruf pertama dari email)
+$initials = strtoupper(mb_substr($user_email, 0, 1));
+$avatar_html = '';
+if (!empty($user_picture)) {
+    $avatar_html = '<img src="' . htmlspecialchars($user_picture) . '" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">';
+} else {
+    $avatar_html = htmlspecialchars($initials);
 }
-$avatar_text = strtoupper(mb_substr($initials, 0, 2));
 ?>
 
 <div class="mobile-header" style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107, 111, 160, 0.18); box-shadow: 0 4px 20px rgba(107, 111, 160, 0.08); padding: 10px 14px; width: 100%; box-sizing: border-box; justify-content: space-between; overflow: hidden;">
@@ -92,19 +95,16 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
             <a href="/pages/services/student_services.php" class="nav-item <?php echo is_active('student_services.php', $current_page); ?>">
                 <i class="fas fa-headset"></i> Student Services
             </a>
-        </nav>
-    </div>
 
-    <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-    <div class="sidebar-nav-wrapper" style="flex: 0 0 auto; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4px; padding-top: 4px;">
-        <nav class="sidebar-nav">
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); margin: 8px 16px 0 16px; padding-top: 8px;"></div>
             <div class="nav-section-label">Administration</div>
             <a href="/admin/dashboard.php" class="nav-item" style="color: #6ee7b7; padding: 4px 14px; font-size: 11.5px; min-height: 32px;">
                 <i class="fas fa-shield-alt"></i> Portal Admin
             </a>
+            <?php endif; ?>
         </nav>
     </div>
-    <?php endif; ?>
 
     <div class="sidebar-bottom">
         <a href="/pages/settings/settings.php" class="sidebar-settings <?php echo is_active('settings.php', $current_page); ?>">
@@ -114,10 +114,10 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
             <i class="fas fa-right-from-bracket"></i> Logout
         </a>
         <div class="sidebar-user">
-            <div class="user-avatar"><?php echo htmlspecialchars($avatar_text); ?></div>
+            <div class="user-avatar" style="overflow: hidden;"><?php echo $avatar_html; ?></div>
             <div class="user-info">
                 <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
-                <div class="user-id"><?php echo htmlspecialchars($user_id); ?></div>
+                <div class="user-id" style="text-transform: none;"><?php echo htmlspecialchars($user_email); ?></div>
             </div>
         </div>
     </div>

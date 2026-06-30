@@ -116,7 +116,7 @@ function renderDocs($docs, $icon, $title, $color) {
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
 </head>
 <body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
@@ -570,6 +570,6 @@ function renderDocs($docs, $icon, $title, $color) {
     </div>
   </main>
   
-  <script src="/assets/js/main.js?v=35"></script>
+  <script src="/assets/js/main.js?v=54"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@ $current_page = basename($_SERVER['PHP_SELF']);
 
 // Ambil data user dari session (mungkin baru diupdate)
 $user_name = isset($_SESSION['name']) ? $_SESSION['name'] : 'Guest User';
-$user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
+$user_email = isset($_SESSION['email']) ? $_SESSION['email'] : 'Unknown';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
   <link rel="stylesheet" href="/assets/css/base.css">
   <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
   <style>
       /* Apple-style Settings Layout */
       .settings-container {
@@ -298,16 +298,6 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
                    </div>
                </form>
 
-               <div class="settings-row">
-                   <div class="sr-left">
-                       <div class="sr-icon icon-purple"><i class="fas fa-id-card"></i></div>
-                       <div class="sr-text">
-                           <h4>Student ID (NIM)</h4>
-                           <p>Your unique identification number</p>
-                       </div>
-                   </div>
-                   <div class="sr-right"><?php echo htmlspecialchars($user_nim); ?></div>
-               </div>
 
                <div class="settings-row">
                    <div class="sr-left">
@@ -317,7 +307,7 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
                            <p>University contact email</p>
                        </div>
                    </div>
-                   <div class="sr-right">student@jiu.ac.id</div>
+                   <div class="sr-right"><?php echo htmlspecialchars($user_email); ?></div>
                </div>
            </div>
 
@@ -363,7 +353,7 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
     </div>
   </main>
   
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
   <script>
       // Name Edit Toggle
       function toggleEditMode() {
@@ -399,9 +389,3 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
   </script>
 </body>
 </html>
-
-
-
-
-
-

@@ -30,11 +30,11 @@ $current_page = 'student_services.php';
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
   <style>
       .doc-buttons { display: flex; gap: 12px; margin-bottom: 30px; overflow-x: auto; padding-bottom: 12px; scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
       .doc-btn { padding: 14px 24px; background: #f8fafc; border: 1px solid var(--border-color); border-radius: 12px; color: #475569; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 10px; white-space: nowrap; flex-shrink: 0; }
@@ -326,9 +326,10 @@ $current_page = 'student_services.php';
         if (e.key === 'Escape') closeBookletModal();
     });
   </script>
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
 </body>
 </html>
 
 
 
+ 

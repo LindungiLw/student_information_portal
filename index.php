@@ -29,8 +29,8 @@ if (isset($_SESSION['user_id'])) {
 
     <!-- Link to your modular CSS files -->
     <link rel="stylesheet" href="/assets/css/global.css?v=50">
-    <link rel="stylesheet" href="/assets/css/landing.css?v=50">
-    <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+    <link rel="stylesheet" href="/assets/css/landing.css?v=51">
+    <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,7 +45,7 @@ if (isset($_SESSION['user_id'])) {
         <!-- Top Navigation Area -->
         <nav class="top-nav">
             <img src="/assets/images/jiu-logo-rounded.png" alt="Jakarta International University Logo" class="main-logo">
-            <span class="nav-brand-text">Jakarta International University</span>
+            <span class="nav-brand-text">Student Information Portal</span>
         </nav>
 
         <!-- Main Hero Content -->
@@ -68,14 +68,12 @@ if (isset($_SESSION['user_id'])) {
         <!-- Branding Footer Section -->
         <footer class="hero-footer">
             <div class="divider"></div>
-            <div class="copyright">© 2023 Student Information Portal. All rights reserved.</div>
+            <div class="copyright">© 2026 Student Information Portal. All rights reserved.</div>
         </footer>
     </main>
 
     <!-- Project Logic Script -->
-    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/main.js?v=54"></script>
 </body>
 
 </html>
-
-// indonesia yang seharusnya kita bisa upgrade dan memiliki budaya yang seharusnya di miliki oleh beberapa orang ahs atai su atj atau bisa i

@@ -72,7 +72,7 @@ $offset = ($dayOfWeek + 6) % 7;
   <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/interactive_calendar.css?v=50">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
 </head>
 <body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
@@ -321,7 +321,7 @@ $offset = ($dayOfWeek + 6) % 7;
       </div>
   </div>
 
-  <script src="/assets/js/main.js?v=35"></script>
+  <script src="/assets/js/main.js?v=54"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';

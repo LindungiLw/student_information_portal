@@ -91,7 +91,7 @@ try {
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
 </head>
 <body class="dashboard-app-viewport">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
@@ -281,7 +281,7 @@ try {
       </div>
   </div>
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';

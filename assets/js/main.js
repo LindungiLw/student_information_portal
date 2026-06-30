@@ -69,6 +69,11 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('no-scroll');
         };
 
+        // Cegah scroll tembus (scroll bleed) ke background pada HP (iOS/Android)
+        sidebarOverlay.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        }, { passive: false });
+
         // Tutup sidebar jika overlay hitam ditekan 
         sidebarOverlay.addEventListener('click', closeSidebar);
 

@@ -159,7 +159,7 @@ $total_docs = count($docs);
   <link rel="stylesheet" href="/assets/css/base.css?v=50">
   <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
   
   <!-- SweetAlert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -516,6 +516,6 @@ $total_docs = count($docs);
   </script>
   <?php endif; ?>
 
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
 </body>
 </html>

@@ -48,7 +48,7 @@ foreach ($feedback_docs as $doc) {
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
   <style>
       .feedback-container {
           display: flex;
@@ -187,6 +187,6 @@ foreach ($feedback_docs as $doc) {
     </div>
   </main>
   
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
 </body>
 </html>

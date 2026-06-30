@@ -9,15 +9,18 @@ function is_active($page, $current_page) {
 
 // Ambil data sesi
 $user_name = isset($_SESSION['name']) ? $_SESSION['name'] : 'Admin User';
-$user_id = 'Role: Administrator';
+$user_email = isset($_SESSION['email']) ? $_SESSION['email'] : 'admin@jiu.ac.id';
 
-// Buat inisial avatar
-$words = explode(" ", $user_name);
-$initials = "";
-foreach ($words as $w) {
-  $initials .= mb_substr($w, 0, 1);
+$user_picture = isset($_SESSION['picture']) ? $_SESSION['picture'] : '';
+
+// Buat inisial avatar (1 huruf pertama dari email)
+$initials = strtoupper(mb_substr($user_email, 0, 1));
+$avatar_html = '';
+if (!empty($user_picture)) {
+    $avatar_html = '<img src="' . htmlspecialchars($user_picture) . '" alt="Profile" style="width: 100%; height: 100%; object-fit: cover; border-radius: inherit;">';
+} else {
+    $avatar_html = htmlspecialchars($initials);
 }
-$avatar_text = strtoupper(mb_substr($initials, 0, 2));
 ?>
 
 <div class="mobile-header" style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107, 111, 160, 0.18); box-shadow: 0 4px 20px rgba(107, 111, 160, 0.08); padding: 10px 14px; width: 100%; box-sizing: border-box; justify-content: space-between; overflow: hidden; position: sticky; top: 0; z-index: 999;">
@@ -90,10 +93,10 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
             <i class="fas fa-right-from-bracket"></i> Logout
         </a>
         <div class="sidebar-user">
-            <div class="user-avatar" style="background: #eab308;"><?php echo htmlspecialchars($avatar_text); ?></div>
+            <div class="user-avatar" style="background: #eab308; overflow: hidden;"><?php echo $avatar_html; ?></div>
             <div class="user-info">
                 <div class="user-name"><?php echo htmlspecialchars($user_name); ?></div>
-                <div class="user-id" style="color: #fbbf24;"><?php echo htmlspecialchars($user_id); ?></div>
+                <div class="user-id" style="color: #fbbf24; text-transform: none;"><?php echo htmlspecialchars($user_email); ?></div>
             </div>
         </div>
     </div>

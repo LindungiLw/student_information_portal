@@ -47,7 +47,11 @@
 .sidebar-overlay {
   display: none;
   position: fixed;
-  inset: 0;
+  inset: auto;
+  top: -25vh;
+  left: -25vw;
+  height: 150vh !important;
+  width: 150vw !important;
   background: rgba(0, 0, 0, 0.4);
   z-index: 9998 !important;
   opacity: 0;
@@ -114,11 +118,11 @@ body.no-scroll {
   .sidebar {
     position: fixed !important;
     left: -320px !important; /* Sepenuhnya di luar layar saat tertutup */
-    top: 56px !important; /* Start higher, flush with fixed header */
-    bottom: 12px !important; /* Firmly attach to the bottom of the screen to prevent extending below viewport */
+    top: 68px !important; /* Start higher, flush with fixed header */
+    bottom: auto !important; /* Wrap content instead of stretching */
     width: 260px !important;
     height: auto !important;
-    max-height: none !important;
+    max-height: calc(100dvh - 80px) !important; /* Prevent cut off using dvh */
     border-radius: 16px !important;
     z-index: 9999 !important;
     transform: translateX(0) !important;

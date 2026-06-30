@@ -29,7 +29,7 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
   <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=53">
   <style>
       .exchange-hero {
           display: flex;
@@ -217,6 +217,6 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
         }
     }
   </script>
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js?v=54"></script>
 </body>
 </html>
