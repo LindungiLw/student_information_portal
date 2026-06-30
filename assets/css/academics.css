@@ -74,7 +74,7 @@
     box-shadow: 0 0 0 3px rgba(92, 95, 163, 0.1);
 }
 
-/* ── POLICY TABS NAVIGATION ── */
+/* POLICY TABS NAVIGATION */
 .policy-tabs {
     display: flex;
     gap: 32px;
@@ -124,7 +124,7 @@
     border-radius: 2px 2px 0 0;
 }
 
-/* ── POLICY CONTENT CARDS (ACCORDIONS & GRIDS) ── */
+/* POLICY CONTENT CARDS (ACCORDIONS & GRIDS) */
 .policy-card {
     background: #ffffff;
     border: 1px solid #f3f4f6;
@@ -176,7 +176,7 @@
     transition: transform 0.3s ease;
 }
 
-/* ── GRID LAYOUTS FOR CONTENT ── */
+/* GRID LAYOUTS FOR CONTENT */
 .policy-grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -184,7 +184,7 @@
     margin-bottom: 20px;
 }
 
-/* ── HELP FOOTER CARD ── */
+/* HELP FOOTER CARD */
 .help-footer-card {
     background: #f3f0ff;
     border-radius: 16px;

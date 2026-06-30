@@ -1,4 +1,4 @@
-/* ── SCROLL LOCK MAGIC FOR DEPARTMENT ── */
+/* SCROLL LOCK MAGIC FOR DEPARTMENT */
 body {
     overflow: hidden;
 }
@@ -43,7 +43,7 @@ body {
 }
 
 
-/* ── DEPARTMENT HEADER ── */
+/* DEPARTMENT HEADER */
 .dept-header {
     margin-bottom: 32px;
 }
@@ -63,7 +63,7 @@ body {
     line-height: 1.6;
 }
 
-/* ── DEPARTMENT GRID & CARDS ── */
+/* DEPARTMENT GRID & CARDS */
 .dept-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -155,7 +155,7 @@ body {
     background: #e0d4fc;
 }
 
-/* ── RESPONSIVE DESIGN ── */
+/* RESPONSIVE DESIGN */
 @media (max-width: 1024px) {
     .dept-grid {
         grid-template-columns: repeat(2, 1fr);

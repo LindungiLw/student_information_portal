@@ -1,6 +1,6 @@
-/* ── DEPARTMENT DETAIL SPECIFIC STYLES ── */
+/* DEPARTMENT DETAIL SPECIFIC STYLES */
 
-/* ── HERO BANNER ── */
+/* HERO BANNER */
 .dept-hero-banner {
     background: linear-gradient(135deg, #4a148c, #31115c);
     border-radius: 16px;
@@ -27,7 +27,7 @@
     margin-bottom: 24px;
 }
 
-/* ── SECTION TITLES ── */
+/* SECTION TITLES */
 .section-title-icon {
     display: flex;
     align-items: center;
@@ -47,7 +47,7 @@
     font-size: 16px;
 }
 
-/* ── LEADERSHIP SECTION ── */
+/* LEADERSHIP SECTION */
 .leadership-container {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -112,7 +112,7 @@
     font-weight: 500;
 }
 
-/* ── VISION & MISSION ── */
+/* VISION & MISSION */
 .vision-card {
     background: #4a148c;
     border-radius: 16px;
@@ -138,7 +138,7 @@
     margin-bottom: 12px;
 }
 
-/* ── DEGREE REQUIREMENTS ── */
+/* DEGREE REQUIREMENTS */
 .req-card {
     background: white;
     border-radius: 16px;
@@ -190,7 +190,7 @@
     line-height: 1.6;
 }
 
-/* ── ACADEMIC PROGRAMS ── */
+/* ACADEMIC PROGRAMS */
 .programs-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -225,7 +225,7 @@
     font-size: 20px;
 }
 
-/* ── CURRICULUM TABLE ── */
+/* CURRICULUM TABLE */
 .curriculum-table {
     width: 100%;
     border-collapse: collapse;
@@ -261,7 +261,7 @@
     border-bottom: none;
 }
 
-/* ── RESPONSIVE DESIGN (MOBILE & TABLET FIXES) ── */
+/* RESPONSIVE DESIGN (MOBILE & TABLET FIXES) */
 @media (max-width: 1024px) {
 
     .leadership-container,

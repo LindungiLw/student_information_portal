@@ -1,4 +1,4 @@
-/* ── SCROLL LOCK MAGIC FOR STUDENT UNION ── */
+/* SCROLL LOCK MAGIC FOR STUDENT UNION */
 body {
     overflow: hidden;
 }
@@ -41,7 +41,7 @@ body {
     background: #9ca3af;
 }
 
-/* ── STRUCTURE LAYOUT ── */
+/* STRUCTURE LAYOUT */
 .su-header {
     margin-bottom: 32px;
     text-align: center;
@@ -90,7 +90,7 @@ body {
     border-radius: 20px;
 }
 
-/* ── MEMBER CARDS ── */
+/* MEMBER CARDS */
 .su-grid-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -197,7 +197,7 @@ body {
     color: #4a148c;
 }
 
-/* ── RESPONSIVE ── */
+/* RESPONSIVE */
 @media (max-width: 768px) {
     body {
         overflow: auto;

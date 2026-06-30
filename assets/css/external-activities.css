@@ -1,4 +1,4 @@
-/* ── SCROLL LOCK MAGIC FOR EXTERNAL ACTIVITIES ── */
+/* SCROLL LOCK MAGIC FOR EXTERNAL ACTIVITIES */
 body {
     overflow: hidden;
 }
@@ -41,8 +41,8 @@ body {
     background: #9ca3af;
 }
 
-/* ── TABS NAVIGATION ── */
-/* ── TABS NAVIGATION (UPDATED) ── */
+/* TABS NAVIGATION */
+/* TABS NAVIGATION (UPDATED) */
 .ea-tabs {
     display: flex;
     gap: 32px;
@@ -61,7 +61,7 @@ body {
 }
 
 
-/* ── DOWNLOAD PDF BUTTON STYLES (NEW) ── */
+/* DOWNLOAD PDF BUTTON STYLES (NEW) */
 .btn-download-pdf {
     display: inline-flex;
     align-items: center;
@@ -148,7 +148,7 @@ body {
     }
 }
 
-/* ── CONTENT LAYOUT ── */
+/* CONTENT LAYOUT */
 .ea-header-banner {
     background: #f3f0ff;
     border-radius: 16px;
@@ -222,7 +222,7 @@ body {
     font-weight: bold;
 }
 
-/* ── TABLES ── */
+/* TABLES */
 .ea-table {
     width: 100%;
     border-collapse: collapse;
@@ -253,7 +253,7 @@ body {
     border-bottom: none;
 }
 
-/* ── TIMELINE ── */
+/* TIMELINE */
 .ea-timeline {
     display: flex;
     flex-direction: column;

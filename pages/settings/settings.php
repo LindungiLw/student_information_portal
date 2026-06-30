@@ -5,7 +5,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// ── Penanganan Ubah Nama (POST Request) ──
+// Penanganan Ubah Nama (POST Request)
 $success_msg = '';
 $error_msg = '';
 

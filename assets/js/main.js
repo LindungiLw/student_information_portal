@@ -1,6 +1,6 @@
 // Vanilla JavaScript untuk Portal Mahasiswa
 
-// --- GLOBAL DARK MODE INIT ---
+// GLOBAL DARK MODE INIT
 // Dijalankan secepat mungkin sebelum DOM penuh termuat jika memungkinkan, 
 // atau saat DOMContentLoaded untuk menghindari flash of white
 if (localStorage.getItem('darkMode') === 'enabled') {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- Mobile Sidebar Toggle Logic ---
+    // Mobile Sidebar Toggle Logic
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Tutup sidebar jika overlay hitam ditekan 
         sidebarOverlay.addEventListener('click', closeSidebar);
 
-        // --- Swipe to Close (Mobile UX) ---
+        // Swipe to Close (Mobile UX)
         let touchStartX = 0;
         let touchEndX = 0;
 
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         attachSwipeEvents(sidebar);
     }
 
-    // --- Hero Progressive Smooth Shrink on Scroll ---
+    // Hero Progressive Smooth Shrink on Scroll
     const heroWrapper = document.querySelector('.hero-wrapper');
     const hero = document.querySelector('.hero');
     const heroContent = document.querySelector('.hero-content');

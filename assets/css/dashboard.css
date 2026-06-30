@@ -1535,7 +1535,7 @@ body {
     }
 }
 
-/* ─── 50% / 50% BALANCED DASHBOARD GRID ─── */
+/* 50% / 50% BALANCED DASHBOARD GRID */
 .dashboard-split-grid {
     display: grid;
     grid-template-columns: minmax(0, 50%) minmax(300px, 50%);
@@ -1968,7 +1968,7 @@ body.dark-mode .up-event-date {
     box-shadow: 0 0 8px #10b981;
 }
 
-/* ─── MASTERPIECE COMPACT HERO BANNER & INTRO TEXT FLOW ─── */
+/* MASTERPIECE COMPACT HERO BANNER & INTRO TEXT FLOW */
 body.dashboard-app-viewport .hero-wrapper {
     position: relative !important;
     top: auto !important;
@@ -2032,7 +2032,7 @@ body.dashboard-app-viewport .dashboard-split-grid {
     margin-bottom: 0 !important;
 }
 
-/* ─── 2x2 COMPACT QUICK LINKS ICON GRID ─── */
+/* 2x2 COMPACT QUICK LINKS ICON GRID */
 .ql-grid-2x2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -2097,7 +2097,7 @@ body.dashboard-app-viewport .dashboard-split-grid {
     letter-spacing: -0.2px;
 }
 
-/* ─── PURE BOOKLET CARD WITH CLIP WRAPPER & MODERN HAND HOVER ─── */
+/* PURE BOOKLET CARD WITH CLIP WRAPPER & MODERN HAND HOVER */
 body.dashboard-app-viewport .dash-left-col {
     width: 210px !important;
     flex-shrink: 0;
@@ -2440,7 +2440,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
     }
 }
 
-/* ─── ULTRA PREMIUM MOBILE RESPONSIVE DASHBOARD (SMARTPHONE VIEWPORT) ─── */
+/* ULTRA PREMIUM MOBILE RESPONSIVE DASHBOARD (SMARTPHONE VIEWPORT) */
 @media (max-width: 768px) {
 
     html,
@@ -2592,7 +2592,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
    ADMIN PORTAL PREMIUM UI OVERHAUL
    ========================================================================== */
 
-/* --- Admin Data Table --- */
+/* Admin Data Table */
 .admin-data-table {
     width: 100%;
     border-collapse: separate;
@@ -2633,7 +2633,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
     background: #f8fafc;
 }
 
-/* --- Action Buttons inside Table --- */
+/* Action Buttons inside Table */
 .action-btn-group {
     display: flex;
     gap: 8px;
@@ -2673,7 +2673,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
     transform: scale(1.05);
 }
 
-/* --- Badges --- */
+/* Badges */
 .admin-badge {
     display: inline-block;
     padding: 4px 10px;
@@ -2694,7 +2694,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
     color: #16a34a;
 }
 
-/* --- Empty State --- */
+/* Empty State */
 .empty-state-container {
     padding: 60px 20px;
     text-align: center;
@@ -2723,7 +2723,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
     margin-bottom: 24px;
 }
 
-/* --- Admin Modal --- */
+/* Admin Modal */
 .admin-modal-overlay {
     display: none;
     position: fixed;
@@ -2863,7 +2863,7 @@ body.dashboard-app-viewport .subgrid-col-right .sidebar-widget+.sidebar-widget {
     background: #cbd5e1;
 }
 
-/* ── Center Widget Titles (Quick Links, Upcoming, Announcements) ── */
+/* Center Widget Titles (Quick Links, Upcoming, Announcements) */
 .widget-header {
     display: flex;
     justify-content: center;

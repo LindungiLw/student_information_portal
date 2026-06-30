@@ -2,7 +2,7 @@
    MASTER RESPONSIVE CSS (HP & TABLET)
    ========================================================= */
 
-/* ── TOMBOL MENU MOBILE (Sembunyi di Desktop) ── */
+/* TOMBOL MENU MOBILE (Sembunyi di Desktop) */
 .mobile-menu-btn {
   display: none;
   background: var(--purple-accent);
@@ -16,7 +16,7 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* ── MOBILE HEADER & OVERLAY ── */
+/* MOBILE HEADER & OVERLAY */
 .mobile-header {
   display: none;
   background: white;
@@ -110,7 +110,7 @@ body.no-scroll {
     z-index: 990 !important;
   }
 
-  /* ── ULTRA SLEEK MOBILE SIDEBAR MECHANICS (Benar-benar tersembunyi tanpa mengintip) ── */
+  /* ULTRA SLEEK MOBILE SIDEBAR MECHANICS (Benar-benar tersembunyi tanpa mengintip) */
   .sidebar {
     position: fixed !important;
     left: -320px !important; /* Sepenuhnya di luar layar saat tertutup */
@@ -342,7 +342,7 @@ body.no-scroll {
     width: 100%;
   }
 
-  /* ── PDF Viewer Header ── */
+  /* PDF Viewer Header */
   .pdf-header {
     flex-direction: column;
     align-items: flex-start;
@@ -516,7 +516,7 @@ body.no-scroll {
     width: 100% !important;
   }
 
-  /* ── CALENDAR & BOOKLET ULTRA PREMIUM MOBILE POLISH ── */
+  /* CALENDAR & BOOKLET ULTRA PREMIUM MOBILE POLISH */
   .calendar-layout {
     flex-direction: column !important;
     gap: 24px !important;
@@ -660,7 +660,7 @@ body.no-scroll {
     font-size: 14px !important;
   }
 
-  /* ── Fix Announcement Blue Line on Mobile ── */
+  /* Fix Announcement Blue Line on Mobile */
   .ann-item {
     border-top: none !important;
     border-left: 3px solid #3b82f6 !important;

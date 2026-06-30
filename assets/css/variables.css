@@ -1,5 +1,5 @@
 :root {
-  /* ── Brand Colors ── */
+  /* Brand Colors */
   --sidebar-bg:    #6b6fa0;
   --sidebar-active: #626388;
   --accent:        #5c5fa3;
@@ -8,34 +8,34 @@
   --purple-accent: #6b21a8;
   --white:         #ffffff;
 
-  /* ── Layout Colors ── */
+  /* Layout Colors */
   --bg-color:      #ffffff;
   --body-bg:       #f4f5fb;
   --card-bg:       #ffffff;
 
-  /* ── Typography Colors ── */
+  /* Typography Colors */
   --text-main:      #2d3748;
   --text-primary:   #1a1a2e;
   --text-secondary: #6b7280;
   --text-muted:     #718096;
 
-  /* ── Border ── */
+  /* Border */
   --border: #e5e7eb;
   --border-color: #edf2f7;
 
-  /* ── Shadows ── */
+  /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
 
-  /* ── Border Radius ── */
+  /* Border Radius */
   --radius:    12px;
   --radius-sm:  8px;
 
-  /* ── Layout ── */
+  /* Layout */
   --sidebar-width: 250px;
 }
 
-/* ── Dark Mode Overrides ── */
+/* Dark Mode Overrides */
 body.dark-mode {
   /* Brand colors stay somewhat the same or get slightly adjusted for contrast, never black */
   --sidebar-bg:    #1e293b;

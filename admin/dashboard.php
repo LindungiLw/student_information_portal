@@ -188,7 +188,7 @@ $docs = $stmt_doc->fetchAll();
       .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
       .section-divider { margin: 40px 0; border: 0; border-top: 1px solid var(--border-color); }
       
-      /* --- Admin Modal Fixes --- */
+      /* Admin Modal Fixes */
       .admin-modal-overlay {
           display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.4);
           backdrop-filter: blur(8px); z-index: 1000; align-items: center; justify-content: center;
@@ -244,7 +244,7 @@ $docs = $stmt_doc->fetchAll();
           border-color: var(--purple-accent); background: #fff;
       }
       
-      /* --- Admin Table Styles --- */
+      /* Admin Table Styles */
       .table-responsive { overflow-x: auto; }
       .admin-data-table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; }
       .admin-data-table th { padding: 12px 16px; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); }
@@ -252,7 +252,7 @@ $docs = $stmt_doc->fetchAll();
       .admin-data-table tr:last-child td { border-bottom: none; }
       .admin-data-table tr:hover td { background-color: #f8fafc; }
       
-      /* --- Action Buttons --- */
+      /* Action Buttons */
       .action-btn-group { display: flex; gap: 8px; }
       .action-btn { padding: 8px 12px; border: none; border-radius: 6px; font-size: 12px; font-weight: 600; cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px; outline: none; }
       .action-btn.edit { background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; }
@@ -260,7 +260,7 @@ $docs = $stmt_doc->fetchAll();
       .action-btn.delete { background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; }
       .action-btn.delete:hover { background: #fee2e2; color: #dc2626; }
 
-      /* --- Badges --- */
+      /* Badges */
       .admin-badge { padding: 4px 8px; border-radius: 6px; font-size: 11px; font-weight: 700; display: inline-block; letter-spacing: 0.5px; text-transform: uppercase; }
       .admin-badge.pdf { background: #fef2f2; color: #ef4444; border: 1px solid #fecaca; }
       .admin-badge.generic { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }

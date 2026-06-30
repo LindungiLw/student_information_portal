@@ -3,7 +3,7 @@
    JIU Student Portal
    ============================================================ */
 
-/* ── Reset ── */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -12,12 +12,12 @@
   padding: 0;
 }
 
-/* ── Smooth scroll ── */
+/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* ── Body ── */
+/* Body */
 body {
   font-family: 'Manrope', sans-serif;
   background: var(--body-bg);
@@ -27,7 +27,7 @@ body {
   overflow-x: hidden;
 }
 
-/* ── Main scrollbar (thin, elegant) ── */
+/* Main scrollbar (thin, elegant) */
 .main::-webkit-scrollbar {
   width: 4px;
 }
@@ -45,7 +45,7 @@ body {
   background: rgba(0, 0, 0, 0.22);
 }
 
-/* ── Animations ── */
+/* Animations */
 @keyframes fadeUp {
   from {
     opacity: 0;
@@ -65,7 +65,7 @@ body {
   }
 }
 
-/* ── Ripple ── */
+/* Ripple */
 .ripple {
   position: absolute;
   border-radius: 50%;

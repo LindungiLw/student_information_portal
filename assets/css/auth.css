@@ -46,7 +46,7 @@ label {
     /* Mencegah seluruh halaman ikut ter-scroll */
 }
 
-/* --- BANNER KIRI --- */
+/* BANNER KIRI */
 .auth-banner {
     flex: 1.2;
     background: linear-gradient(to right, rgba(26, 35, 126, 0.85), rgba(26, 35, 126, 0.95)),
@@ -89,7 +89,7 @@ label {
     opacity: 0.85;
 }
 
-/* --- PANEL KANAN --- */
+/* PANEL KANAN */
 .auth-panel {
     flex: 1;
     max-width: 540px;
@@ -164,7 +164,7 @@ label {
     margin-bottom: 32px;
 }
 
-/* --- INPUT & FORM --- */
+/* INPUT & FORM */
 .input-group {
     margin-bottom: 20px;
 }
@@ -249,7 +249,7 @@ label {
     color: var(--primary-color);
 }
 
-/* --- CHECKBOX --- */
+/* CHECKBOX */
 .checkbox-group {
     display: flex;
     align-items: flex-start;
@@ -283,7 +283,7 @@ label {
     text-decoration: underline;
 }
 
-/* --- BUTTONS --- */
+/* BUTTONS */
 .btn-auth {
     width: 100%;
     padding: 15px;
@@ -312,7 +312,7 @@ label {
     transform: translateY(0);
 }
 
-/* --- SWITCH & FOOTER --- */
+/* SWITCH & FOOTER */
 .auth-switch {
     text-align: left;
     margin-top: 24px;
@@ -352,7 +352,7 @@ label {
     color: var(--primary-color);
 }
 
-/* --- RESPONSIVE QUERIES --- */
+/* RESPONSIVE QUERIES */
 @media (max-width: 1024px) {
     .auth-banner {
         padding: 40px;

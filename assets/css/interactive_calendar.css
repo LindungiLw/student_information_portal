@@ -1,4 +1,4 @@
-/* ── INTERACTIVE CALENDAR STYLES ── */
+/* INTERACTIVE CALENDAR STYLES */
 .calendar-layout {
     display: flex;
     gap: 32px;
@@ -279,7 +279,7 @@
     padding-left: 18px; /* Align with text perfectly */
 }
 
-/* ── BUTTON STYLES ── */
+/* BUTTON STYLES */
 .btn {
     padding: 10px 20px;
     border-radius: 8px;
@@ -318,7 +318,7 @@
     transform: translateY(-2px);
 }
 
-/* ── MOBILE RESPONSIVENESS ── */
+/* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
     body, html {
         overflow-x: hidden;

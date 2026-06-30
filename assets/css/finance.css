@@ -1,4 +1,4 @@
-/* ── SCROLL LOCK MAGIC FOR FINANCE ── */
+/* SCROLL LOCK MAGIC FOR FINANCE */
 body {
     overflow: hidden;
 }
@@ -41,7 +41,7 @@ body {
     background: #9ca3af;
 }
 
-/* ── TABS NAVIGATION ── */
+/* TABS NAVIGATION */
 .finance-tabs {
     display: flex;
     gap: 32px;
@@ -101,7 +101,7 @@ body {
     }
 }
 
-/* ── DOMESTIC FEES CARDS ── */
+/* DOMESTIC FEES CARDS */
 .fees-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -157,7 +157,7 @@ body {
     color: #111827;
 }
 
-/* ── PAYMENT RULES (INSTALLMENTS) ── */
+/* PAYMENT RULES (INSTALLMENTS) */
 .installments-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -195,7 +195,7 @@ body {
     color: #9ca3af;
 }
 
-/* ── INTERNATIONAL FEES TABLE ── */
+/* INTERNATIONAL FEES TABLE */
 .finance-table {
     width: 100%;
     border-collapse: collapse;
@@ -231,7 +231,7 @@ body {
     font-weight: 800;
 }
 
-/* ── INFO & WARNING BOXES ── */
+/* INFO & WARNING BOXES */
 .info-box {
     background: #f9fafb;
     border: 1px solid #e5e7eb;
@@ -268,7 +268,7 @@ body {
     color: #b45309;
 }
 
-/* ── BOTTOM SECTION: FAQ & METHODS ── */
+/* BOTTOM SECTION: FAQ & METHODS */
 .bottom-section {
     display: grid;
     grid-template-columns: 2fr 1fr;

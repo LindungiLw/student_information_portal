@@ -1,4 +1,4 @@
-/* ── SCROLL LOCK MAGIC FOR STUDENT SERVICES ── */
+/* SCROLL LOCK MAGIC FOR STUDENT SERVICES */
 body {
     overflow: hidden;
     font-family: 'Manrope', sans-serif;
@@ -41,7 +41,7 @@ body {
     background: #9ca3af;
 }
 
-/* ── TABS NAVIGATION ── */
+/* TABS NAVIGATION */
 .ss-tabs {
     display: flex;
     gap: 32px;
@@ -111,7 +111,7 @@ body {
     }
 }
 
-/* ── CONTENT CARDS & LAYOUTS ── */
+/* CONTENT CARDS & LAYOUTS */
 .ss-header-banner {
     border-radius: 16px;
     padding: 32px;
@@ -185,7 +185,7 @@ body {
     font-weight: bold;
 }
 
-/* ── FORMS LIST ── */
+/* FORMS LIST */
 .form-item {
     display: flex;
     align-items: center;
@@ -245,7 +245,7 @@ body {
     color: #5c5fa3;
 }
 
-/* ── FEEDBACK QR CARD ── */
+/* FEEDBACK QR CARD */
 .feedback-card {
     max-width: 500px;
     margin: 0 auto;

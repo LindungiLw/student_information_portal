@@ -21,7 +21,7 @@
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Brand / Logo ── */
+/* Brand / Logo */
 .sidebar-brand {
   display: flex;
   align-items: center;
@@ -52,7 +52,7 @@
   color: var(--white);
 }
 
-/* ── Nav Wrapper (handles fade-out gradient) ── */
+/* Nav Wrapper (handles fade-out gradient) */
 .sidebar-nav-wrapper {
   flex: 1;
   min-height: 0; /* Penting agar flex item bisa shrink */
@@ -64,7 +64,7 @@
 
 /* Fade-out gradient hint at bottom - REMOVED TO PREVENT OBSCURING MENU ITEMS */
 
-/* ── Nav Scroll Area ── */
+/* Nav Scroll Area */
 .sidebar-nav {
   flex: 1;
   padding: 10px 0;
@@ -75,7 +75,7 @@
 }
 .sidebar-nav::-webkit-scrollbar { display: none; }
 
-/* ── Section Labels ── */
+/* Section Labels */
 .nav-section-label {
   font-size: 10px;
   font-weight: 800;
@@ -85,7 +85,7 @@
   padding: 6px 16px 2px; /* Compressed padding */
 }
 
-/* ─── MASTERPIECE MODERN HARMONIOUS NAVIGATION HOVER ANIMATIONS ─── */
+/* MASTERPIECE MODERN HARMONIOUS NAVIGATION HOVER ANIMATIONS */
 .nav-item,
 .sidebar-settings {
   display: flex;
@@ -176,7 +176,7 @@
   box-shadow: none;
 }
 
-/* ── Sidebar Bottom (Settings + User) ── */
+/* Sidebar Bottom (Settings + User) */
 .sidebar-bottom {
   padding: 8px 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -226,7 +226,7 @@
   text-overflow: ellipsis; 
 }
 
-/* ── Mobile Header & Overlay ── */
+/* Mobile Header & Overlay */
 .mobile-header {
   display: none; /* Default tersembunyi di desktop */
   align-items: center;
@@ -273,7 +273,7 @@
   opacity: 1;
 }
 
-/* ── ADAPTIVE LAPTOP COMPACT DENSITY (Solusi UX Bebas Scroll di Zoom 100%) ── */
+/* ADAPTIVE LAPTOP COMPACT DENSITY (Solusi UX Bebas Scroll di Zoom 100%) */
 @media screen and (max-height: 850px) and (min-width: 769px) {
   .sidebar {
     top: 12px;
@@ -337,7 +337,7 @@
   }
 }
 
-/* ── Responsif (Memunculkan Header di Mobile) ── */
+/* Responsif (Memunculkan Header di Mobile) */
 @media screen and (max-width: 768px) {
   .mobile-header {
     display: flex;
