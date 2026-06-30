@@ -36,28 +36,28 @@ $current_page = basename($_SERVER['PHP_SELF']);
            
            <a href="/pages/services/dormitory.php" class="service-tile">
                <div class="service-shape">
-                   <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dormitory">
+                   <img src="/assets/images/student_services/dormitory.webp" alt="Dormitory">
                </div>
                <h3>Dormitory</h3>
            </a>
 
            <a href="/pages/services/library.php" class="service-tile">
                <div class="service-shape">
-                   <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Library">
+                   <img src="/assets/images/student_services/library.webp" alt="Library">
                </div>
                <h3>Library</h3>
            </a>
 
            <a href="/pages/services/counseling.php" class="service-tile">
                <div class="service-shape">
-                   <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Counseling">
+                   <img src="/assets/images/student_services/counseling.webp" alt="Counseling">
                </div>
                <h3>Counseling</h3>
            </a>
 
            <a href="/pages/services/forms.php" class="service-tile">
                <div class="service-shape">
-                   <img src="https://images.unsplash.com/photo-1568225367111-4405249a514c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Forms">
+                   <img src="/assets/images/student_services/form.webp" alt="Forms">
                </div>
                <h3>Forms</h3>
            </a>
