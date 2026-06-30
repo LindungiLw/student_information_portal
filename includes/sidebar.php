@@ -20,19 +20,19 @@ foreach ($words as $w) {
 $avatar_text = strtoupper(mb_substr($initials, 0, 2));
 ?>
 
-<div class="mobile-header" style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(124, 58, 237, 0.18); box-shadow: 0 4px 20px rgba(107, 33, 168, 0.08); padding: 10px 14px; width: 100%; box-sizing: border-box; justify-content: space-between; overflow: hidden;">
+<div class="mobile-header" style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107, 111, 160, 0.18); box-shadow: 0 4px 20px rgba(107, 111, 160, 0.08); padding: 10px 14px; width: 100%; box-sizing: border-box; justify-content: space-between; overflow: hidden;">
     <div class="mobile-logo-group" style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; margin-right: 8px; overflow: hidden;">
-        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 3px 8px rgba(124, 58, 237, 0.35); flex-shrink: 0;">
+        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, var(--sidebar-active) 0%, var(--sidebar-bg) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 3px 8px rgba(107, 111, 160, 0.35); flex-shrink: 0;">
             <i class="fas fa-person" style="color: #ffffff; font-size: 15px;"></i>
-            <i class="fas fa-person-dress" style="color: #fbcfe8; font-size: 15px;"></i>
+            <i class="fas fa-person-dress" style="color: #e2e8f0; font-size: 15px;"></i>
         </div>
-        <span class="mobile-brand-name" style="font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1e1b4b 0%, #6b21a8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">JIU Student Portal</span>
+        <span class="mobile-brand-name" style="font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1e1b4b 0%, var(--sidebar-bg) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">JIU Student Portal</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
-        <button type="button" class="mobile-spotlight-btn" onclick="openSpotlight()" title="Quick Search (Ctrl+K)" style="background: rgba(124, 58, 237, 0.08); color: #7c3aed; border: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
+        <button type="button" class="mobile-spotlight-btn" onclick="openSpotlight()" title="Quick Search (Ctrl+K)" style="background: rgba(107, 111, 160, 0.08); color: var(--sidebar-bg); border: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 15px;">
             <i class="fas fa-magnifying-glass"></i>
         </button>
-        <button id="mobileMenuBtn" class="mobile-menu-btn" style="background: #7c3aed; color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 8px rgba(124, 58, 237, 0.3);">
+        <button id="mobileMenuBtn" class="mobile-menu-btn" style="background: var(--sidebar-bg); color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 8px rgba(107, 111, 160, 0.3);">
             <i class="fas fa-bars"></i>
         </button>
     </div>
@@ -41,15 +41,15 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
 
 <aside id="sidebar" class="sidebar">
     <div class="sidebar-brand">
-        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 3px 8px rgba(124, 58, 237, 0.35); flex-shrink: 0;">
+        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, var(--sidebar-active) 0%, var(--sidebar-bg) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; gap: 2px; box-shadow: 0 3px 8px rgba(107, 111, 160, 0.35); flex-shrink: 0;">
             <i class="fas fa-person" style="color: #ffffff; font-size: 15px;"></i>
-            <i class="fas fa-person-dress" style="color: #fbcfe8; font-size: 15px;"></i>
+            <i class="fas fa-person-dress" style="color: #e2e8f0; font-size: 15px;"></i>
         </div>
         <span class="brand-name" style="font-weight: 800; font-size: 15px; margin-left: 10px; background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Student Portal</span>
     </div>
 
     <!-- Spotlight Quick Search Button -->
-    <div class="sidebar-search-container" style="padding: 12px 16px 4px 16px;">
+    <div class="sidebar-search-container" style="padding: 8px 16px 0px 16px;">
         <button type="button" class="spotlight-trigger-btn" onclick="openSpotlight()">
             <span style="display: flex; align-items: center; gap: 10px;">
                 <i class="fas fa-magnifying-glass" style="color: rgba(255,255,255,0.7);"></i>
@@ -96,10 +96,10 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
     </div>
 
     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-    <div class="sidebar-nav-wrapper" style="flex: 0 0 auto; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 10px; padding-top: 10px;">
+    <div class="sidebar-nav-wrapper" style="flex: 0 0 auto; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 4px; padding-top: 4px;">
         <nav class="sidebar-nav">
             <div class="nav-section-label">Administration</div>
-            <a href="/admin/dashboard.php" class="nav-item" style="color: #6ee7b7;">
+            <a href="/admin/dashboard.php" class="nav-item" style="color: #6ee7b7; padding: 4px 14px; font-size: 11.5px; min-height: 32px;">
                 <i class="fas fa-shield-alt"></i> Portal Admin
             </a>
         </nav>
@@ -110,7 +110,7 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
         <a href="/pages/settings/settings.php" class="sidebar-settings <?php echo is_active('settings.php', $current_page); ?>">
             <i class="fas fa-gear"></i> Settings
         </a>
-        <a href="/auth/logout.php" class="sidebar-settings" style="color: #ef4444; margin-bottom: 15px;">
+        <a href="/auth/logout.php" class="sidebar-settings" style="color: #ef4444; margin-bottom: 5px;">
             <i class="fas fa-right-from-bracket"></i> Logout
         </a>
         <div class="sidebar-user">
@@ -466,11 +466,11 @@ document.addEventListener('keydown', function(e) {
         if (e.key === 'ArrowDown') {
             e.preventDefault();
             selectedIndex = (selectedIndex + 1) % currentResults.length;
-            renderSpotlightResults();
+            updateSpotlightSelection();
         } else if (e.key === 'ArrowUp') {
             e.preventDefault();
             selectedIndex = (selectedIndex - 1 + currentResults.length) % currentResults.length;
-            renderSpotlightResults();
+            updateSpotlightSelection();
         } else if (e.key === 'Enter') {
             e.preventDefault();
             const target = currentResults[selectedIndex];
@@ -522,7 +522,7 @@ function renderSpotlightResults() {
             const docClass = item.isDoc ? 'doc' : '';
             const actionText = item.isDoc ? '<i class="fas fa-download"></i> PDF' : '→';
             html += `
-                <a href="${item.url}" class="spotlight-item ${isSel} ${docClass}" onmouseenter="selectedIndex = ${item.globalIndex}; renderSpotlightResults();">
+                <a href="${item.url}" class="spotlight-item ${isSel} ${docClass}" onmouseenter="selectedIndex = ${item.globalIndex}; updateSpotlightSelection();">
                     <div class="spotlight-item-icon"><i class="fas ${item.icon}"></i></div>
                     <div class="spotlight-item-text">
                         <div class="spotlight-item-title">${item.title}</div>
@@ -535,11 +535,19 @@ function renderSpotlightResults() {
     }
 
     container.innerHTML = html;
-    
-    // Auto scroll selected into view
-    const selEl = container.querySelector('.spotlight-item.selected');
-    if (selEl) {
-        selEl.scrollIntoView({ block: 'nearest' });
-    }
+    updateSpotlightSelection();
+}
+
+function updateSpotlightSelection() {
+    const container = document.getElementById('spotlightResults');
+    const items = container.querySelectorAll('.spotlight-item');
+    items.forEach((el, idx) => {
+        if (idx === selectedIndex) {
+            el.classList.add('selected');
+            el.scrollIntoView({ block: 'nearest' });
+        } else {
+            el.classList.remove('selected');
+        }
+    });
 }
 </script>

@@ -68,11 +68,11 @@ $offset = ($dayOfWeek + 6) % 7;
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/variables.css">
-  <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
-  <link rel="stylesheet" href="/assets/css/interactive_calendar.css?v=2">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=6">
+  <link rel="stylesheet" href="/assets/css/base.css?v=50">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
+  <link rel="stylesheet" href="/assets/css/interactive_calendar.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
 </head>
 <body>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
@@ -132,8 +132,12 @@ $offset = ($dayOfWeek + 6) % 7;
                 <!-- BOOKLET PDF PREVIEW CARD -->
                 <?php if (!empty($cal_doc_path)): ?>
                 <div class="booklet-pure-card desktop-only" onclick="expandPdf()" title="Click to open Booklet Popup" style="margin-top: 24px; width: 100%; max-width: 210px; margin-left: auto; margin-right: auto;">
-                    <div class="pdf-clip-wrapper">
-                        <iframe id="calendar-pdf-preview" src="<?php echo htmlspecialchars($cal_doc_path); ?>#toolbar=0&navpanes=0&scrollbar=0&view=Fit" scrolling="no" tabindex="-1" title="Academic Calendar Preview"></iframe>
+                    <div class="pdf-clip-wrapper" style="display: flex; align-items: center; justify-content: center; background: #f8fafc; min-height: 250px;">
+                        <div class="pdf-thumbnail-loader" style="position: absolute; display: flex; flex-direction: column; align-items: center; color: #64748b; font-size: 13px; font-weight: 600;">
+                            <i class="fas fa-circle-notch fa-spin" style="font-size: 24px; color: #3b82f6; margin-bottom: 8px;"></i>
+                            <span class="pdf-load-percent">Loading...</span>
+                        </div>
+                        <canvas id="pdf-thumbnail-canvas-desktop" style="width: 100%; height: auto; opacity: 0; transition: opacity 0.3s;"></canvas>
                     </div>
 
                     <div class="pure-card-interactive-shield">
@@ -271,8 +275,12 @@ $offset = ($dayOfWeek + 6) % 7;
                <div class="mobile-only" style="width: 100%; justify-content: center; align-items: center; margin-top: 20px;">
                    <?php if (!empty($cal_doc_path)): ?>
                    <div class="booklet-pure-card" onclick="expandPdf()" title="Click to open Booklet Popup" style="width: 100%; max-width: 280px; height: 380px; margin-left: auto; margin-right: auto; touch-action: pan-y;">
-                       <div class="pdf-clip-wrapper">
-                           <iframe id="calendar-pdf-preview-mobile" src="<?php echo htmlspecialchars($cal_doc_path); ?>#toolbar=0&navpanes=0&scrollbar=0&view=Fit" scrolling="no" tabindex="-1" title="Academic Calendar Preview"></iframe>
+                       <div class="pdf-clip-wrapper" style="display: flex; align-items: center; justify-content: center; background: #f8fafc; height: 100%;">
+                           <div class="pdf-thumbnail-loader" style="position: absolute; display: flex; flex-direction: column; align-items: center; color: #64748b; font-size: 13px; font-weight: 600;">
+                               <i class="fas fa-circle-notch fa-spin" style="font-size: 24px; color: #3b82f6; margin-bottom: 8px;"></i>
+                               <span class="pdf-load-percent">Loading...</span>
+                           </div>
+                           <canvas id="pdf-thumbnail-canvas-mobile" style="width: 100%; height: auto; opacity: 0; transition: opacity 0.3s;"></canvas>
                        </div>
                        <div class="pure-card-interactive-shield">
                            <div class="hover-hand-indicator">
@@ -291,26 +299,13 @@ $offset = ($dayOfWeek + 6) % 7;
     </div>
   </main>
 
-  <!-- Event Details Popup -->
+  <!-- Beautiful Sleek Event Details Popup -->
   <div class="event-popup" id="eventPopup">
-      <div class="popup-header">
-          <span>Event Details</span>
-          <i class="fas fa-times close-popup" id="closePopup"></i>
+      <div class="tooltip-header">
+          <div class="tooltip-dot" id="popupCatDot"></div>
+          <div class="tooltip-title" id="popupTitle">Event Title</div>
       </div>
-      <div class="popup-title" id="popupTitle">Midterm Examinations</div>
-      <div class="popup-cat" id="popupCat" style="color: white; background: #5c5fa3;">Exams</div>
-      
-      <div class="popup-section">
-          <div class="popup-section-title">Date</div>
-          <div class="popup-section-content" id="popupDate">Oct 13, 2025 - Oct 17, 2025</div>
-      </div>
-      
-      <div class="popup-section">
-          <div class="popup-section-title">Description</div>
-          <div class="popup-section-content">
-              See your official study plan or Moodle for specific course schedules and locations.
-          </div>
-      </div>
+      <div class="tooltip-date" id="popupDate">Event Date</div>
   </div>
 
   <!-- Pure 100% Clean PDF Lightbox Popup (No Header Bar) -->
@@ -321,23 +316,147 @@ $offset = ($dayOfWeek + 6) % 7;
       </button>
 
       <!-- Pure PDF Frame Container Only -->
-      <div class="pure-pdf-popup-box" onclick="event.stopPropagation()" style="width: min(920px, 94vw); height: min(90vh, 1200px); background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); position: relative; border: 1px solid rgba(255, 255, 255, 0.22); animation: scaleUpModal 0.32s cubic-bezier(0.16, 1, 0.3, 1);">
-          <iframe id="bm-iframe" src="" style="border: none; width: 100%; height: 100%; display: block; background: #ffffff;"></iframe>
+      <div class="pure-pdf-popup-box" onclick="event.stopPropagation()" style="width: min(920px, 94vw); height: min(90vh, 1200px); background: #e2e8f0; border-radius: 20px; overflow-y: auto; overflow-x: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); position: relative; border: 1px solid rgba(255, 255, 255, 0.22); animation: scaleUpModal 0.32s cubic-bezier(0.16, 1, 0.3, 1);">
+          <div id="pdf-render-container" style="width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 20px;"></div>
       </div>
   </div>
 
+  <script src="/assets/js/main.js?v=35"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
-  const dynamicPdfPath = "<?php echo htmlspecialchars($cal_doc_path); ?>";
-  function expandPdf() {
-      const modal = document.getElementById('booklet-popup-modal');
-      const iframe = document.getElementById('bm-iframe');
-      if (!modal || !iframe) return;
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const pdfUrl = "<?php echo empty($cal_doc_path) ? '' : addslashes($cal_doc_path); ?>";
+  let pdfDoc = null;
+  let pdfRendered = false;
+
+  if (pdfUrl) {
+      const cachedThumb = localStorage.getItem('pdf_thumb_' + pdfUrl);
       
-      if (!iframe.src || iframe.src === window.location.href) {
-          iframe.src = dynamicPdfPath + "#toolbar=0&navpanes=0&scrollbar=0&view=FitH";
+      const applyThumb = (srcData) => {
+          const img = new Image();
+          img.onload = function() {
+              const canvasDesktop = document.getElementById('pdf-thumbnail-canvas-desktop');
+              const canvasMobile = document.getElementById('pdf-thumbnail-canvas-mobile');
+              
+              if(canvasDesktop) {
+                  const ctx = canvasDesktop.getContext('2d');
+                  canvasDesktop.width = img.width; canvasDesktop.height = img.height;
+                  ctx.drawImage(img, 0, 0); canvasDesktop.style.opacity = '1';
+              }
+              if(canvasMobile) {
+                  const ctx = canvasMobile.getContext('2d');
+                  canvasMobile.width = img.width; canvasMobile.height = img.height;
+                  ctx.drawImage(img, 0, 0); canvasMobile.style.opacity = '1';
+              }
+              document.querySelectorAll('.pdf-thumbnail-loader').forEach(l => l.style.display = 'none');
+          };
+          img.src = srcData;
+      };
+
+      const loadingTask = pdfjsLib.getDocument(pdfUrl);
+      
+      loadingTask.onProgress = function(progress) {
+          const percentEls = document.querySelectorAll('.pdf-load-percent');
+          if (percentEls.length > 0 && progress.total > 0 && !cachedThumb) {
+              const percent = Math.round((progress.loaded / progress.total) * 100);
+              percentEls.forEach(el => el.textContent = percent + '%');
+          }
+      };
+
+      if (cachedThumb) {
+          // Instant load from cache
+          applyThumb(cachedThumb);
+          // Load document in background for modal
+          loadingTask.promise.then(pdf => { pdfDoc = pdf; }).catch(e => console.error(e));
+      } else {
+          // Render and cache
+          loadingTask.promise.then(pdf => {
+              pdfDoc = pdf;
+              return pdf.getPage(1);
+          }).then(page => {
+              const offscreenCanvas = document.createElement('canvas');
+              const context = offscreenCanvas.getContext('2d');
+              const viewport = page.getViewport({ scale: 1.5 });
+              offscreenCanvas.width = viewport.width;
+              offscreenCanvas.height = viewport.height;
+              
+              const renderContext = { canvasContext: context, viewport: viewport };
+              return page.render(renderContext).promise.then(() => {
+                  try {
+                      const dataUrl = offscreenCanvas.toDataURL('image/jpeg', 0.8);
+                      localStorage.setItem('pdf_thumb_' + pdfUrl, dataUrl);
+                      applyThumb(dataUrl);
+                  } catch(e) { 
+                      console.warn('Could not cache PDF thumb', e);
+                      // Fallback if cache fails
+                      applyThumb(offscreenCanvas.toDataURL());
+                  }
+              });
+          }).catch(err => {
+              console.error("Error loading PDF: ", err);
+              document.querySelectorAll('.pdf-thumbnail-loader').forEach(loader => {
+                  loader.innerHTML = '<i class="fas fa-exclamation-circle" style="color: #ef4444; font-size: 32px; margin-bottom: 12px;"></i><span style="font-weight: 600; font-size: 14px; color: #64748b;">Failed to load PDF</span>';
+              });
+          });
       }
-      modal.style.display = 'flex';
   }
+
+  function expandPdf() {
+      if (!pdfUrl) return;
+      if (!pdfDoc) {
+          alert('Mohon tunggu, dokumen sedang diunduh...');
+          return;
+      }
+      
+      const modal = document.getElementById('booklet-popup-modal');
+      const container = document.getElementById('pdf-render-container');
+      if (!modal || !container) return;
+      
+      modal.style.display = 'flex';
+
+      if (!pdfRendered) {
+          pdfRendered = true;
+          container.innerHTML = '<div style="color: #64748b; font-weight: 600; padding: 40px; text-align: center; font-family: \'Manrope\', sans-serif;"><i class="fas fa-circle-notch fa-spin" style="font-size: 24px; margin-bottom: 12px; color: #3b82f6;"></i><br>Loading document...</div>';
+          
+          const screenWidth = window.innerWidth;
+          let scale = 1.5;
+          if (screenWidth < 600) scale = 1.0;
+
+          const renderPage = (num) => {
+              return pdfDoc.getPage(num).then(page => {
+                  const viewport = page.getViewport({ scale: scale });
+                  const canvas = document.createElement('canvas');
+                  const context = canvas.getContext('2d');
+                  canvas.width = viewport.width;
+                  canvas.height = viewport.height;
+                  canvas.style.maxWidth = '100%';
+                  canvas.style.height = 'auto';
+                  canvas.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                  canvas.style.borderRadius = '8px';
+                  canvas.style.background = '#fff';
+
+                  const renderContext = { canvasContext: context, viewport: viewport };
+                  return page.render(renderContext).promise.then(() => canvas);
+              });
+          };
+
+          const renderAllPages = async () => {
+              const canvases = [];
+              for (let i = 1; i <= pdfDoc.numPages; i++) {
+                  const canvas = await renderPage(i);
+                  canvases.push(canvas);
+              }
+              container.innerHTML = '';
+              canvases.forEach(c => container.appendChild(c));
+          };
+
+          renderAllPages().catch(err => {
+              console.error("Error rendering pages: ", err);
+              container.innerHTML = '<div style="color: #ef4444; font-weight: 600; padding: 40px; text-align: center;">Failed to load PDF pages.</div>';
+          });
+      }
+  }
+
   function closeBookletModal() {
       const modal = document.getElementById('booklet-popup-modal');
       if (modal) modal.style.display = 'none';
@@ -347,18 +466,16 @@ $offset = ($dayOfWeek + 6) % 7;
   });
   </script>
 
-  <script src="/assets/js/main.js"></script>
   <script>
       // Calendar Interactions Logic
       document.addEventListener('DOMContentLoaded', () => {
           const pills = document.querySelectorAll('.event-pill');
           const popup = document.getElementById('eventPopup');
-          const closeBtn = document.getElementById('closePopup');
           const checkboxes = document.querySelectorAll('.filter-item input[type="checkbox"]');
 
           // Popup Elements
           const popupTitle = document.getElementById('popupTitle');
-          const popupCat = document.getElementById('popupCat');
+          const popupCatDot = document.getElementById('popupCatDot');
           const popupDate = document.getElementById('popupDate');
 
           // Open popup on click
@@ -370,34 +487,36 @@ $offset = ($dayOfWeek + 6) % 7;
                   popupTitle.textContent = pill.getAttribute('data-title');
                   popupDate.textContent = pill.getAttribute('data-date');
                   
-                  const category = pill.getAttribute('data-category');
                   const bgColor = pill.getAttribute('data-color');
-                  popupCat.textContent = category;
                   
-                  // Set popup category color
-                  popupCat.style.backgroundColor = bgColor;
+                  // Set popup category color dot
+                  popupCatDot.style.backgroundColor = bgColor;
 
-                  // Calculate position (float near the click, but constrained to window)
+                  // Make it display:block temporarily but invisible to measure its true width
+                  popup.style.visibility = 'hidden';
+                  popup.classList.add('active');
+                  
                   const rect = pill.getBoundingClientRect();
-                  let top = rect.top + window.scrollY + 30;
-                  let left = rect.left + window.scrollX + 20;
+                  const popupWidth = popup.offsetWidth;
+                  
+                  // Calculate position (centered below the pill)
+                  let top = rect.bottom + window.scrollY + 8;
+                  let left = rect.left + window.scrollX + (rect.width / 2) - (popupWidth / 2);
 
-                  // Prevent going off-screen on the right
-                  if (left + 280 > window.innerWidth) {
-                      left = window.innerWidth - 300;
-                  }
+                  // Prevent going off-screen
+                  if (left < 10) left = 10;
+                  if (left + popupWidth > window.innerWidth - 10) left = window.innerWidth - popupWidth - 10;
 
                   popup.style.top = top + 'px';
                   popup.style.left = left + 'px';
-                  popup.classList.add('active');
+                  
+                  // Force reflow for animation and make visible
+                  void popup.offsetWidth;
+                  popup.style.visibility = ''; // remove inline visibility to let CSS handle it
               });
           });
 
-          // Close popup logic
-          closeBtn.addEventListener('click', () => {
-              popup.classList.remove('active');
-          });
-
+          // Close popup when clicking anywhere else
           document.addEventListener('click', (e) => {
               if (!popup.contains(e.target)) {
                   popup.classList.remove('active');

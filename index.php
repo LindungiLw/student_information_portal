@@ -28,9 +28,9 @@ if (isset($_SESSION['user_id'])) {
     <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png?v=1">
 
     <!-- Link to your modular CSS files -->
-    <link rel="stylesheet" href="/assets/css/global.css?v=30">
-    <link rel="stylesheet" href="/assets/css/landing.css?v=30">
-    <link rel="stylesheet" href="/assets/css/responsive.css?v=30">
+    <link rel="stylesheet" href="/assets/css/global.css?v=50">
+    <link rel="stylesheet" href="/assets/css/landing.css?v=50">
+    <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
 
     <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

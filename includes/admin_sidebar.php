@@ -20,15 +20,15 @@ foreach ($words as $w) {
 $avatar_text = strtoupper(mb_substr($initials, 0, 2));
 ?>
 
-<div class="mobile-header" style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(124, 58, 237, 0.18); box-shadow: 0 4px 20px rgba(107, 33, 168, 0.08); padding: 10px 14px; width: 100%; box-sizing: border-box; justify-content: space-between; overflow: hidden; position: sticky; top: 0; z-index: 999;">
+<div class="mobile-header" style="background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107, 111, 160, 0.18); box-shadow: 0 4px 20px rgba(107, 111, 160, 0.08); padding: 10px 14px; width: 100%; box-sizing: border-box; justify-content: space-between; overflow: hidden; position: sticky; top: 0; z-index: 999;">
     <div class="mobile-logo-group" style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; margin-right: 8px; overflow: hidden;">
-        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #ef4444 0%, #7c3aed 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4); flex-shrink: 0;">
+        <div style="width: 36px; height: 36px; background: linear-gradient(135deg, var(--sidebar-active) 0%, var(--sidebar-bg) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 8px rgba(107, 111, 160, 0.35); flex-shrink: 0;">
             <i class="fas fa-shield-alt" style="color: #ffffff; font-size: 18px;"></i>
         </div>
-        <span class="mobile-brand-name" style="font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1e1b4b 0%, #6b21a8 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">PORTAL ADMIN</span>
+        <span class="mobile-brand-name" style="font-size: 16px; font-weight: 800; background: linear-gradient(135deg, #1e1b4b 0%, var(--sidebar-bg) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">PORTAL ADMIN</span>
     </div>
     <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
-        <button id="mobileMenuBtn" class="mobile-menu-btn" style="background: #7c3aed; color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 8px rgba(124, 58, 237, 0.3);">
+        <button id="mobileMenuBtn" class="mobile-menu-btn" style="background: var(--sidebar-bg); color: #ffffff; border: none; width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; box-shadow: 0 3px 8px rgba(107, 111, 160, 0.3);">
             <i class="fas fa-bars"></i>
         </button>
     </div>
@@ -67,7 +67,7 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
             </a>
 
             <!-- Sub: Campus Life -->
-            <div style="font-size: 11px; text-transform: uppercase; color: rgba(255,255,255,0.4); margin: 10px 16px 4px 16px; letter-spacing: 0.5px; font-weight: 700;">Campus Life</div>
+            <div class="nav-section-label">Campus Life</div>
             <a href="/admin/student_affairs_docs_manage.php" class="nav-item <?php echo is_active('student_affairs_docs_manage.php', $current_page); ?>">
                 <i class="fas fa-users"></i> Student Affairs
             </a>
@@ -86,7 +86,7 @@ $avatar_text = strtoupper(mb_substr($initials, 0, 2));
     </div>
 
     <div class="sidebar-bottom">
-        <a href="/auth/logout.php" class="sidebar-settings" style="color: #ef4444; margin-bottom: 15px;">
+        <a href="/auth/logout.php" class="sidebar-settings" style="color: #ef4444; margin-bottom: 5px;">
             <i class="fas fa-right-from-bracket"></i> Logout
         </a>
         <div class="sidebar-user">

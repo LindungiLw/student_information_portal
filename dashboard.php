@@ -87,11 +87,11 @@ try {
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=35">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=35">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=35">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
 </head>
 <body class="dashboard-app-viewport">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
@@ -125,19 +125,13 @@ try {
            <?php if (!empty($dash_booklet_path)): ?>
            <div class="booklet-pure-card" onclick="expandPdf()" title="Click to open Booklet Popup">
                <!-- Clip wrapper pushing native browser PDF scrollbars off-screen -->
-               <div class="pdf-clip-wrapper">
-                   <?php 
-                   $useragent = $_SERVER['HTTP_USER_AGENT'] ?? '';
-                   $isMobileLayout = preg_match('/(android|webos|iphone|ipad|ipod|blackberry|windows phone)/i', $useragent);
-                   if ($isMobileLayout): 
-                   ?>
-                   <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); color: #64748b;">
-                       <i class="fas fa-file-pdf" style="font-size: 48px; margin-bottom: 12px; color: #ef4444;"></i>
-                       <span style="font-size: 14px; font-weight: 600;">Tap to view Booklet</span>
+               <div class="pdf-clip-wrapper" style="position: relative;">
+                   <canvas id="pdf-thumbnail-canvas" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s;"></canvas>
+                   <div id="pdf-thumbnail-loader" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; color: #3b82f6;">
+                       <i class="fas fa-circle-notch fa-spin" style="font-size: 32px; margin-bottom: 12px;"></i>
+                       <span id="pdf-load-percent" style="font-weight: 700; font-size: 14px;">0%</span>
+                       <span style="font-size: 12px; color: #64748b; margin-top: 4px;">Downloading Document...</span>
                    </div>
-                   <?php else: ?>
-                   <iframe id="dash-pdf-viewer" src="<?php echo htmlspecialchars($dash_booklet_path); ?>#toolbar=0&navpanes=0&scrollbar=0&view=Fit" scrolling="no" tabindex="-1" title="<?php echo htmlspecialchars($dash_booklet_title); ?>"></iframe>
-                   <?php endif; ?>
                </div>
 
                <!-- Gorgeous Modern Interactive Hover Shield with Animated Hand -->
@@ -159,6 +153,7 @@ try {
            </div>
            <?php endif; ?>
         </div>
+
 
         <!-- RIGHT COLUMN (50%): Top Row (Quick Links | Upcoming Calendar max 2) + Bottom Row (Full Width Announcements) -->
         <div class="dash-right-col" style="display: flex; flex-direction: column; gap: 20px;">
@@ -281,28 +276,133 @@ try {
       </button>
 
       <!-- Pure PDF Frame Container Only -->
-      <div class="pure-pdf-popup-box" onclick="event.stopPropagation()" style="width: min(920px, 94vw); height: min(90vh, 1200px); background: #ffffff; border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); position: relative; border: 1px solid rgba(255, 255, 255, 0.22); animation: scaleUpModal 0.32s cubic-bezier(0.16, 1, 0.3, 1);">
-          <iframe id="bm-iframe" src="" style="border: none; width: 100%; height: 100%; display: block; background: #ffffff;"></iframe>
+      <div class="pure-pdf-popup-box" onclick="event.stopPropagation()" style="width: min(920px, 94vw); height: min(90vh, 1200px); background: #e2e8f0; border-radius: 20px; overflow-y: auto; overflow-x: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); position: relative; border: 1px solid rgba(255, 255, 255, 0.22); animation: scaleUpModal 0.32s cubic-bezier(0.16, 1, 0.3, 1);">
+          <div id="pdf-render-container" style="width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 20px;"></div>
       </div>
   </div>
 
   <script src="/assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  const pdfUrl = "<?php echo empty($dash_booklet_path) ? '' : addslashes($dash_booklet_path); ?>";
+  let pdfDoc = null;
+  let pdfRendered = false;
+
+  if (pdfUrl) {
+      const cachedThumb = localStorage.getItem('pdf_thumb_' + pdfUrl);
+      const canvas = document.getElementById('pdf-thumbnail-canvas');
+      const loader = document.getElementById('pdf-thumbnail-loader');
+
+      const loadingTask = pdfjsLib.getDocument(pdfUrl);
+      
+      loadingTask.onProgress = function(progress) {
+          const percentEl = document.getElementById('pdf-load-percent');
+          if (percentEl && progress.total > 0 && !cachedThumb) {
+              const percent = Math.round((progress.loaded / progress.total) * 100);
+              percentEl.textContent = percent + '%';
+          }
+      };
+
+      if (cachedThumb && canvas) {
+          // Tampilkan gambar dari cache secara instan tanpa loading
+          const img = new Image();
+          img.onload = function() {
+              const context = canvas.getContext('2d');
+              canvas.width = img.width;
+              canvas.height = img.height;
+              context.drawImage(img, 0, 0);
+              if(loader) loader.style.display = 'none';
+              canvas.style.opacity = '1';
+          };
+          img.src = cachedThumb;
+          
+          // Tetap muat dokumen di background (dari cache browser) untuk persiapan jika modal diklik
+          loadingTask.promise.then(pdf => { pdfDoc = pdf; }).catch(e => console.error(e));
+      } else {
+          // Render ulang PDF dan simpan ke cache
+          loadingTask.promise.then(pdf => {
+              pdfDoc = pdf;
+              return pdf.getPage(1);
+          }).then(page => {
+              if(canvas) {
+                  const context = canvas.getContext('2d');
+                  const viewport = page.getViewport({ scale: 1.5 });
+                  canvas.width = viewport.width;
+                  canvas.height = viewport.height;
+                  const renderContext = { canvasContext: context, viewport: viewport };
+                  return page.render(renderContext).promise.then(() => {
+                      if(loader) loader.style.display = 'none';
+                      canvas.style.opacity = '1';
+                      try {
+                          // Simpan hasil render ke localStorage dalam bentuk JPG agar kunjungan berikutnya instan
+                          localStorage.setItem('pdf_thumb_' + pdfUrl, canvas.toDataURL('image/jpeg', 0.8));
+                      } catch(e) { console.warn('Could not cache PDF thumb', e); }
+                  });
+              }
+          }).catch(err => {
+              console.error("Error loading PDF: ", err);
+              if(loader) loader.innerHTML = '<i class="fas fa-exclamation-circle" style="color: #ef4444; font-size: 32px; margin-bottom: 12px;"></i><span style="font-weight: 600; font-size: 14px; color: #64748b;">Failed to load PDF</span>';
+          });
+      }
+  }
+
   function expandPdf() {
-      <?php if (empty($dash_booklet_path)): ?>
-      return; // Do nothing if no PDF
-      <?php endif; ?>
+      if (!pdfUrl) return;
+      if (!pdfDoc) {
+          alert('Mohon tunggu, dokumen sedang diunduh...');
+          return;
+      }
       
       const modal = document.getElementById('booklet-popup-modal');
-      const iframe = document.getElementById('bm-iframe');
-      if (!modal || !iframe) return;
+      const container = document.getElementById('pdf-render-container');
+      if (!modal || !container) return;
       
-      if (!iframe.src || iframe.src === window.location.href) {
-          // #toolbar=0 menyembunyikan ikon print/download kaku Chrome. #scrollbar=0 membuat scroll halus mulus alami.
-          iframe.src = "<?php echo addslashes($dash_booklet_path); ?>#toolbar=0&navpanes=0&scrollbar=0&view=FitH";
-      }
       modal.style.display = 'flex';
+
+      if (!pdfRendered) {
+          pdfRendered = true;
+          container.innerHTML = '<div style="color: #64748b; font-weight: 600; padding: 40px; text-align: center; font-family: \'Manrope\', sans-serif;"><i class="fas fa-circle-notch fa-spin" style="font-size: 24px; margin-bottom: 12px; color: #3b82f6;"></i><br>Loading document...</div>';
+          
+          const screenWidth = window.innerWidth;
+          let scale = 1.5;
+          if (screenWidth < 600) scale = 1.0;
+
+          const renderPage = (num) => {
+              return pdfDoc.getPage(num).then(page => {
+                  const viewport = page.getViewport({ scale: scale });
+                  const canvas = document.createElement('canvas');
+                  const context = canvas.getContext('2d');
+                  canvas.width = viewport.width;
+                  canvas.height = viewport.height;
+                  canvas.style.maxWidth = '100%';
+                  canvas.style.height = 'auto';
+                  canvas.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                  canvas.style.borderRadius = '8px';
+                  canvas.style.background = '#fff';
+
+                  const renderContext = { canvasContext: context, viewport: viewport };
+                  return page.render(renderContext).promise.then(() => canvas);
+              });
+          };
+
+          const renderAllPages = async () => {
+              const canvases = [];
+              for (let i = 1; i <= pdfDoc.numPages; i++) {
+                  const canvas = await renderPage(i);
+                  canvases.push(canvas);
+              }
+              container.innerHTML = '';
+              canvases.forEach(c => container.appendChild(c));
+          };
+
+          renderAllPages().catch(err => {
+              console.error("Error rendering pages: ", err);
+              container.innerHTML = '<div style="color: #ef4444; font-weight: 600; padding: 40px; text-align: center;">Failed to load PDF pages.</div>';
+          });
+      }
   }
+
   function closeBookletModal() {
       const modal = document.getElementById('booklet-popup-modal');
       if (modal) modal.style.display = 'none';

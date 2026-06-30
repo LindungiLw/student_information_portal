@@ -32,12 +32,20 @@ try {
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=26">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
   <style>
+      @keyframes scaleUpModal {
+          from { transform: scale(0.95); opacity: 0; }
+          to { transform: scale(1); opacity: 1; }
+      }
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
       .pdf-container {
           height: 600px;
           border-radius: 12px;
@@ -170,24 +178,21 @@ try {
            </div>
        </div>
 
-       <!-- Interactive PDF Viewer -->
        <?php if (!empty($finance_pdf_path)): ?>
-         <div id="finance-pdf-container" style="margin-top: 50px;">
-             <h3 style="color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
-                 <i class="fas fa-file-pdf" style="color: #ef4444;"></i> 
-                 <span id="finance-pdf-title-text"><?php echo htmlspecialchars($finance_pdf_title); ?></span>
-             </h3>
-             <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 14px;">Review the official tuition, fees, and payment guidelines below.</p>
-             
-             <div class="pdf-container">
-                 <iframe 
-                     id="finance-pdf"
-                     src="<?php echo htmlspecialchars($finance_pdf_path); ?>#toolbar=0&navpanes=0&view=Fit" 
-                     width="100%" 
-                     height="100%" 
-                     style="border: none; display: block;"
-                     type="application/pdf">
-                 </iframe>
+       <!-- Interactive PDF Viewer -->
+             <div class="custom-pdf-container" style="position: relative;">
+                 <!-- Floating Fullscreen Button di atas PDF -->
+                 <button class="floating-fullscreen-btn" onclick="expandPdf()" title="Open PDF" style="position: absolute; top: 16px; right: 24px; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.15); border-radius: 8px; background: #ef4444; color: white; border: none; padding: 8px 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s; display: flex; align-items: center; gap: 8px;">
+                     <i class="fas fa-expand"></i> Open Document
+                 </button>
+                 
+                 <div class="pdf-body" style="cursor: pointer; position: relative; width: 100%; aspect-ratio: 1 / 1.414; background: #fff; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.08);" onclick="expandPdf()" title="Click to open Document">
+                     <canvas id="pdf-thumbnail-canvas" style="width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.4s;"></canvas>
+                     <div class="pdf-thumbnail-loader" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f8fafc; color: #ef4444;">
+                         <i class="fas fa-circle-notch fa-spin" style="font-size: 24px; margin-bottom: 12px;"></i>
+                         <div class="pdf-load-percent" style="font-size: 13px; font-weight: 700; color: #64748b;">Loading...</div>
+                     </div>
+                 </div>
              </div>
              
              <div style="margin-top: 16px; display: flex; justify-content: flex-end;">
@@ -204,44 +209,167 @@ try {
          </div>
        <?php endif; ?>
 
+       <!-- Pure 100% Clean PDF Lightbox Popup (No Header Bar) -->
+       <div id="booklet-popup-modal" class="booklet-modal-backdrop" style="display: none; position: fixed; inset: 0; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(12px); z-index: 999999; align-items: center; justify-content: center; padding: 20px;" onclick="closeBookletModal()">
+           <button type="button" onclick="closeBookletModal()" title="Close Popup (Esc)" style="position: absolute; top: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.35); backdrop-filter: blur(10px); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 20px; z-index: 1000000; box-shadow: 0 10px 25px rgba(0,0,0,0.4); transition: transform 0.25s, background 0.25s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.9)'; this.style.transform='scale(1.1) rotate(90deg)';" onmouseout="this.style.background='rgba(255, 255, 255, 0.18)'; this.style.transform='scale(1) rotate(0deg)';">
+               <i class="fas fa-times"></i>
+           </button>
+           <div class="pure-pdf-popup-box" onclick="event.stopPropagation()" style="width: min(920px, 94vw); height: min(90vh, 1200px); background: #e2e8f0; border-radius: 20px; overflow-y: auto; overflow-x: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75); position: relative; border: 1px solid rgba(255, 255, 255, 0.22); animation: scaleUpModal 0.32s cubic-bezier(0.16, 1, 0.3, 1);">
+               <div id="pdf-render-container" style="width: 100%; display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 20px;"></div>
+           </div>
+       </div>
+
     </div>
   </main>
   
+  <script src="/assets/js/main.js?v=35"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
-    function openPdfSection(keyword, estimatedPage) {
-        const pdfContainer = document.querySelector('.custom-pdf-container');
-        if(pdfContainer) {
-            pdfContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            pdfContainer.style.transition = "box-shadow 0.3s ease";
-            pdfContainer.style.boxShadow = "0 0 0 4px var(--purple-accent)";
-            setTimeout(() => {
-                pdfContainer.style.boxShadow = "0 4px 15px rgba(0,0,0,0.02)";
-            }, 1500);
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    let currentPdfUrl = "<?php echo empty($finance_pdf_path) ? '' : addslashes(htmlspecialchars($finance_pdf_path)); ?>";
+    let pdfDoc = null;
+    let pdfRendered = false;
+
+    function renderPdfThumbnail(url) {
+        if (!url) return;
+        pdfDoc = null;
+        pdfRendered = false;
+        
+        const loader = document.querySelector('.pdf-thumbnail-loader');
+        if(loader) loader.style.display = 'flex';
+        const canvasDesktop = document.getElementById('pdf-thumbnail-canvas');
+        if(canvasDesktop) canvasDesktop.style.opacity = '0';
+        
+        const applyThumb = (srcData) => {
+            const img = new Image();
+            img.onload = function() {
+                if(canvasDesktop) {
+                    const ctx = canvasDesktop.getContext('2d');
+                    canvasDesktop.width = img.width; canvasDesktop.height = img.height;
+                    ctx.drawImage(img, 0, 0); canvasDesktop.style.opacity = '1';
+                }
+                if(loader) loader.style.display = 'none';
+            };
+            img.src = srcData;
+        };
+
+        const cachedThumb = localStorage.getItem('pdf_thumb_' + url);
+        const loadingTask = pdfjsLib.getDocument(url);
+        
+        loadingTask.onProgress = function(progress) {
+            const percentEls = document.querySelectorAll('.pdf-load-percent');
+            if (percentEls.length > 0 && progress.total > 0 && !cachedThumb) {
+                const percent = Math.round((progress.loaded / progress.total) * 100);
+                percentEls.forEach(el => el.textContent = percent + '%');
+            }
+        };
+
+        if (cachedThumb) {
+            applyThumb(cachedThumb);
+            loadingTask.promise.then(pdf => { pdfDoc = pdf; }).catch(e => console.error(e));
+        } else {
+            loadingTask.promise.then(pdf => {
+                pdfDoc = pdf;
+                pdf.getPage(1).then(page => {
+                    const viewport = page.getViewport({ scale: 1.5 });
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = viewport.width; canvas.height = viewport.height;
+                    page.render({ canvasContext: ctx, viewport: viewport }).promise.then(() => {
+                        const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+                        try { localStorage.setItem('pdf_thumb_' + url, dataUrl); } catch(e) {}
+                        applyThumb(dataUrl);
+                    });
+                });
+            }).catch(e => {
+                console.error("PDF Load Error:", e);
+                if(loader) loader.innerHTML = "Error loading PDF thumbnail.";
+            });
         }
+    }
 
-        const baseUrl = '<?php echo $finance_pdf_path; ?>';
-        const timestamp = new Date().getTime();
-        const fullUrl = `${baseUrl}?t=${timestamp}#toolbar=0&navpanes=0&view=Fit&search=${encodeURIComponent(keyword)}&page=${estimatedPage}`;
+    if (currentPdfUrl) renderPdfThumbnail(currentPdfUrl);
 
-        // Update Desktop Iframe
-        const iframe = document.getElementById('finance-pdf');
-        if(iframe && iframe.style.display !== 'none') {
-            iframe.src = fullUrl;
+    function expandPdf(pageTarget = 1) {
+        if (!currentPdfUrl) return;
+        if (!pdfDoc) {
+            alert('Mohon tunggu, dokumen sedang diunduh...');
+            return;
         }
+        
+        const modal = document.getElementById('booklet-popup-modal');
+        const container = document.getElementById('pdf-render-container');
+        if (!modal || !container) return;
+        
+        modal.style.display = 'flex';
 
-        // Update Mobile Fallback Card (if it exists)
-        const mobileFallbackLink = document.querySelector('.mobile-pdf-card a');
-        if (mobileFallbackLink) {
-            mobileFallbackLink.href = `${baseUrl}#search=${encodeURIComponent(keyword)}&page=${estimatedPage}`;
-            const mobileFallbackTitle = document.querySelector('.mobile-pdf-card h4');
-            if (mobileFallbackTitle) {
-                mobileFallbackTitle.innerText = `Official Tuition Document - ${keyword}`;
+        if (!pdfRendered) {
+            pdfRendered = true;
+            container.innerHTML = '<div style="color: #64748b; font-weight: 600; padding: 40px; text-align: center; font-family: \'Manrope\', sans-serif;"><i class="fas fa-circle-notch fa-spin" style="font-size: 24px; margin-bottom: 12px; color: #ef4444;"></i><br>Loading document...</div>';
+            
+            const screenWidth = window.innerWidth;
+            let scale = 1.5;
+            if (screenWidth < 600) scale = 1.0;
+
+            const renderPage = (num) => {
+                return pdfDoc.getPage(num).then(page => {
+                    const viewport = page.getViewport({ scale: scale });
+                    const canvas = document.createElement('canvas');
+                    canvas.id = 'pdf-page-' + num;
+                    const context = canvas.getContext('2d');
+                    canvas.width = viewport.width; canvas.height = viewport.height;
+                    canvas.style.maxWidth = '100%'; canvas.style.height = 'auto';
+                    canvas.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                    canvas.style.borderRadius = '8px'; canvas.style.background = '#fff';
+
+                    const renderContext = { canvasContext: context, viewport: viewport };
+                    return page.render(renderContext).promise.then(() => canvas);
+                });
+            };
+
+            const renderAllPages = async () => {
+                const canvases = [];
+                for (let i = 1; i <= pdfDoc.numPages; i++) {
+                    canvases.push(await renderPage(i));
+                }
+                container.innerHTML = '';
+                canvases.forEach(c => container.appendChild(c));
+                
+                if (pageTarget > 1) {
+                    setTimeout(() => {
+                        const targetCanvas = document.getElementById('pdf-page-' + pageTarget);
+                        if (targetCanvas) targetCanvas.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            };
+
+            renderAllPages().catch(err => {
+                console.error("Error rendering pages: ", err);
+                container.innerHTML = '<div style="color: #ef4444; font-weight: 600; padding: 40px; text-align: center;">Failed to load PDF pages.</div>';
+            });
+        } else {
+            if (pageTarget > 1) {
+                setTimeout(() => {
+                    const targetCanvas = document.getElementById('pdf-page-' + pageTarget);
+                    if (targetCanvas) targetCanvas.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
             }
         }
     }
 
+    function openPdfSection(keyword, estimatedPage) {
+        expandPdf(estimatedPage);
+    }
+
+    function closeBookletModal() {
+        const modal = document.getElementById('booklet-popup-modal');
+        if (modal) modal.style.display = 'none';
+    }
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeBookletModal();
+    });
   </script>
-  <script src="/assets/js/main.js"></script>
 </body>
 </html>
 

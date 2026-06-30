@@ -174,14 +174,13 @@ $docs = $stmt_doc->fetchAll();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard Manager | Admin Portal</title>
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
-  <link rel="preload" href="/assets/css/responsive.css?v=35" as="style">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/variables.css">
-  <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=35">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=35">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=35">
+  <link rel="stylesheet" href="/assets/css/variables.css?v=50">
+  <link rel="stylesheet" href="/assets/css/base.css?v=50">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
   <style>
       html, body { overflow-x: hidden; max-width: 100vw; width: 100%; }
       .btn-primary { background: var(--purple-accent); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; transition: 0.2s; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; cursor: pointer; }
@@ -248,8 +247,8 @@ $docs = $stmt_doc->fetchAll();
       /* --- Admin Table Styles --- */
       .table-responsive { overflow-x: auto; }
       .admin-data-table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; }
-      .admin-data-table th { padding: 16px 20px; font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); }
-      .admin-data-table td { padding: 16px 20px; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+      .admin-data-table th { padding: 12px 16px; font-size: 12px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--border-color); }
+      .admin-data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
       .admin-data-table tr:last-child td { border-bottom: none; }
       .admin-data-table tr:hover td { background-color: #f8fafc; }
       
@@ -267,12 +266,12 @@ $docs = $stmt_doc->fetchAll();
       .admin-badge.generic { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
   </style>
 </head>
-<body class="admin-app-viewport dashboard-app-viewport">
+<body class="admin-app-viewport">
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/svg_icons.php'; ?>
   <?php include $_SERVER['DOCUMENT_ROOT'] . '/includes/admin_sidebar.php'; ?>
 
   <main class="main">
-    <div class="page-header">
+    <div class="page-header" style="position: sticky; top: 0; z-index: 99; background: var(--bg-color); padding: 16px 0; margin-top: -16px; margin-bottom: 24px; border-bottom: 1px solid rgba(0,0,0,0.05);">
        <h1><i class="fas fa-tachometer-alt"></i>  Dashboard Manager</h1>
        <p>Manage the content displayed on the student dashboard directly from here.</p>
     </div>
@@ -280,7 +279,7 @@ $docs = $stmt_doc->fetchAll();
     <div class="bottom-dashboard-section" style="padding-top: 0;">
        
        <!-- SECTION 1: DASHBOARD BOOKLET -->
-       <div style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); margin-bottom: 30px;">
+       <div style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; box-shadow: var(--shadow-sm); margin-bottom: 20px;">
            <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--text-main);"><i class="fas fa-book-open" style="color: #3b82f6; margin-right: 8px;"></i> Dashboard Booklet</h2>
        
        <div class="header-actions">
@@ -336,7 +335,7 @@ $docs = $stmt_doc->fetchAll();
        </div>
        
        <!-- SECTION 2: ANNOUNCEMENTS -->
-       <div style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; box-shadow: var(--shadow-sm); margin-bottom: 30px;">
+       <div style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; box-shadow: var(--shadow-sm); margin-bottom: 20px;">
            <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--text-main);"><i class="fas fa-bullhorn" style="color: #ef4444; margin-right: 8px;"></i> Announcements</h2>
        
        <div class="header-actions">
@@ -411,8 +410,8 @@ $docs = $stmt_doc->fetchAll();
 
        <!-- SECTION 3: OTHER MODULES -->
        <h2 style="font-size: 18px; font-weight: 700; margin-bottom: 16px; color: var(--text-main);">Other Modules</h2>
-       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
-           <a href="/admin/calendar_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+           <a href="/admin/calendar_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(107, 33, 168, 0.1); color: var(--purple-accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-calendar-alt"></i>
                </div>
@@ -421,7 +420,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Update schedule</p>
                </div>
            </a>
-           <a href="/admin/academics_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/academics_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(229, 62, 62, 0.1); color: #e53e3e; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-graduation-cap"></i>
                </div>
@@ -430,7 +429,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Policy documents</p>
                </div>
            </a>
-           <a href="/admin/department_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/department_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(49, 130, 206, 0.1); color: #3182ce; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-building-columns"></i>
                </div>
@@ -439,7 +438,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Department files</p>
                </div>
            </a>
-           <a href="/admin/exchange_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/exchange_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(14, 165, 233, 0.1); color: #0ea5e9; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-plane-departure"></i>
                </div>
@@ -448,7 +447,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Exchange info</p>
                </div>
            </a>
-           <a href="/admin/internship_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/internship_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-briefcase"></i>
                </div>
@@ -457,7 +456,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Internship docs</p>
                </div>
            </a>
-           <a href="/admin/scholarship_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/scholarship_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(16, 185, 129, 0.1); color: #10b981; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-hand-holding-heart"></i>
                </div>
@@ -466,7 +465,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Scholarship info</p>
                </div>
            </a>
-           <a href="/admin/dormitory_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/dormitory_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(236, 72, 153, 0.1); color: #ec4899; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-building"></i>
                </div>
@@ -475,7 +474,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Housing files</p>
                </div>
            </a>
-           <a href="/admin/library_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/library_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(99, 102, 241, 0.1); color: #6366f1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-book-open"></i>
                </div>
@@ -484,7 +483,7 @@ $docs = $stmt_doc->fetchAll();
                    <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Library resources</p>
                </div>
            </a>
-           <a href="/admin/forms_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
+           <a href="/admin/forms_docs_manage.php" style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; text-decoration: none; color: var(--text-main); display: flex; align-items: center; gap: 16px; transition: transform 0.2s; box-shadow: var(--shadow-sm);">
                <div style="width: 50px; height: 50px; background: rgba(20, 184, 166, 0.1); color: #14b8a6; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px;">
                    <i class="fas fa-file-signature"></i>
                </div>

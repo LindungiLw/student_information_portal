@@ -62,16 +62,7 @@
   flex-direction: column;
 }
 
-/* Fade-out gradient hint at bottom */
-.sidebar-nav-wrapper::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 48px;
-  background: linear-gradient(to bottom, transparent, var(--sidebar-bg));
-  pointer-events: none;
-  z-index: 2;
-}
+/* Fade-out gradient hint at bottom - REMOVED TO PREVENT OBSCURING MENU ITEMS */
 
 /* ── Nav Scroll Area ── */
 .sidebar-nav {
@@ -91,7 +82,7 @@
   letter-spacing: 1px;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
-  padding: 10px 16px 4px; /* Reduced vertical padding */
+  padding: 6px 16px 2px; /* Compressed padding */
 }
 
 /* ─── MASTERPIECE MODERN HARMONIOUS NAVIGATION HOVER ANIMATIONS ─── */
@@ -99,17 +90,17 @@
 .sidebar-settings {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  color: #ffffff; /* Lebih terang dan tajam sejak awal sesuai permintaan */
-  font-size: 13.5px;
+  gap: 10px;
+  padding: 6px 14px;
+  color: #ffffff;
+  font-size: 12.5px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
-  margin: 0 12px 4px 12px;
+  margin: 0 10px 1px 10px;
   position: relative;
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -187,8 +178,9 @@
 
 /* ── Sidebar Bottom (Settings + User) ── */
 .sidebar-bottom {
-  padding: 12px 0;
+  padding: 8px 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+  margin-top: auto;
 }
 
 .sidebar-user {

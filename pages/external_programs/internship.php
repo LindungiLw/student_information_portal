@@ -25,11 +25,11 @@ $current_page = 'external_activities.php'; // Keep sidebar active on External Ac
   <link rel="icon" type="image/png" href="/assets/images/jiu-logo-rounded.png">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
   <style>
       .exchange-hero {
           display: flex;

@@ -41,9 +41,9 @@ $user_nim = isset($_SESSION['nim']) ? $_SESSION['nim'] : 'Unknown';
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="/assets/css/variables.css">
   <link rel="stylesheet" href="/assets/css/base.css">
-  <link rel="stylesheet" href="/assets/css/responsive.css?v=4">
-  <link rel="stylesheet" href="/assets/css/sidebar.css?v=3">
-  <link rel="stylesheet" href="/assets/css/dashboard.css?v=10">
+  <link rel="stylesheet" href="/assets/css/dashboard.css?v=50">
+  <link rel="stylesheet" href="/assets/css/sidebar.css?v=50">
+  <link rel="stylesheet" href="/assets/css/responsive.css?v=50">
   <style>
       /* Apple-style Settings Layout */
       .settings-container {
